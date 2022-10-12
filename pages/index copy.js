@@ -227,7 +227,6 @@ export default function Home({ about, projects }) {
     mode: "snap",
     rtl: false,
     slides: {
-      //number: 5,
       perView: 4,
     },
   });
@@ -291,7 +290,6 @@ export default function Home({ about, projects }) {
       </Box>
 
       <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 0, md: 0 }}>
-        {/*** row: return home ***/}
         <Item>
           <Box
             sx={{
@@ -316,9 +314,9 @@ export default function Home({ about, projects }) {
             </Box>
           </Box>
         </Item>
-        {/*** row: about ***/}
         <Item>
-          <Box sx={{ borderRight: "1px solid #000" }}>
+          <Box>
+            {/*** row2 ***/}
             <motion.div
               variants={row2}
               initial="closed"
@@ -450,7 +448,6 @@ export default function Home({ about, projects }) {
             </motion.div>
           </Box>
         </Item>
-        {/*** row: slider of projects ***/}
         <Item>
           <Box
             sx={{
@@ -464,107 +461,318 @@ export default function Home({ about, projects }) {
             className="keen-slider"
             style={{ maxWidth: 480, maxHeight: "100vh" }}
           >
-            {myProjects &&
-              myProjects.map((project, idx) => (
+            {/*** project a ***/}
+            <Box
+              className={`keen-slider__slide number-slide1 ${styles.slider_entity}`}
+              style={{ maxWidth: 120, minWidth: 120 }}
+            >
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 80,
+                  height: "100vh",
+                  color: "#000",
+                  writingMode: "vertical-lr",
+                  textOrientation: "mixed",
+                  backgroundColor: "#fff",
+                  zIndex: 1,
+                }}
+              >
                 <Box
-                  key={idx}
-                  className={`keen-slider__slide ${styles.slider_entity}`}
-                  style={{ maxWidth: 120, minWidth: 120 }}
-                  sx={{ cursor: "pointer", borderRight: "1px solid #000" }}
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    top: 40,
+                  }}
                 >
-                  <Link href={`/projects/${encodeURIComponent(project.id)}`}>
-                    <Stack
-                      direction={{ xs: "row", md: "row" }}
-                      spacing={{ xs: 0, md: 0 }}
-                    >
-                      <Item>
-                        <Box
-                          sx={{
-                            position: "relative",
-                            width: 80,
-                            height: "100vh",
-                            color: "#000",
-                            writingMode: "vertical-lr",
-                            textOrientation: "mixed",
-                            backgroundColor: "#fff",
-                            zIndex: 1,
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              position: "absolute",
-                              left: 0,
-                              top: 40,
-                              display: "inline-flex",
-                            }}
-                          >
-                            <Box
-                              //component={"span"}
-                              className={`${styles.pt}`}
-                              sx={{ fontSize: 26 }}
-                              dangerouslySetInnerHTML={{
-                                __html: project.mainTitle_tw,
-                              }}
-                            ></Box>
-                            <Box
-                              //component={"span"}
-                              className={`${styles.pt}`}
-                              mt={2}
-                              sx={{ fontSize: 19 }}
-                              dangerouslySetInnerHTML={{
-                                __html: project.mainTitle_en,
-                              }}
-                            ></Box>
-                          </Box>
-                          <Box
-                            sx={{
-                              position: "absolute",
-                              left: 0,
-                              bottom: 40,
-                              fontSize: 17,
-                              display: "inline-flex",
-                            }}
-                          >
-                            <Box
-                              //component={"span"}
-                              className={`${styles.pt}`}
-                              dangerouslySetInnerHTML={{
-                                __html: project.nation_tw,
-                              }}
-                            ></Box>
-                            <Box
-                              // component={"span"}
-                              className={`${styles.pt}`}
-                              mt={2}
-                              dangerouslySetInnerHTML={{
-                                __html: project.nation_en,
-                              }}
-                            ></Box>
-                          </Box>
-                        </Box>
-                      </Item>
-                      <Item>
-                        <Box
-                          sx={{
-                            position: "relative",
-                            width: 40,
-                            height: "100vh",
-                            zIndex: 0,
-                          }}
-                        >
-                          <Image
-                            src={`http://localhost:8055/assets/${project.coverPhoto}`}
-                            //src={project.coverPhoto}
-                            alt=""
-                            layout="fill"
-                            objectFit="cover"
-                          />
-                        </Box>
-                      </Item>
-                    </Stack>
-                  </Link>
+                  <Box component={"span"} sx={{ fontSize: 26 }}>
+                    雨夜花
+                  </Box>
+                  <Box component={"span"} mt={2} sx={{ fontSize: 19 }}>
+                    Rainy Night Flowers
+                  </Box>
                 </Box>
-              ))}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    bottom: 40,
+                    fontSize: 17,
+                  }}
+                >
+                  <Box component={"span"}>台灣</Box>
+                  <Box component={"span"} mt={2}>
+                    taiwan
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 40,
+                  height: "100vh",
+                  zIndex: 0,
+                }}
+              >
+                <Image
+                  src={projectCover}
+                  placeholder="blur"
+                  alt="bg"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </Box>
+            </Box>
+            {/*** project b ***/}
+            <Box
+              className={`keen-slider__slide number-slide1 ${styles.slider_entity}`}
+              style={{ maxWidth: 120, minWidth: 120 }}
+            >
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 80,
+                  height: "100vh",
+                  color: "#000",
+                  writingMode: "vertical-lr",
+                  textOrientation: "mixed",
+                  backgroundColor: "#fff",
+                  zIndex: 1,
+                }}
+              >
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    top: 40,
+                  }}
+                >
+                  <Box component={"span"} sx={{ fontSize: 26 }}>
+                    雨夜花
+                  </Box>
+                  <Box component={"span"} mt={2} sx={{ fontSize: 19 }}>
+                    Rainy Night Flowers
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    bottom: 40,
+                    fontSize: 17,
+                  }}
+                >
+                  <Box component={"span"}>台灣</Box>
+                  <Box component={"span"} mt={2}>
+                    taiwan
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 40,
+                  height: "100vh",
+                  zIndex: 0,
+                }}
+              >
+                <Image
+                  src={projectCover}
+                  placeholder="blur"
+                  alt="bg"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </Box>
+            </Box>
+            {/*** project c ***/}
+            <Box
+              className={`keen-slider__slide number-slide1 ${styles.slider_entity}`}
+              style={{ maxWidth: 120, minWidth: 120 }}
+            >
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 80,
+                  height: "100vh",
+                  color: "#000",
+                  writingMode: "vertical-lr",
+                  textOrientation: "mixed",
+                  backgroundColor: "#fff",
+                  zIndex: 1,
+                }}
+              >
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    top: 40,
+                  }}
+                >
+                  <Box component={"span"} sx={{ fontSize: 26 }}>
+                    雨夜花
+                  </Box>
+                  <Box component={"span"} mt={2} sx={{ fontSize: 19 }}>
+                    Rainy Night Flowers
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    bottom: 40,
+                    fontSize: 17,
+                  }}
+                >
+                  <Box component={"span"}>台灣</Box>
+                  <Box component={"span"} mt={2}>
+                    taiwan
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 40,
+                  height: "100vh",
+                  zIndex: 0,
+                }}
+              >
+                <Image
+                  src={projectCover}
+                  placeholder="blur"
+                  alt="bg"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </Box>
+            </Box>
+            {/*** project d ***/}
+            <Box
+              className={`keen-slider__slide number-slide1 ${styles.slider_entity}`}
+              style={{ maxWidth: 120, minWidth: 120 }}
+            >
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 80,
+                  height: "100vh",
+                  color: "#000",
+                  writingMode: "vertical-lr",
+                  textOrientation: "mixed",
+                  backgroundColor: "#fff",
+                  zIndex: 1,
+                }}
+              >
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    top: 40,
+                  }}
+                >
+                  <Box component={"span"} sx={{ fontSize: 26 }}>
+                    雨夜花
+                  </Box>
+                  <Box component={"span"} mt={2} sx={{ fontSize: 19 }}>
+                    Rainy Night Flowers
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    bottom: 40,
+                    fontSize: 17,
+                  }}
+                >
+                  <Box component={"span"}>台灣</Box>
+                  <Box component={"span"} mt={2}>
+                    taiwan
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 40,
+                  height: "100vh",
+                  zIndex: 0,
+                }}
+              >
+                <Image
+                  src={projectCover}
+                  placeholder="blur"
+                  alt="bg"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              </Box>
+            </Box>
+            {/*** project e ***/}
+            <Box
+              className={`keen-slider__slide number-slide1 ${styles.slider_entity}`}
+              style={{ maxWidth: 120, minWidth: 120 }}
+            >
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 80,
+                  height: "100vh",
+                  color: "#000",
+                  writingMode: "vertical-lr",
+                  textOrientation: "mixed",
+                  backgroundColor: "#fff",
+                  zIndex: 1,
+                }}
+              >
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    top: 40,
+                  }}
+                >
+                  <Box component={"span"} sx={{ fontSize: 26 }}>
+                    雨夜花
+                  </Box>
+                  <Box component={"span"} mt={2} sx={{ fontSize: 19 }}>
+                    Rainy Night Flowers
+                  </Box>
+                </Box>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 0,
+                    bottom: 40,
+                    fontSize: 17,
+                  }}
+                >
+                  <Box component={"span"}>台灣</Box>
+                  <Box component={"span"} mt={2}>
+                    taiwan
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 40,
+                  height: "100vh",
+                  zIndex: 0,
+                }}
+              >
+                <Image
+                  src={projectCover}
+                  placeholder="blur"
+                  alt="bg"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              </Box>
+            </Box>
           </Box>
         </Item>
       </Stack>
@@ -592,7 +800,6 @@ export async function getServerSideProps() {
       `
       query  {
         projects{
-          id
           mainTitle_tw, 
           mainTitle_en,
           nation_tw,
