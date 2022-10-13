@@ -9,14 +9,10 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 
-import { motion } from "framer-motion";
-// import { useRouter } from "next/router";
-
 import ArticleSlider from "../../../components/ArticleSlider";
+//import returnHomePage from "../../../public/imgs/returnHomePage.png";
 
-import returnHomePage from "../../../public/imgs/returnHomePage.png";
-
-import projectCover from "../../../public/imgs/2_Volksempfänger_poster.jpg";
+import { useRouter } from "next/router";
 
 /******************/
 /*** stack ***/
@@ -28,6 +24,10 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Project({ projects }) {
+  const router = useRouter();
+  const query = router.query;
+  console.log(query.lang);
+
   return (
     <>
       <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 0, md: 0 }}>
@@ -44,11 +44,13 @@ export default function Project({ projects }) {
                 cursor: "pointer",
                 zIndex: 3,
               }}
+              ml={-2}
+              mr={-2}
             >
               <Image
-                src={returnHomePage}
+                src="/imgs/returnHomePage.png"
                 alt="about open image"
-                layout="intrinsic"
+                layout="fill"
                 objectFit="contain"
               />
             </Box>
@@ -66,19 +68,26 @@ export default function Project({ projects }) {
               textOrientation: "mixed",
               backgroundColor: "#fff",
               zIndex: 3,
+              borderRight: "1px solid #000",
+              borderLeft: "1px solid #000",
             }}
           >
             <Box
               sx={{
                 position: "absolute",
-                left: 0,
+                left: 8,
                 top: 40,
                 display: "inline-flex",
               }}
             >
               <Box
                 className="pt"
-                sx={{ fontSize: 26 }}
+                sx={{
+                  fontSize: 22,
+                  textTransform: "uppercase",
+                  fontFamily: "ChironSungHK-SB",
+                  fontWeight: 700,
+                }}
                 dangerouslySetInnerHTML={{
                   __html: projects.projects_by_id.mainTitle_tw,
                 }}
@@ -86,7 +95,13 @@ export default function Project({ projects }) {
               <Box
                 className="pt"
                 mt={2}
-                sx={{ fontSize: 19 }}
+                sx={{
+                  fontSize: 13,
+                  textTransform: "uppercase",
+                  fontFamily: "BioRhyme Expanded",
+                  fontWeight: 700,
+                  letterSpacing: "-0.015em",
+                }}
                 dangerouslySetInnerHTML={{
                   __html: projects.projects_by_id.mainTitle_en,
                 }}
@@ -95,7 +110,7 @@ export default function Project({ projects }) {
             <Box
               sx={{
                 position: "absolute",
-                left: 0,
+                left: 8,
                 bottom: 40,
                 fontSize: 17,
                 display: "inline-flex",
@@ -103,6 +118,11 @@ export default function Project({ projects }) {
             >
               <Box
                 className="pt"
+                sx={{
+                  fontSize: 15,
+                  fontFamily: "ChironHeiHK-M",
+                  fontWeight: 500,
+                }}
                 dangerouslySetInnerHTML={{
                   __html: projects.projects_by_id.nation_tw,
                 }}
@@ -110,6 +130,13 @@ export default function Project({ projects }) {
               <Box
                 className="pt"
                 mt={2}
+                sx={{
+                  fontSize: 14,
+                  textTransform: "uppercase",
+                  fontFamily: "ChironHeiHK-M",
+                  fontWeight: 500,
+                  lineHeight: 1.4,
+                }}
                 dangerouslySetInnerHTML={{
                   __html: projects.projects_by_id.nation_en,
                 }}
@@ -123,24 +150,25 @@ export default function Project({ projects }) {
           <Box
             sx={{
               position: "absolute",
-              width: "calc(100vw - 532px)",
+              width: "calc(100vw - 500px)",
               height: "100vh",
               zIndex: 0,
             }}
           >
-            {/* <Image
-              src={projectCover}
+            <Image
+              src={`http://localhost:8055/assets/${projects.projects_by_id.cover.filename_disk}`}
               placeholder="blur"
+              blurDataURL={`http://localhost:8055/assets/${projects.projects_by_id.cover.filename_disk}`}
               alt="bg"
               layout="fill"
               objectFit="cover"
-            /> */}
+            />
           </Box>
           {/*** text ***/}
           <Box
             p={"50px 52px 27px 220px"}
             sx={{
-              height: "100vh",
+              height: "96vh",
               overflowY: "scroll",
               scrollbarWidth: "none",
               "&::-webkit-scrollbar": { display: "none" },
@@ -153,8 +181,10 @@ export default function Project({ projects }) {
               sx={{
                 textAlign: "left",
                 fontSize: 50,
-                fontWeight: 600,
+                fontWeight: 700,
+                lineHeight: 1.4,
                 color: "#fff",
+                textShadow: "0.06em 0.06em 0.12em #000",
               }}
               dangerouslySetInnerHTML={{
                 __html: projects.projects_by_id.introTitle_tw,
@@ -164,10 +194,14 @@ export default function Project({ projects }) {
               className="pt"
               pt={5}
               sx={{
-                textAlign: "left",
+                textAlign: "justify",
                 fontWeight: 400,
                 color: "#fff",
-                fontSize: 20,
+                fontSize: 16,
+                fontWeight: 400,
+                lineHeight: 1.75,
+                letterSpacing: "-0.05em",
+                textShadow: "0.06em 0.06em 0.12em #000",
               }}
               dangerouslySetInnerHTML={{
                 __html: projects.projects_by_id.introContent_tw,
@@ -211,6 +245,10 @@ export async function getServerSideProps({ params }) {
           mainTitle_en,
           nation_tw,
           nation_en,
+          cover{
+            id
+            filename_disk
+          }
           introTitle_tw,
           introTitle_en,
           introContent_tw,

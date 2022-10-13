@@ -10,7 +10,7 @@ export default function ArticleSlider({ articles }) {
   /*** keen slider ***/
   const [sliderRef] = useKeenSlider({
     initial: 0,
-    loop: true,
+    loop: false,
     mode: "snap",
     rtl: false,
     slides: {
@@ -22,7 +22,7 @@ export default function ArticleSlider({ articles }) {
     <>
       <Box
         sx={{
-          backgroundColor: "#fff",
+          backgroundColor: "#BCACA8",
           width: "480px",
           height: "100vh",
           color: "#ff0000",
@@ -34,45 +34,50 @@ export default function ArticleSlider({ articles }) {
       >
         {articles.articles &&
           articles.articles.map((article) => (
-            <Box
-              key={article.articles_id.id}
-              className="keen-slider__slide"
-              style={{ maxWidth: 56, minWidth: 56 }}
-              sx={{ cursor: "pointer", backgroundColor: "#BCACA8" }}
-            >
+            <Box key={article.articles_id.id} sx={{ cursor: "pointer" }}>
               <Link
                 href={`/projects/${encodeURIComponent(
                   articles.id
                 )}/${encodeURIComponent(article.articles_id.sort)}`}
               >
                 <Box
-                  sx={{
-                    position: "relative",
-                    // width: "100%",
-                    height: "100vh",
-                    color: "#000",
-                    writingMode: "vertical-lr",
-                    textOrientation: "mixed",
-                    backgroundColor: "#BCACA8",
-                    borderRight: "1px solid #000",
-                    zIndex: 1,
-                  }}
+                  className="keen-slider__slide"
+                  style={{ maxWidth: 56, minWidth: 56 }}
+                  sx={{ backgroundColor: "#BCACA8" }}
                 >
                   <Box
                     sx={{
-                      position: "absolute",
-                      left: 0,
-                      top: 40,
-                      display: "inline-flex",
+                      position: "relative",
+                      // width: "100%",
+                      height: "100vh",
+                      color: "#000",
+                      writingMode: "vertical-lr",
+                      textOrientation: "upright",
+                      backgroundColor: "#BCACA8",
+                      borderRight: "1px solid #000",
+                      zIndex: 1,
                     }}
                   >
                     <Box
-                      className="pt"
-                      sx={{ fontSize: 26 }}
-                      dangerouslySetInnerHTML={{
-                        __html: article.articles_id.title_tw,
+                      sx={{
+                        position: "absolute",
+                        left: 8,
+                        top: 40,
+                        display: "inline-flex",
                       }}
-                    />
+                    >
+                      <Box
+                        className="pt"
+                        sx={{
+                          fontSize: 20,
+                          fontFamily: "ChironSungHK-SB",
+                          fontWeight: 700,
+                        }}
+                        dangerouslySetInnerHTML={{
+                          __html: article.articles_id.title_tw,
+                        }}
+                      />
+                    </Box>
                   </Box>
                 </Box>
               </Link>

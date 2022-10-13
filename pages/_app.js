@@ -2,6 +2,10 @@ import "../styles/globals.css";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
+import "keen-slider/keen-slider.min.css";
+/** react-slick css (slider) **/
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

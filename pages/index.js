@@ -14,12 +14,13 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import styles from "../styles/Home.module.css";
 
-import aboutOpen from "../public/imgs/aboutOpen.png";
-import aboutReturn from "../public/imgs/aboutReturn.png";
-import projectCover from "../public/imgs/2_Volksempfänger_poster.jpg";
-import siteNameEN from "../public/imgs/siteName_en.png";
-import siteNameTW from "../public/imgs/siteName_tw.png";
-import aboutTitle from "../public/imgs/aboutTitle.png";
+import { useRouter } from "next/router";
+
+//import aboutOpen from "../public/imgs/aboutOpen.png";
+//import aboutReturn from "../public/imgs/aboutReturn.png";
+//import siteNameEN from "../public/imgs/siteName_en.png";
+//import siteNameTW from "../public/imgs/siteName_tw.png";
+//import aboutTitle from "../public/imgs/aboutTitle.png";
 
 import fetchData from "../lib/api";
 
@@ -189,13 +190,19 @@ const about_content = {
 };
 
 export default function Home({ about, projects }) {
+  const [useLang, setLang] = useState(true);
+  const router = useRouter();
   //console.log(projects.projects[0].mainTitle_tw);
   // useEffect(() => {
-  //   console.log("test");
-  // }, []);
+  //   if (setLang == true) {
+  //     console.log("true");
+  //   } else if (setLang == false) {
+  //     console.log("false");
+  //   }
+  // }, [setLang]);
 
   /*****************************/
-  /*** organize brand's data ***/
+  /*** organize projects's data ***/
   const myProjects = projects.projects.map((p) => {
     const result = {
       id: p.id,
@@ -209,7 +216,7 @@ export default function Home({ about, projects }) {
 
     return result;
   });
-  console.log(myProjects[0].mainTitle_en);
+  //console.log(myProjects[0].mainTitle_en);
 
   const [isOpen, setIsOpen] = useState(false);
   const openAbout = async (event) => {
@@ -223,14 +230,21 @@ export default function Home({ about, projects }) {
 
   const [sliderRef] = useKeenSlider({
     initial: 0,
-    loop: true,
+    loop: false,
     mode: "snap",
     rtl: false,
     slides: {
-      //number: 5,
+      number: 4,
       perView: 4,
     },
   });
+
+  // const changeToEN = (event) => {
+  //   console.log("click changeToEN");
+  //   setLang("En");
+  //   //router.push({ pathname: "/projects/[id]", query: { id: myProjects.id } });
+  //   //setIsOpen(false);
+  // };
 
   return (
     <>
@@ -255,10 +269,12 @@ export default function Home({ about, projects }) {
             onClick={openAbout}
           >
             <Image
-              src={aboutOpen}
+              src="/imgs/aboutOpen.png"
               alt="about open image"
               layout="intrinsic"
               objectFit="cover"
+              width={"443px"}
+              height={"443px"}
             />
           </Box>
         </motion.div>
@@ -281,10 +297,12 @@ export default function Home({ about, projects }) {
             onClick={returnAbout}
           >
             <Image
-              src={aboutReturn}
+              src="/imgs/aboutReturn.png"
               alt="about open image"
               layout="intrinsic"
               objectFit="cover"
+              width={"575px"}
+              height={"575px"}
             />
           </Box>
         </motion.div>
@@ -310,9 +328,18 @@ export default function Home({ about, projects }) {
                 textAlign: "center",
                 left: 0,
                 bottom: 16,
+                cursor: "pointer",
               }}
+              onClick={() => setLang(!useLang)}
             >
-              EN
+              <Image
+                src="/imgs/en.png"
+                alt="en image"
+                layout="intrinsic"
+                objectFit="cover"
+                width={"60px"}
+                height={"34px"}
+              />
             </Box>
           </Box>
         </Item>
@@ -351,8 +378,7 @@ export default function Home({ about, projects }) {
                       }}
                     >
                       <Image
-                        src={siteNameEN}
-                        placeholder="blur"
+                        src="/imgs/siteName_en.png"
                         alt="bg"
                         layout="fill"
                         objectFit="contain"
@@ -378,8 +404,7 @@ export default function Home({ about, projects }) {
                       }}
                     >
                       <Image
-                        src={siteNameTW}
-                        placeholder="blur"
+                        src="/imgs/siteName_tw.png"
                         alt="bg"
                         layout="fill"
                         objectFit="contain"
@@ -416,25 +441,53 @@ export default function Home({ about, projects }) {
                         }}
                       >
                         <Image
-                          src={aboutTitle}
-                          placeholder="blur"
+                          src="/imgs/aboutTitle.png"
+                          //placeholder="blur"
                           alt="bg"
                           layout="fill"
                           objectFit="contain"
                         />
                       </Box>
                       <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
-                      <Box
+                      {useLang == true ? (
+                        <Box
+                          sx={{
+                            textAlign: "justify",
+                            fontSize: 16,
+                            letterSpacing: "-0.05em",
+                            lineHeight: 1.75,
+                            fontWeight: 400,
+                          }}
+                          dangerouslySetInnerHTML={{
+                            __html: about.about.introContent_tw,
+                          }}
+                        />
+                      ) : (
+                        <Box
+                          sx={{
+                            textAlign: "justify",
+                            fontSize: 16,
+                            letterSpacing: "-0.05em",
+                            lineHeight: 1.75,
+                            fontWeight: 400,
+                          }}
+                          dangerouslySetInnerHTML={{
+                            __html: about.about.introContent_en,
+                          }}
+                        />
+                      )}
+                      {/* <Box
                         sx={{
                           textAlign: "justify",
-                          fontSize: 20,
+                          fontSize: 16,
                           letterSpacing: "-0.05em",
                           lineHeight: 1.75,
+                          fontWeight: 400,
                         }}
                         dangerouslySetInnerHTML={{
                           __html: about.about.introContent_tw,
                         }}
-                      />
+                      /> */}
                       <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
                       <Box
                         sx={{ textAlign: "left", fontSize: 12 }}
@@ -493,24 +546,33 @@ export default function Home({ about, projects }) {
                           <Box
                             sx={{
                               position: "absolute",
-                              left: 0,
+                              left: 8,
                               top: 40,
                               display: "inline-flex",
                             }}
                           >
                             <Box
-                              //component={"span"}
                               className={`${styles.pt}`}
-                              sx={{ fontSize: 26 }}
+                              sx={{
+                                fontSize: 22,
+                                textTransform: "uppercase",
+                                fontFamily: "ChironSungHK-SB",
+                                fontWeight: 700,
+                              }}
                               dangerouslySetInnerHTML={{
                                 __html: project.mainTitle_tw,
                               }}
                             ></Box>
                             <Box
-                              //component={"span"}
                               className={`${styles.pt}`}
                               mt={2}
-                              sx={{ fontSize: 19 }}
+                              sx={{
+                                fontSize: 13,
+                                textTransform: "uppercase",
+                                fontFamily: "BioRhyme Expanded",
+                                fontWeight: 700,
+                                letterSpacing: "-0.015em",
+                              }}
                               dangerouslySetInnerHTML={{
                                 __html: project.mainTitle_en,
                               }}
@@ -519,7 +581,7 @@ export default function Home({ about, projects }) {
                           <Box
                             sx={{
                               position: "absolute",
-                              left: 0,
+                              left: 8,
                               bottom: 40,
                               fontSize: 17,
                               display: "inline-flex",
@@ -528,6 +590,11 @@ export default function Home({ about, projects }) {
                             <Box
                               //component={"span"}
                               className={`${styles.pt}`}
+                              sx={{
+                                fontSize: 15,
+                                fontFamily: "ChironHeiHK-M",
+                                fontWeight: 500,
+                              }}
                               dangerouslySetInnerHTML={{
                                 __html: project.nation_tw,
                               }}
@@ -536,6 +603,12 @@ export default function Home({ about, projects }) {
                               // component={"span"}
                               className={`${styles.pt}`}
                               mt={2}
+                              sx={{
+                                fontSize: 14,
+                                textTransform: "uppercase",
+                                fontFamily: "ChironHeiHK-M",
+                                fontWeight: 500,
+                              }}
                               dangerouslySetInnerHTML={{
                                 __html: project.nation_en,
                               }}
@@ -580,6 +653,7 @@ export async function getServerSideProps() {
       query  {
           about{
             introContent_tw
+            introContent_en
             credit_tw
           }
       }
