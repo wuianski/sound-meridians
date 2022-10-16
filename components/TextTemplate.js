@@ -17,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: "#fff",
 }));
 
-export default function TextTemplate({ article_content }) {
+export default function TextTemplate({ article_content, useLang }) {
   return (
     <>
       <Box p={13}>
@@ -28,19 +28,35 @@ export default function TextTemplate({ article_content }) {
           {/*** column: title ***/}
           <Item>
             <Box>
-              <Box
-                className="pt"
-                sx={{
-                  fontFamily: "ChironSungHK-B",
-                  fontWeight: 900,
-                  fontSize: 108,
-                  lineHeight: 1,
-                  textAlign: "center",
-                }}
-                dangerouslySetInnerHTML={{
-                  __html: article_content.textTemplate_title_tw,
-                }}
-              ></Box>
+              {useLang == true ? (
+                <Box
+                  className="pt"
+                  sx={{
+                    fontFamily: "ChironSungHK-B",
+                    fontWeight: 900,
+                    fontSize: 88,
+                    lineHeight: 1,
+                    textAlign: "center",
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: article_content.textTemplate_title_tw,
+                  }}
+                />
+              ) : (
+                <Box
+                  className="pt"
+                  sx={{
+                    fontFamily: "ChironSungHK-B",
+                    fontWeight: 900,
+                    fontSize: 88,
+                    lineHeight: 1,
+                    textAlign: "center",
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: article_content.textTemplate_title_en,
+                  }}
+                />
+              )}
             </Box>
           </Item>
           {/*** column: content ***/}
@@ -55,21 +71,41 @@ export default function TextTemplate({ article_content }) {
                 "&::-webkit-scrollbar": { display: "none" },
               }}
             >
-              <Box
-                className="pt"
-                pt={2}
-                sx={{
-                  fontFamily: "ChironHeiHK-L",
-                  fontWeight: 300,
-                  fontSize: 20,
-                  lineHeight: 1.75,
-                  textAlign: "justify",
-                  letterSpacing: "-0.05em",
-                }}
-                dangerouslySetInnerHTML={{
-                  __html: article_content.textTemplate_content_tw,
-                }}
-              ></Box>
+              <Box>
+                {useLang == true ? (
+                  <Box
+                    className="pt"
+                    pt={2}
+                    sx={{
+                      fontFamily: "ChironHeiHK-L",
+                      fontWeight: 300,
+                      fontSize: 20,
+                      lineHeight: 1.75,
+                      textAlign: "justify",
+                      letterSpacing: "-0.05em",
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html: article_content.textTemplate_content_tw,
+                    }}
+                  />
+                ) : (
+                  <Box
+                    className="pt"
+                    pt={2}
+                    sx={{
+                      fontFamily: "ChironHeiHK-L",
+                      fontWeight: 300,
+                      fontSize: 20,
+                      lineHeight: 1.75,
+                      textAlign: "justify",
+                      letterSpacing: "-0.05em",
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html: article_content.textTemplate_content_en,
+                    }}
+                  />
+                )}
+              </Box>
             </Box>
           </Item>
         </Stack>

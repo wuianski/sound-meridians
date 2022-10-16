@@ -23,10 +23,23 @@ const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#00415E",
 }));
 
-export default function Project({ projects }) {
+export default function Project({ projects, useLang }) {
   const router = useRouter();
-  const query = router.query;
-  console.log(query.lang);
+  // const query = router.query;
+  // const langEN = query.useLang;
+  //console.log(langEN);
+
+  // useEffect(() => {
+  //   if (langEN === true) {
+  //     console.log("switch to tab1");
+  //     /*** switch to tab1 ***/
+  //     //setValue(0);
+  //   } else if (tabState === false) {
+  //     console.log("switch to tab2");
+  //     /*** switch to tab2 ***/
+  //     //setValue(1);
+  //   }
+  // }, [langEN]);
 
   return (
     <>
@@ -176,37 +189,79 @@ export default function Project({ projects }) {
               zIndex: 3,
             }}
           >
-            <Box
-              className="pt"
-              sx={{
-                textAlign: "left",
-                fontSize: 50,
-                fontWeight: 700,
-                lineHeight: 1.4,
-                color: "#fff",
-                textShadow: "0.06em 0.06em 0.12em #000",
-              }}
-              dangerouslySetInnerHTML={{
-                __html: projects.projects_by_id.introTitle_tw,
-              }}
-            />
-            <Box
-              className="pt"
-              pt={5}
-              sx={{
-                textAlign: "justify",
-                fontWeight: 400,
-                color: "#fff",
-                fontSize: 16,
-                fontWeight: 400,
-                lineHeight: 1.75,
-                letterSpacing: "-0.05em",
-                textShadow: "0.06em 0.06em 0.12em #000",
-              }}
-              dangerouslySetInnerHTML={{
-                __html: projects.projects_by_id.introContent_tw,
-              }}
-            />
+            {useLang == true ? (
+              <>
+                <Box
+                  className="pt"
+                  sx={{
+                    textAlign: "left",
+                    fontFamily: "ChironHeiHK-N",
+                    fontSize: 40,
+                    fontWeight: 700,
+                    lineHeight: 1.4,
+                    color: "#fff",
+                    textShadow: "0.06em 0.06em 0.12em #000",
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: projects.projects_by_id.introTitle_tw,
+                  }}
+                />
+                <Box
+                  className="pt"
+                  pt={5}
+                  sx={{
+                    textAlign: "justify",
+                    fontWeight: 400,
+                    color: "#fff",
+                    fontFamily: "ChironHeiHK-L",
+                    fontSize: 16,
+                    fontWeight: 400,
+                    lineHeight: 1.75,
+                    letterSpacing: "-0.05em",
+                    textShadow: "0.06em 0.06em 0.12em #000",
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: projects.projects_by_id.introContent_tw,
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <Box
+                  className="pt"
+                  sx={{
+                    textAlign: "left",
+                    fontFamily: "ChironHeiHK-N",
+                    fontSize: 40,
+                    fontWeight: 700,
+                    lineHeight: 1.4,
+                    color: "#fff",
+                    textShadow: "0.06em 0.06em 0.12em #000",
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: projects.projects_by_id.introTitle_en,
+                  }}
+                />
+                <Box
+                  className="pt"
+                  pt={5}
+                  sx={{
+                    textAlign: "justify",
+                    fontWeight: 400,
+                    color: "#fff",
+                    fontFamily: "ChironHeiHK-L",
+                    fontSize: 16,
+                    fontWeight: 400,
+                    lineHeight: 1.75,
+                    letterSpacing: "-0.05em",
+                    textShadow: "0.06em 0.06em 0.12em #000",
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: projects.projects_by_id.introContent_en,
+                  }}
+                />
+              </>
+            )}
           </Box>
         </Item>
         {/*** row: slider of articles ***/}
@@ -223,7 +278,10 @@ export default function Project({ projects }) {
             style={{ maxWidth: 480, maxHeight: "100vh" }}
           >
             <>
-              <ArticleSlider articles={projects.projects_by_id} />
+              <ArticleSlider
+                articles={projects.projects_by_id}
+                useLang={useLang}
+              />
             </>
           </Box>
         </Item>

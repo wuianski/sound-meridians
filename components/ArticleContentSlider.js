@@ -6,17 +6,19 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 
 import TextTemplate from "../components/TextTemplate";
-//import TextImageTemplate from "../components/TextImageTemplate";
-import dynamic from "next/dynamic";
-const TextImageTemplate = dynamic(() =>
-  import("../components/TextImageTemplate")
-);
+import TextImageTemplate from "../components/TextImageTemplate";
+// import dynamic from "next/dynamic";
+// const TextImageTemplate = dynamic(() =>
+//   import("../components/TextImageTemplate")
+// );
 //   {
 //     suspense: true,
 //   }
 // );
+import TimelineTemplate from "../components/TimelineTemplate";
+import ImageTemplate from "../components/ImageTemplate";
 
-export default function ArticleContentSlider({ article_content }) {
+export default function ArticleContentSlider({ article_content, useLang }) {
   /*******************/
   /*** keen slider ***/
   const [sliderRef] = useKeenSlider({
@@ -54,6 +56,7 @@ export default function ArticleContentSlider({ article_content }) {
                   <Box
                     key={contents.articleContents_id.id}
                     className="keen-slider__slide"
+                    sx={{ height: "100vh" }}
                     //style={{ maxWidth: 56, minWidth: 56 }}
                   >
                     {/*** vvv each article's content of text template ***/}
@@ -61,6 +64,7 @@ export default function ArticleContentSlider({ article_content }) {
                       <>
                         <TextTemplate
                           article_content={contents.articleContents_id}
+                          useLang={useLang}
                         />
                       </>
                     )}
@@ -69,6 +73,25 @@ export default function ArticleContentSlider({ article_content }) {
                       <>
                         <TextImageTemplate
                           article_content={contents.articleContents_id}
+                          useLang={useLang}
+                        />
+                      </>
+                    )}
+                    {/*** vvv each article's content of timeline template ***/}
+                    {contents.articleContents_id.contentType == 4 && (
+                      <>
+                        <TimelineTemplate
+                          article_content={contents.articleContents_id}
+                          useLang={useLang}
+                        />
+                      </>
+                    )}
+                    {/*** vvv each article's content of image template ***/}
+                    {contents.articleContents_id.contentType == 2 && (
+                      <>
+                        <ImageTemplate
+                          article_content={contents.articleContents_id}
+                          useLang={useLang}
                         />
                       </>
                     )}

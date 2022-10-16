@@ -40,7 +40,7 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const row2 = {
   open: {
     opacity: 1,
-    width: "calc(100vw - 332px)",
+    width: "calc(100vw - 300px)",
     transition: {
       type: "spring",
       stiffness: 200,
@@ -51,7 +51,7 @@ const row2 = {
   },
   closed: {
     opacity: 1,
-    width: "calc(100vw - 572px)",
+    width: "calc(100vw - 540px)",
     transition: {
       type: "spring",
       stiffness: 200,
@@ -112,7 +112,7 @@ const siteName_en = {
   open: {
     opacity: 1,
     position: "relative",
-    left: "calc(100vw - 409px)",
+    left: "calc(100vw - 377px)",
     transition: {
       type: "spring",
       stiffness: 100,
@@ -139,7 +139,7 @@ const siteName_tw = {
   open: {
     opacity: 1,
     position: "relative",
-    left: "calc(100vw - 677px)",
+    left: "calc(100vw - 741px)",
     transition: {
       type: "spring",
       stiffness: 100,
@@ -189,17 +189,11 @@ const about_content = {
   },
 };
 
-export default function Home({ about, projects }) {
-  const [useLang, setLang] = useState(true);
+export default function Home({ about, projects, useLang }) {
+  //console.log(useLang);
+  //console.log(setLang);
+  //const [useLang, setLang] = useState();
   const router = useRouter();
-  //console.log(projects.projects[0].mainTitle_tw);
-  // useEffect(() => {
-  //   if (setLang == true) {
-  //     console.log("true");
-  //   } else if (setLang == false) {
-  //     console.log("false");
-  //   }
-  // }, [setLang]);
 
   /*****************************/
   /*** organize projects's data ***/
@@ -239,17 +233,11 @@ export default function Home({ about, projects }) {
     },
   });
 
-  // const changeToEN = (event) => {
-  //   console.log("click changeToEN");
-  //   setLang("En");
-  //   //router.push({ pathname: "/projects/[id]", query: { id: myProjects.id } });
-  //   //setIsOpen(false);
-  // };
-
   return (
     <>
       <Box>
         {/*** about open icon  ***/}
+
         <motion.div
           variants={about_open}
           initial="closed"
@@ -314,14 +302,14 @@ export default function Home({ about, projects }) {
           <Box
             sx={{
               position: "relative",
-              width: "92px",
+              width: "60px",
               height: "100vh",
               backgroundColor: "#fff",
               borderRight: "1px solid #000",
               zIndex: 2,
             }}
           >
-            <Box
+            {/* <Box
               sx={{
                 position: "absolute",
                 width: "100%",
@@ -330,7 +318,7 @@ export default function Home({ about, projects }) {
                 bottom: 16,
                 cursor: "pointer",
               }}
-              onClick={() => setLang(!useLang)}
+              //onClick={() => setLang(!useLang)}
             >
               <Image
                 src="/imgs/en.png"
@@ -340,7 +328,7 @@ export default function Home({ about, projects }) {
                 width={"60px"}
                 height={"34px"}
               />
-            </Box>
+            </Box> */}
           </Box>
         </Item>
         {/*** row: about ***/}
@@ -476,18 +464,7 @@ export default function Home({ about, projects }) {
                           }}
                         />
                       )}
-                      {/* <Box
-                        sx={{
-                          textAlign: "justify",
-                          fontSize: 16,
-                          letterSpacing: "-0.05em",
-                          lineHeight: 1.75,
-                          fontWeight: 400,
-                        }}
-                        dangerouslySetInnerHTML={{
-                          __html: about.about.introContent_tw,
-                        }}
-                      /> */}
+
                       <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
                       <Box
                         sx={{ textAlign: "left", fontSize: 12 }}
@@ -559,10 +536,12 @@ export default function Home({ about, projects }) {
                                 fontFamily: "ChironSungHK-SB",
                                 fontWeight: 700,
                               }}
-                              dangerouslySetInnerHTML={{
-                                __html: project.mainTitle_tw,
-                              }}
-                            ></Box>
+                              // dangerouslySetInnerHTML={{
+                              //   __html: project.mainTitle_tw,
+                              // }}
+                            >
+                              {project.mainTitle_tw}
+                            </Box>
                             <Box
                               className={`${styles.pt}`}
                               mt={2}
@@ -573,10 +552,12 @@ export default function Home({ about, projects }) {
                                 fontWeight: 700,
                                 letterSpacing: "-0.015em",
                               }}
-                              dangerouslySetInnerHTML={{
-                                __html: project.mainTitle_en,
-                              }}
-                            ></Box>
+                              // dangerouslySetInnerHTML={{
+                              //   __html: project.mainTitle_en,
+                              // }}
+                            >
+                              {project.mainTitle_en}
+                            </Box>
                           </Box>
                           <Box
                             sx={{
@@ -595,10 +576,12 @@ export default function Home({ about, projects }) {
                                 fontFamily: "ChironHeiHK-M",
                                 fontWeight: 500,
                               }}
-                              dangerouslySetInnerHTML={{
-                                __html: project.nation_tw,
-                              }}
-                            ></Box>
+                              // dangerouslySetInnerHTML={{
+                              //   __html: project.nation_tw,
+                              // }}
+                            >
+                              {project.nation_tw}
+                            </Box>
                             <Box
                               // component={"span"}
                               className={`${styles.pt}`}
@@ -609,10 +592,12 @@ export default function Home({ about, projects }) {
                                 fontFamily: "ChironHeiHK-M",
                                 fontWeight: 500,
                               }}
-                              dangerouslySetInnerHTML={{
-                                __html: project.nation_en,
-                              }}
-                            ></Box>
+                              // dangerouslySetInnerHTML={{
+                              //   __html: project.nation_en,
+                              // }}
+                            >
+                              {project.nation_en}
+                            </Box>
                           </Box>
                         </Box>
                       </Item>

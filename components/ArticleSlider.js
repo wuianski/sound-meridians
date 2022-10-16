@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 
-export default function ArticleSlider({ articles }) {
+export default function ArticleSlider({ articles, useLang }) {
   /*******************/
   /*** keen slider ***/
   const [sliderRef] = useKeenSlider({
@@ -52,7 +52,6 @@ export default function ArticleSlider({ articles }) {
                       height: "100vh",
                       color: "#000",
                       writingMode: "vertical-lr",
-                      textOrientation: "upright",
                       backgroundColor: "#BCACA8",
                       borderRight: "1px solid #000",
                       zIndex: 1,
@@ -66,17 +65,33 @@ export default function ArticleSlider({ articles }) {
                         display: "inline-flex",
                       }}
                     >
-                      <Box
-                        className="pt"
-                        sx={{
-                          fontSize: 20,
-                          fontFamily: "ChironSungHK-SB",
-                          fontWeight: 700,
-                        }}
-                        dangerouslySetInnerHTML={{
-                          __html: article.articles_id.title_tw,
-                        }}
-                      />
+                      {useLang == true ? (
+                        <Box
+                          className="pt"
+                          sx={{
+                            fontSize: 22,
+                            fontFamily: "ChironSungHK-SB",
+                            fontWeight: 700,
+                            textOrientation: "mixed",
+                          }}
+                          dangerouslySetInnerHTML={{
+                            __html: article.articles_id.title_tw,
+                          }}
+                        />
+                      ) : (
+                        <Box
+                          className="pt"
+                          sx={{
+                            fontSize: 13,
+                            fontFamily: "BioRhyme Expanded",
+                            fontWeight: 700,
+                            textOrientation: "unset",
+                          }}
+                          dangerouslySetInnerHTML={{
+                            __html: article.articles_id.title_en,
+                          }}
+                        />
+                      )}
                     </Box>
                   </Box>
                 </Box>

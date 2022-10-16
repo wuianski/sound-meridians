@@ -23,7 +23,7 @@ const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#00415E",
 }));
 
-export default function Article({ projects }) {
+export default function Article({ projects, useLang }) {
   //console.log(projects);
   // const router = useRouter();
   // const id = router.query.id;
@@ -177,18 +177,35 @@ export default function Article({ projects }) {
                   <Box key={article.id}>
                     {/*** article's title_tw ***/}
                     {article.articles_id && (
-                      <Box
-                        className="pt"
-                        pt={0}
-                        sx={{
-                          fontSize: 20,
-                          fontFamily: "ChironSungHK-SB",
-                          fontWeight: 700,
-                        }}
-                        dangerouslySetInnerHTML={{
-                          __html: article.articles_id.title_tw,
-                        }}
-                      />
+                      <Box>
+                        {useLang == true ? (
+                          <Box
+                            className="pt"
+                            sx={{
+                              fontSize: 22,
+                              fontFamily: "ChironSungHK-SB",
+                              fontWeight: 700,
+                              textOrientation: "mixed",
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: article.articles_id.title_tw,
+                            }}
+                          />
+                        ) : (
+                          <Box
+                            className="pt"
+                            sx={{
+                              fontSize: 13,
+                              fontFamily: "BioRhyme Expanded",
+                              fontWeight: 700,
+                              textOrientation: "unset",
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: article.articles_id.title_en,
+                            }}
+                          />
+                        )}
+                      </Box>
                     )}
                   </Box>
                 ))}
@@ -198,7 +215,10 @@ export default function Article({ projects }) {
         {/*** row: article content ***/}
         <Item>
           <Box sx={{ width: "calc(100vw - 252px)" }}>
-            <ArticleContentSlider article_content={projects.projects_by_id} />
+            <ArticleContentSlider
+              article_content={projects.projects_by_id}
+              useLang={useLang}
+            />
           </Box>
         </Item>
       </Stack>
@@ -219,8 +239,8 @@ export async function getServerSideProps({ params }) {
           mainTitle_en,
           nation_tw,
           nation_en,
-          articles{
-            id
+          articles {
+            id 
             articles_id (filter: { sort: { _eq: ${params.sort} } }){
                 id
                 sort
@@ -250,11 +270,32 @@ export async function getServerSideProps({ params }) {
                               description_en
                           }
                       }
-                  }
-                  
-              }
+                      timelineTemplate_timelines{
+                        id
+                        timelineInfos_id{
+                            id
+                            year
+                            content_tw
+                            content_en
+                        }
+                      }
+                      imageTemplate_images{
+                        id
+                        imageInfos_id{
+                            id
+                            image{
+                                id
+                                filename_disk
+                            }
+                            description_tw
+                            description_en
+                        }
+                      }
+                  }  
+                }
+                         
             }
-         },
+          }
         }
       }
       `,
