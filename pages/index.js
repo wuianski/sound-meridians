@@ -502,7 +502,11 @@ export default function Home({ about, projects, useLang }) {
                   style={{ maxWidth: 120, minWidth: 120 }}
                   sx={{ cursor: "pointer", borderRight: "1px solid #000" }}
                 >
-                  <Link href={`/projects/${encodeURIComponent(project.id)}`}>
+                  <Link
+                    href={`/projects/${encodeURIComponent(
+                      project.mainTitle_en
+                    )}`}
+                  >
                     <Stack
                       direction={{ xs: "row", md: "row" }}
                       spacing={{ xs: 0, md: 0 }}

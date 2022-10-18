@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 
-export default function ArticleSlider({ articles, useLang }) {
+export default function ArticleSlider({ project, useLang }) {
   /*******************/
   /*** keen slider ***/
   const [sliderRef] = useKeenSlider({
@@ -32,13 +32,11 @@ export default function ArticleSlider({ articles, useLang }) {
         className="keen-slider"
         style={{ maxWidth: 480, maxHeight: "100vh" }}
       >
-        {articles.articles &&
-          articles.articles.map((article) => (
+        {project &&
+          project.articles.map((article) => (
             <Box key={article.articles_id.id} sx={{ cursor: "pointer" }}>
               <Link
-                href={`/projects/${encodeURIComponent(
-                  articles.id
-                )}/${encodeURIComponent(article.articles_id.sort)}`}
+                href={`/projects/${project.mainTitle_en}/${article.articles_id.slug}`}
               >
                 <Box
                   className="keen-slider__slide"
