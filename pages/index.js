@@ -615,7 +615,7 @@ export default function Home({ about, projects, useLang }) {
                           }}
                         >
                           <Image
-                            src={`http://localhost:8055/assets/${project.coverPhoto}`}
+                            src={`${process.env.DIRECTUS_URL}/assets/${project.coverPhoto}`}
                             //src={project.coverPhoto}
                             alt=""
                             layout="fill"

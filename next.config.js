@@ -2,16 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+
+  env: {
+    DIRECTUS_URL_DEV: process.env.DIRECTUS_URL_DEV,
+    DIRECTUS_URL: process.env.DIRECTUS_URL,
+    NEXT_PUBLIC_GRAPHQL_DEV: process.env.NEXT_PUBLIC_GRAPHQL_DEV,
+    NEXT_PUBLIC_GRAPHQL: process.env.NEXT_PUBLIC_GRAPHQL,
+  },
+
   images: {
-    domains: ["localhost", `${process.env.DIRECTUS_URL}`],
-    // remotePatterns: [
-    //   {
-    //     protocol: "http",
-    //     hostname: "localhost",
-    //     port: "8055",
-    //     pathname: "/assets/**",
-    //   },
-    // ],
+    domains: ["data.soundmeridians.net"],
   },
 };
 

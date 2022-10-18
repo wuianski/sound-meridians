@@ -85,9 +85,9 @@ export default function ImageTemplate({ article_content, useLang }) {
                         }}
                       >
                         <Image
-                          src={`http://localhost:8055/assets/${image.imageInfos_id.image.filename_disk}`}
+                          src={`${process.env.DIRECTUS_URL}/assets/${image.imageInfos_id.image.filename_disk}`}
                           placeholder="blur"
-                          blurDataURL={`http://localhost:8055/assets/${image.imageInfos_id.image.filename_disk}`}
+                          blurDataURL={`${process.env.DIRECTUS_URL}/assets/${image.imageInfos_id.image.filename_disk}`}
                           alt=""
                           layout="fill"
                           objectFit="contain"

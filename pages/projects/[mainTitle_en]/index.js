@@ -174,9 +174,9 @@ export default function Project({ projects, useLang }) {
                 }}
               >
                 <Image
-                  src={`http://localhost:8055/assets/${project.cover.filename_disk}`}
+                  src={`${process.env.DIRECTUS_URL}/assets/${project.cover.filename_disk}`}
                   placeholder="blur"
-                  blurDataURL={`http://localhost:8055/assets/${project.cover.filename_disk}`}
+                  blurDataURL={`${process.env.DIRECTUS_URL}/assets/${project.cover.filename_disk}`}
                   alt="bg"
                   layout="fill"
                   objectFit="cover"
