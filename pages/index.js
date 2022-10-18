@@ -392,7 +392,7 @@ export default function Home({ about, projects, useLang }) {
                       }}
                     >
                       <Image
-                        src="/imgs/siteName_tw.png"
+                        src="/imgs/sitename_tw.png"
                         alt="bg"
                         layout="fill"
                         objectFit="contain"
