@@ -12,6 +12,7 @@ const nextConfig = {
 
   images: {
     domains: ["data.soundmeridians.net"],
+    minimumCacheTTL: 60,
   },
 };
 

@@ -387,7 +387,7 @@ export default function Home({ about, projects, useLang }) {
                         left: -45,
                         width: 621,
                         height: "100vh",
-                        zIndex: 0,
+                        zIndex: 1,
                         mixBlendMode: "difference",
                       }}
                     >
@@ -396,6 +396,7 @@ export default function Home({ about, projects, useLang }) {
                         alt="bg"
                         layout="fill"
                         objectFit="contain"
+                        priority
                       />
                     </Box>
                   </motion.div>

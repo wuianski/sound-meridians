@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Box from "@mui/material/Box";
@@ -8,6 +8,7 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 
 import Slider from "react-slick";
+import ReactPlayer from "react-player";
 
 /*************/
 /*** stack ***/
@@ -63,6 +64,15 @@ const settings = {
 };
 
 export default function TextImageTemplate({ article_content, useLang }) {
+  /*** !!adding for react-player to use ***/
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  if (!hasMounted) {
+    return null;
+  }
+
   return (
     <>
       <Box p={"144px 32px 8px 32px"}>
@@ -95,6 +105,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       className="pt"
                       sx={{
                         fontFamily: "ChironSungHK-SB",
+                        textTransform: "capitalize",
                         fontWeight: 700,
                         fontSize: 30,
                         lineHeight: 1.2,
@@ -126,7 +137,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       sx={{
                         fontFamily: "ChironHeiHK-L",
                         fontWeight: 300,
-                        fontSize: 20,
+                        fontSize: 16,
                         lineHeight: 1.75,
                         textAlign: "justify",
                         letterSpacing: "-0.05em",
@@ -142,7 +153,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       sx={{
                         fontFamily: "ChironHeiHK-L",
                         fontWeight: 300,
-                        fontSize: 20,
+                        fontSize: 16,
                         lineHeight: 1.75,
                         textAlign: "justify",
                         letterSpacing: "-0.05em",
@@ -169,23 +180,48 @@ export default function TextImageTemplate({ article_content, useLang }) {
                   article_content.textImageTemplate_images.map((image) => (
                     <Box key={image.imageInfos_id.id}>
                       {/* <Box>{image.imageInfos_id.image.filename_disk}</Box> */}
-                      <Box
-                        sx={{
-                          position: "relative",
-                          width: "100%",
-                          height: 300,
-                          zIndex: 0,
-                        }}
-                      >
-                        <Image
-                          src={`${process.env.DIRECTUS_URL}/assets/${image.imageInfos_id.image.filename_disk}`}
-                          placeholder="blur"
-                          blurDataURL={`${process.env.DIRECTUS_URL}/assets/${image.imageInfos_id.image.filename_disk}`}
-                          alt=""
-                          layout="fill"
-                          objectFit="contain"
-                        />
+                      <Box>
+                        {image.imageInfos_id.videoURL == null ? (
+                          <Box
+                            sx={{
+                              position: "relative",
+                              width: "100%",
+                              height: 300,
+                              zIndex: 0,
+                            }}
+                          >
+                            <Image
+                              src={`${process.env.DIRECTUS_URL}/assets/${image.imageInfos_id.image.filename_disk}`}
+                              placeholder="blur"
+                              blurDataURL={`${process.env.DIRECTUS_URL}/assets/${image.imageInfos_id.image.filename_disk}`}
+                              alt=""
+                              layout="fill"
+                              objectFit="contain"
+                            />
+                          </Box>
+                        ) : (
+                          <Box
+                            sx={{
+                              position: "relative",
+                              width: "100%",
+                              height: 300,
+                              zIndex: 0,
+                            }}
+                            className="player-wrapper"
+                            mt={"15px"}
+                            mb={"15px"}
+                          >
+                            <ReactPlayer
+                              className="react-player"
+                              url={image.imageInfos_id.videoURL}
+                              width="100%"
+                              height="100%"
+                              controls={true}
+                            />
+                          </Box>
+                        )}
                       </Box>
+
                       <Box>
                         {useLang == true ? (
                           <Box

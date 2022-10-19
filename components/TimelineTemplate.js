@@ -57,10 +57,10 @@ export default function TimelineTemplate({ article_content, useLang }) {
               <Box key={timeline.timelineInfos_id.id}>
                 {useLang == true ? (
                   <Box
-                    className="pt"
+                    className="pt, timelineContent"
                     pt={2}
                     sx={{
-                      width: "100%",
+                      width: { xs: "100%", md: "100%" },
                       height: "50vh",
                       overflow: "scroll",
                       fontFamily: "ChironHeiHK-L",
@@ -76,7 +76,7 @@ export default function TimelineTemplate({ article_content, useLang }) {
                   />
                 ) : (
                   <Box
-                    className="pt"
+                    className="pt, timelineContent"
                     pt={2}
                     sx={{
                       width: "100%",

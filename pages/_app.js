@@ -40,7 +40,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+        />
       </Head>
 
       {/*** !!important when use router to query value from component. Use a React key to tell React to remount the component. ***/}

@@ -7,9 +7,53 @@ export default class MyDocument extends Document {
     return (
       <Html lang="zh-TW">
         <Head>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link
             href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap"
             rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=BioRhyme+Expanded:wght@400;700;800&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@400;700;800&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            rel="preload"
+            href="/fonts/ChironSungHK-SB.otf"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/ChironSungHK-B.otf"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/ChironHeiHK-M.otf"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/ChironHeiHK-N.otf"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/ChironHeiHK-L.otf"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
           />
         </Head>
         <body>

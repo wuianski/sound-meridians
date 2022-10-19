@@ -32,9 +32,9 @@ export default function TextTemplate({ article_content, useLang }) {
                 <Box
                   className="pt"
                   sx={{
-                    fontFamily: "ChironSungHK-B",
+                    fontFamily: "ChironSungHK-SB",
                     fontWeight: 900,
-                    fontSize: 88,
+                    fontSize: 78,
                     lineHeight: 1,
                     textAlign: "center",
                   }}
@@ -46,9 +46,10 @@ export default function TextTemplate({ article_content, useLang }) {
                 <Box
                   className="pt"
                   sx={{
-                    fontFamily: "ChironSungHK-B",
+                    fontFamily: "ChironSungHK-SB",
+                    textTransform: "capitalize",
                     fontWeight: 900,
-                    fontSize: 88,
+                    fontSize: 78,
                     lineHeight: 1,
                     textAlign: "center",
                   }}
@@ -79,7 +80,7 @@ export default function TextTemplate({ article_content, useLang }) {
                     sx={{
                       fontFamily: "ChironHeiHK-L",
                       fontWeight: 300,
-                      fontSize: 20,
+                      fontSize: 16,
                       lineHeight: 1.75,
                       textAlign: "justify",
                       letterSpacing: "-0.05em",
@@ -95,7 +96,7 @@ export default function TextTemplate({ article_content, useLang }) {
                     sx={{
                       fontFamily: "ChironHeiHK-L",
                       fontWeight: 300,
-                      fontSize: 20,
+                      fontSize: 16,
                       lineHeight: 1.75,
                       textAlign: "justify",
                       letterSpacing: "-0.05em",

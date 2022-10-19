@@ -30,7 +30,7 @@ export default function Article({ projects, useLang }) {
   return (
     <>
       {projects.projects.map((project, idx) => (
-        <>
+        <Box key={project.id}>
           <Stack
             direction={{ xs: "row", md: "row" }}
             spacing={{ xs: 0, md: 0 }}
@@ -177,7 +177,7 @@ export default function Article({ projects, useLang }) {
                 >
                   {project.articles &&
                     project.articles.map((article) => (
-                      <Box key={project.articles.id}>
+                      <Box key={article.id}>
                         {/*** article's title_tw ***/}
                         {article.articles_id && (
                           <Box>
@@ -202,6 +202,7 @@ export default function Article({ projects, useLang }) {
                                   fontFamily: "BioRhyme Expanded",
                                   fontWeight: 700,
                                   textOrientation: "unset",
+                                  textTransform: "uppercase",
                                 }}
                                 dangerouslySetInnerHTML={{
                                   __html: article.articles_id.title_en,
@@ -225,7 +226,7 @@ export default function Article({ projects, useLang }) {
               </Box>
             </Item>
           </Stack>
-        </>
+        </Box>
       ))}
     </>
   );
@@ -274,6 +275,7 @@ export async function getServerSideProps({ params }) {
                               }
                               description_tw
                               description_en
+                              videoURL
                           }
                       }
                       timelineTemplate_timelines{

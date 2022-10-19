@@ -44,7 +44,7 @@ export default function Project({ projects, useLang }) {
   return (
     <>
       {projects.projects.map((project, idx) => (
-        <>
+        <Box key={project.id}>
           <Stack
             direction={{ xs: "row", md: "row" }}
             spacing={{ xs: 0, md: 0 }}
@@ -180,6 +180,7 @@ export default function Project({ projects, useLang }) {
                   alt="bg"
                   layout="fill"
                   objectFit="cover"
+                  priority
                 />
               </Box>
               {/*** text ***/}
@@ -219,6 +220,7 @@ export default function Project({ projects, useLang }) {
                         fontWeight: 400,
                         color: "#fff",
                         fontFamily: "ChironHeiHK-L",
+
                         fontSize: 16,
                         fontWeight: 400,
                         lineHeight: 1.75,
@@ -237,6 +239,7 @@ export default function Project({ projects, useLang }) {
                       sx={{
                         textAlign: "left",
                         fontFamily: "ChironHeiHK-N",
+                        textTransform: "capitalize",
                         fontSize: 40,
                         fontWeight: 700,
                         lineHeight: 1.4,
@@ -288,7 +291,7 @@ export default function Project({ projects, useLang }) {
               </Box>
             </Item>
           </Stack>
-        </>
+        </Box>
       ))}
     </>
   );

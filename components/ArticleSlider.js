@@ -70,7 +70,7 @@ export default function ArticleSlider({ project, useLang }) {
                             fontSize: 22,
                             fontFamily: "ChironSungHK-SB",
                             fontWeight: 700,
-                            textOrientation: "mixed",
+                            textOrientation: "upright",
                           }}
                           dangerouslySetInnerHTML={{
                             __html: article.articles_id.title_tw,
@@ -84,6 +84,7 @@ export default function ArticleSlider({ project, useLang }) {
                             fontFamily: "BioRhyme Expanded",
                             fontWeight: 700,
                             textOrientation: "unset",
+                            textTransform: "uppercase",
                           }}
                           dangerouslySetInnerHTML={{
                             __html: article.articles_id.title_en,
