@@ -1,49 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=BioRhyme+Expanded:wght@400;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap');
 
-@font-face {
-  font-family: 'ChironSungHK-SB';
-  src: url('/fonts/ChironSungHK-SB.otf');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap
-}
-@font-face {
-  font-family: 'ChironSungHK-B';
-  src: url('/fonts/ChironSungHK-B.otf');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap
-}
-
-@font-face {
-  font-family: 'ChironHeiHK-M';
-  src: url('/fonts/ChironHeiHK-M.otf');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap
-}
-@font-face {
-  font-family: 'ChironHeiHK-N';
-  src: url('/fonts/ChironHeiHK-N.otf');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap
-}
-@font-face {
-  font-family: 'ChironHeiHK-L';
-  src: url('/fonts/ChironHeiHK-L.otf');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap
-}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family:  'Noto Serif TC','BioRhyme Expanded', serif, 'Roboto','Helvetica Neue', 'sans-serif';
+  font-family:  'Noto Serif JP','Noto Sans JP','Noto Serif TC','BioRhyme Expanded', serif, 'Roboto','Helvetica Neue', 'sans-serif';
   font-weight: 400;
   font-style: normal;
   position: absolute;
@@ -86,6 +52,54 @@ a {
   width:max-content;
   border-right: 1px solid #000;
 }
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: #c5c5c5;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background: #000;
+}
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #fff;
+  cursor: pointer;
+}
+
+.arrow--left {
+  left: 5px;
+}
+
+.arrow--right {
+  left: auto;
+  right: 5px;
+}
+
+.arrow--disabled {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
 
 .pt p{
   margin: 0;

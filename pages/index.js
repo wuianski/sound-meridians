@@ -16,11 +16,11 @@ import styles from "../styles/Home.module.css";
 
 import { useRouter } from "next/router";
 
-//import aboutOpen from "../public/imgs/aboutOpen.png";
-//import aboutReturn from "../public/imgs/aboutReturn.png";
-//import siteNameEN from "../public/imgs/siteName_en.png";
-//import siteNameTW from "../public/imgs/siteName_tw.png";
-//import aboutTitle from "../public/imgs/aboutTitle.png";
+// import aboutOpen from "../public/imgs/aboutOpen.png";
+// import aboutReturn from "../public/imgs/aboutReturn.png";
+// import siteNameEN from "../public/imgs/siteName_en.png";
+// import siteNameTW from "../public/imgs/sitename_tw.png";
+// import aboutTitle from "../public/imgs/aboutTitle.png";
 
 import fetchData from "../lib/api";
 
@@ -261,8 +261,10 @@ export default function Home({ about, projects, useLang }) {
               alt="about open image"
               layout="intrinsic"
               objectFit="cover"
-              width={"443px"}
-              height={"443px"}
+              width={443}
+              height={443}
+              placeholder="blur"
+              blurDataURL="/imgs/aboutOpen.png"
             />
           </Box>
         </motion.div>
@@ -289,8 +291,10 @@ export default function Home({ about, projects, useLang }) {
               alt="about open image"
               layout="intrinsic"
               objectFit="cover"
-              width={"575px"}
-              height={"575px"}
+              width={575}
+              height={575}
+              placeholder="blur"
+              blurDataURL="/imgs/aboutReturn.png"
             />
           </Box>
         </motion.div>
@@ -308,28 +312,7 @@ export default function Home({ about, projects, useLang }) {
               borderRight: "1px solid #000",
               zIndex: 2,
             }}
-          >
-            {/* <Box
-              sx={{
-                position: "absolute",
-                width: "100%",
-                textAlign: "center",
-                left: 0,
-                bottom: 16,
-                cursor: "pointer",
-              }}
-              //onClick={() => setLang(!useLang)}
-            >
-              <Image
-                src="/imgs/en.png"
-                alt="en image"
-                layout="intrinsic"
-                objectFit="cover"
-                width={"60px"}
-                height={"34px"}
-              />
-            </Box> */}
-          </Box>
+          ></Box>
         </Item>
         {/*** row: about ***/}
         <Item>
@@ -370,6 +353,8 @@ export default function Home({ about, projects, useLang }) {
                         alt="bg"
                         layout="fill"
                         objectFit="contain"
+                        placeholder="blur"
+                        blurDataURL="/imgs/siteName_en.png"
                       />
                     </Box>
                   </motion.div>
@@ -396,7 +381,10 @@ export default function Home({ about, projects, useLang }) {
                         alt="bg"
                         layout="fill"
                         objectFit="contain"
-                        priority
+                        placeholder="blur"
+                        blurDataURL="/imgs/sitename_tw.png"
+                        // priority="true"
+                        // as="image"
                       />
                     </Box>
                   </motion.div>
@@ -435,6 +423,8 @@ export default function Home({ about, projects, useLang }) {
                           alt="bg"
                           layout="fill"
                           objectFit="contain"
+                          placeholder="blur"
+                          blurDataURL="/imgs/aboutTitle.png"
                         />
                       </Box>
                       <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
@@ -538,7 +528,7 @@ export default function Home({ about, projects, useLang }) {
                               sx={{
                                 fontSize: 22,
                                 textTransform: "uppercase",
-                                fontFamily: "ChironSungHK-SB",
+                                fontFamily: "Noto Serif JP",
                                 fontWeight: 700,
                               }}
                               // dangerouslySetInnerHTML={{
@@ -578,7 +568,7 @@ export default function Home({ about, projects, useLang }) {
                               className={`${styles.pt}`}
                               sx={{
                                 fontSize: 15,
-                                fontFamily: "ChironHeiHK-M",
+                                fontFamily: "Noto Sans JP",
                                 fontWeight: 500,
                               }}
                               // dangerouslySetInnerHTML={{
@@ -594,7 +584,7 @@ export default function Home({ about, projects, useLang }) {
                               sx={{
                                 fontSize: 14,
                                 textTransform: "uppercase",
-                                fontFamily: "ChironHeiHK-M",
+                                fontFamily: "Noto Sans JP",
                                 fontWeight: 500,
                               }}
                               // dangerouslySetInnerHTML={{
@@ -616,11 +606,12 @@ export default function Home({ about, projects, useLang }) {
                           }}
                         >
                           <Image
-                            src={`${process.env.DIRECTUS_URL}/assets/${project.coverPhoto}`}
-                            //src={project.coverPhoto}
+                            src={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
                             alt=""
                             layout="fill"
                             objectFit="cover"
+                            placeholder="blur"
+                            blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
                           />
                         </Box>
                       </Item>

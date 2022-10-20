@@ -85,9 +85,9 @@ export default function ImageTemplate({ article_content, useLang }) {
                         }}
                       >
                         <Image
-                          src={`${process.env.DIRECTUS_URL}/assets/${image.imageInfos_id.image.filename_disk}`}
+                          src={`${process.env.DIRECTUS_CDN}/assets/${image.imageInfos_id.image.filename_disk}`}
                           placeholder="blur"
-                          blurDataURL={`${process.env.DIRECTUS_URL}/assets/${image.imageInfos_id.image.filename_disk}`}
+                          blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${image.imageInfos_id.image.filename_disk}`}
                           alt=""
                           layout="fill"
                           objectFit="contain"
@@ -102,7 +102,7 @@ export default function ImageTemplate({ article_content, useLang }) {
                               position: "relative",
                               height: "50vh",
                               overflow: "scroll",
-                              fontFamily: "ChironHeiHK-L",
+                              fontFamily: "Noto Sans JP",
                               fontWeight: 300,
                               fontSize: 14,
                               textAlign: "center",
@@ -119,7 +119,7 @@ export default function ImageTemplate({ article_content, useLang }) {
                               position: "relative",
                               height: "50vh",
                               overflow: "scroll",
-                              fontFamily: "ChironHeiHK-L",
+                              fontFamily: "Noto Sans JP",
                               fontWeight: 300,
                               fontSize: 14,
                               textAlign: "center",

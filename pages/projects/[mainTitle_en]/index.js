@@ -14,6 +14,9 @@ import ArticleSlider from "../../../components/ArticleSlider";
 
 import { useRouter } from "next/router";
 
+import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
+import KeyboardDoubleArrowDownSharpIcon from "@mui/icons-material/KeyboardDoubleArrowDownSharp";
+
 /******************/
 /*** stack ***/
 const Item = styled(Paper)(({ theme }) => ({
@@ -103,7 +106,7 @@ export default function Project({ projects, useLang }) {
                     sx={{
                       fontSize: 22,
                       textTransform: "uppercase",
-                      fontFamily: "ChironSungHK-SB",
+                      fontFamily: "Noto Serif JP",
                       fontWeight: 700,
                     }}
                     dangerouslySetInnerHTML={{
@@ -138,7 +141,7 @@ export default function Project({ projects, useLang }) {
                     className="pt"
                     sx={{
                       fontSize: 15,
-                      fontFamily: "ChironHeiHK-M",
+                      fontFamily: "Noto Sans JP",
                       fontWeight: 500,
                     }}
                     dangerouslySetInnerHTML={{
@@ -151,7 +154,7 @@ export default function Project({ projects, useLang }) {
                     sx={{
                       fontSize: 14,
                       textTransform: "uppercase",
-                      fontFamily: "ChironHeiHK-M",
+                      fontFamily: "Noto Sans JP",
                       fontWeight: 500,
                       lineHeight: 1.4,
                     }}
@@ -174,13 +177,14 @@ export default function Project({ projects, useLang }) {
                 }}
               >
                 <Image
-                  src={`${process.env.DIRECTUS_URL}/assets/${project.cover.filename_disk}`}
+                  src={`${process.env.DIRECTUS_CDN}/assets/${project.cover.filename_disk}`}
                   placeholder="blur"
-                  blurDataURL={`${process.env.DIRECTUS_URL}/assets/${project.cover.filename_disk}`}
+                  blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.cover.filename_disk}`}
                   alt="bg"
                   layout="fill"
                   objectFit="cover"
-                  priority
+                  priority="true"
+                  as="image"
                 />
               </Box>
               {/*** text ***/}
@@ -201,7 +205,7 @@ export default function Project({ projects, useLang }) {
                       className="pt"
                       sx={{
                         textAlign: "left",
-                        fontFamily: "ChironHeiHK-N",
+                        fontFamily: "Noto Sans JP",
                         fontSize: 40,
                         fontWeight: 700,
                         lineHeight: 1.4,
@@ -219,7 +223,7 @@ export default function Project({ projects, useLang }) {
                         textAlign: "justify",
                         fontWeight: 400,
                         color: "#fff",
-                        fontFamily: "ChironHeiHK-L",
+                        fontFamily: "Noto Sans JP",
 
                         fontSize: 16,
                         fontWeight: 400,
@@ -238,7 +242,7 @@ export default function Project({ projects, useLang }) {
                       className="pt"
                       sx={{
                         textAlign: "left",
-                        fontFamily: "ChironHeiHK-N",
+                        fontFamily: "Noto Sans JP",
                         textTransform: "capitalize",
                         fontSize: 40,
                         fontWeight: 700,
@@ -257,7 +261,7 @@ export default function Project({ projects, useLang }) {
                         textAlign: "justify",
                         fontWeight: 400,
                         color: "#fff",
-                        fontFamily: "ChironHeiHK-L",
+                        fontFamily: "Noto Sans JP",
                         fontSize: 16,
                         fontWeight: 400,
                         lineHeight: 1.75,
@@ -270,6 +274,23 @@ export default function Project({ projects, useLang }) {
                     />
                   </>
                 )}
+              </Box>
+              <Box
+                pr={1}
+                mt={-0.5}
+                sx={{
+                  zIndex: 9,
+                  position: "relative",
+                  textAlign: "end",
+                  mixBlendMode: "difference",
+                  textShadow: "0.06em 0.06em 0.12em #000",
+                  color: "#fff",
+                }}
+              >
+                <KeyboardDoubleArrowDownSharpIcon
+                  alt="keyboard arrow down"
+                  sx={{ fontSize: "xx-large" }}
+                />
               </Box>
             </Item>
             {/*** row: slider of articles ***/}

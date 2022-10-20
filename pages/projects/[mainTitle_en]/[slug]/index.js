@@ -92,7 +92,7 @@ export default function Article({ projects, useLang }) {
                         sx={{
                           fontSize: 22,
                           textTransform: "uppercase",
-                          fontFamily: "ChironSungHK-SB",
+                          fontFamily: "Noto Serif JP",
                           fontWeight: 700,
                         }}
                         dangerouslySetInnerHTML={{
@@ -127,7 +127,7 @@ export default function Article({ projects, useLang }) {
                         className="pt"
                         sx={{
                           fontSize: 15,
-                          fontFamily: "ChironHeiHK-M",
+                          fontFamily: "Noto Sans JP",
                           fontWeight: 500,
                         }}
                         dangerouslySetInnerHTML={{
@@ -140,7 +140,7 @@ export default function Article({ projects, useLang }) {
                         sx={{
                           fontSize: 14,
                           textTransform: "uppercase",
-                          fontFamily: "ChironHeiHK-M",
+                          fontFamily: "Noto Sans JP",
                           fontWeight: 500,
                           lineHeight: 1.4,
                         }}
@@ -186,7 +186,7 @@ export default function Article({ projects, useLang }) {
                                 className="pt"
                                 sx={{
                                   fontSize: 22,
-                                  fontFamily: "ChironSungHK-SB",
+                                  fontFamily: "Noto Serif JP",
                                   fontWeight: 700,
                                   textOrientation: "mixed",
                                 }}

@@ -90,7 +90,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                     <Box
                       className="pt"
                       sx={{
-                        fontFamily: "ChironSungHK-SB",
+                        fontFamily: "Noto Serif JP",
                         fontWeight: 700,
                         fontSize: 30,
                         lineHeight: 1.2,
@@ -104,7 +104,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                     <Box
                       className="pt"
                       sx={{
-                        fontFamily: "ChironSungHK-SB",
+                        fontFamily: "Noto Serif JP",
                         textTransform: "capitalize",
                         fontWeight: 700,
                         fontSize: 30,
@@ -135,7 +135,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       className="pt"
                       pt={2}
                       sx={{
-                        fontFamily: "ChironHeiHK-L",
+                        fontFamily: "Noto Sans JP",
                         fontWeight: 300,
                         fontSize: 16,
                         lineHeight: 1.75,
@@ -151,7 +151,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       className="pt"
                       pt={2}
                       sx={{
-                        fontFamily: "ChironHeiHK-L",
+                        fontFamily: "Noto Sans JP",
                         fontWeight: 300,
                         fontSize: 16,
                         lineHeight: 1.75,
@@ -191,9 +191,9 @@ export default function TextImageTemplate({ article_content, useLang }) {
                             }}
                           >
                             <Image
-                              src={`${process.env.DIRECTUS_URL}/assets/${image.imageInfos_id.image.filename_disk}`}
+                              src={`${process.env.DIRECTUS_CDN}/assets/${image.imageInfos_id.image.filename_disk}`}
                               placeholder="blur"
-                              blurDataURL={`${process.env.DIRECTUS_URL}/assets/${image.imageInfos_id.image.filename_disk}`}
+                              blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${image.imageInfos_id.image.filename_disk}`}
                               alt=""
                               layout="fill"
                               objectFit="contain"
@@ -228,7 +228,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                             className="pt"
                             p={6}
                             sx={{
-                              fontFamily: "ChironHeiHK-L",
+                              fontFamily: "Noto Sans JP",
                               fontWeight: 300,
                               fontSize: 14,
                               textAlign: "center",
@@ -242,7 +242,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                             className="pt"
                             p={6}
                             sx={{
-                              fontFamily: "ChironHeiHK-L",
+                              fontFamily: "Noto Sans JP",
                               fontWeight: 300,
                               fontSize: 14,
                               textAlign: "center",

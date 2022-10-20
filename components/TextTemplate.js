@@ -32,7 +32,7 @@ export default function TextTemplate({ article_content, useLang }) {
                 <Box
                   className="pt"
                   sx={{
-                    fontFamily: "ChironSungHK-SB",
+                    fontFamily: "Noto Serif JP",
                     fontWeight: 900,
                     fontSize: 78,
                     lineHeight: 1,
@@ -46,7 +46,7 @@ export default function TextTemplate({ article_content, useLang }) {
                 <Box
                   className="pt"
                   sx={{
-                    fontFamily: "ChironSungHK-SB",
+                    fontFamily: "Noto Serif JP",
                     textTransform: "capitalize",
                     fontWeight: 900,
                     fontSize: 78,
@@ -78,7 +78,7 @@ export default function TextTemplate({ article_content, useLang }) {
                     className="pt"
                     pt={2}
                     sx={{
-                      fontFamily: "ChironHeiHK-L",
+                      fontFamily: "Noto Sans JP",
                       fontWeight: 300,
                       fontSize: 16,
                       lineHeight: 1.75,
@@ -94,7 +94,7 @@ export default function TextTemplate({ article_content, useLang }) {
                     className="pt"
                     pt={2}
                     sx={{
-                      fontFamily: "ChironHeiHK-L",
+                      fontFamily: "Noto Sans JP",
                       fontWeight: 300,
                       fontSize: 16,
                       lineHeight: 1.75,
