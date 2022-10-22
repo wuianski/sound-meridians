@@ -46,14 +46,14 @@ export default function ArticleSlider({ project, useLang }) {
       <Box
         sx={{
           backgroundColor: "#BCACA8",
-          width: "480px",
+          width: "260px",
           height: "100vh",
           color: "#ff0000",
           borderRight: "1px solid #000",
         }}
         ref={sliderRef}
         className="keen-slider"
-        style={{ maxWidth: 480, maxHeight: "100vh" }}
+        style={{ maxWidth: 260, maxHeight: "100vh" }}
       >
         {project &&
           project.articles.map((article) => (
@@ -82,7 +82,7 @@ export default function ArticleSlider({ project, useLang }) {
                       sx={{
                         position: "absolute",
                         left: 8,
-                        top: 40,
+                        top: 30,
                         display: "inline-flex",
                       }}
                     >
@@ -127,7 +127,7 @@ export default function ArticleSlider({ project, useLang }) {
         </Box> */}
         {loaded && instanceRef.current && (
           <>
-            <Box pl={1} x={{ width: 360, textAlign: "left" }}>
+            <Box pl={1} x={{ width: 260, textAlign: "left" }}>
               <KeyboardArrowLeftSharpIcon
                 left="true"
                 onClick={(e) =>
@@ -137,7 +137,7 @@ export default function ArticleSlider({ project, useLang }) {
                 sx={{ cursor: "pointer", color: "#000", fontSize: "xx-large" }}
               />
             </Box>
-            <Box mt={"-36.95px"} pr={1} sx={{ width: 360, textAlign: "right" }}>
+            <Box mt={"-36.95px"} pr={1} sx={{ width: 260, textAlign: "right" }}>
               <KeyboardArrowRightSharpIcon
                 onClick={(e) =>
                   e.stopPropagation() || instanceRef.current?.next()

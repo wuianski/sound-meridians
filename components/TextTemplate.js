@@ -20,7 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function TextTemplate({ article_content, useLang }) {
   return (
     <>
-      <Box p={13}>
+      <Box pt={13} pb={13} pl={24} pr={20}>
         <Stack
           direction={{ xs: "row", md: "column" }}
           spacing={{ xs: 18, md: 13 }}

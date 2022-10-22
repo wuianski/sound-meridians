@@ -519,7 +519,7 @@ export default function Home({ about, projects, useLang }) {
                             sx={{
                               position: "absolute",
                               left: 8,
-                              top: 40,
+                              top: 30,
                               display: "inline-flex",
                             }}
                           >
@@ -558,7 +558,7 @@ export default function Home({ about, projects, useLang }) {
                             sx={{
                               position: "absolute",
                               left: 8,
-                              bottom: 40,
+                              bottom: 30,
                               fontSize: 17,
                               display: "inline-flex",
                             }}

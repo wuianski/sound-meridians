@@ -27,6 +27,7 @@ export default function Article({ projects, useLang }) {
   //console.log(projects);
   // const router = useRouter();
   // const id = router.query.id;
+  const sliderRef = useRef();
   return (
     <>
       {projects.projects.map((project, idx) => (
@@ -83,7 +84,7 @@ export default function Article({ projects, useLang }) {
                       sx={{
                         position: "absolute",
                         left: 8,
-                        top: 40,
+                        top: 30,
                         display: "inline-flex",
                       }}
                     >
@@ -118,7 +119,7 @@ export default function Article({ projects, useLang }) {
                       sx={{
                         position: "absolute",
                         left: 8,
-                        bottom: 40,
+                        bottom: 30,
                         fontSize: 17,
                         display: "inline-flex",
                       }}
@@ -171,7 +172,7 @@ export default function Article({ projects, useLang }) {
                   sx={{
                     position: "absolute",
                     left: 8,
-                    top: 40,
+                    top: 30,
                     display: "inline-flex",
                   }}
                 >
@@ -218,10 +219,17 @@ export default function Article({ projects, useLang }) {
             </Item>
             {/*** row: article content ***/}
             <Item>
-              <Box sx={{ width: "calc(100vw - 252px)" }}>
+              <Box
+                sx={{
+                  width: "calc(100vw - 220px)",
+                  height: "100vh",
+                  backgroundColor: "#000",
+                }}
+              >
                 <ArticleContentSlider
                   article_content={project}
                   useLang={useLang}
+                  sliderRef={sliderRef}
                 />
               </Box>
             </Item>

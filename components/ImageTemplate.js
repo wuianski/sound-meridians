@@ -51,7 +51,8 @@ function SamplePrevArrow(props) {
   );
 }
 const settings = {
-  dots: true,
+  arrows: true,
+  dots: false,
   infinite: false,
   speed: 500,
   slidesToShow: 1,
@@ -63,10 +64,10 @@ const settings = {
 export default function ImageTemplate({ article_content, useLang }) {
   return (
     <>
-      <Box p={6}>
+      <Box pt={6}>
         <Stack
           direction={{ xs: "row", md: "column" }}
-          spacing={{ xs: 18, md: 13 }}
+          spacing={{ xs: 0, md: 0 }}
         >
           {/*** column: image ***/}
           <Item>
@@ -80,7 +81,7 @@ export default function ImageTemplate({ article_content, useLang }) {
                         sx={{
                           position: "relative",
                           width: "100%",
-                          height: "50vh",
+                          height: "80vh",
                           zIndex: 0,
                         }}
                       >
@@ -97,11 +98,13 @@ export default function ImageTemplate({ article_content, useLang }) {
                         {useLang == true ? (
                           <Box
                             className="pt"
-                            p={6}
+                            pt={2}
                             sx={{
                               position: "relative",
-                              height: "50vh",
+                              height: "15vh",
                               overflow: "scroll",
+                              scrollbarWidth: "none",
+                              "&::-webkit-scrollbar": { display: "none" },
                               fontFamily: "Noto Sans JP",
                               fontWeight: 300,
                               fontSize: 14,
@@ -114,11 +117,13 @@ export default function ImageTemplate({ article_content, useLang }) {
                         ) : (
                           <Box
                             className="pt"
-                            p={6}
+                            pt={2}
                             sx={{
                               position: "relative",
-                              height: "50vh",
+                              height: "15vh",
                               overflow: "scroll",
+                              scrollbarWidth: "none",
+                              "&::-webkit-scrollbar": { display: "none" },
                               fontFamily: "Noto Sans JP",
                               fontWeight: 300,
                               fontSize: 14,

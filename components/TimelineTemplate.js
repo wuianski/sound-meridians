@@ -21,10 +21,13 @@ export default function TimelineTemplate({ article_content, useLang }) {
   return (
     <>
       <Box
-        p={13}
+        pt={8}
+        pb={13}
+        pl={8}
+        pr={4}
         ml={"auto"}
         mr={"auto"}
-        //sx={{ width: "100%", height: "50vh" }}
+        //sx={{ backgroundColor: "blue", width: "calc(100vw - 200px)" }}
       >
         <Chrono
           items={myTimeline}
@@ -33,9 +36,9 @@ export default function TimelineTemplate({ article_content, useLang }) {
           allowDynamicUpdate={true}
           //hideControls={true}
           mode="HORIZONTAL"
-          itemWidth={370}
+          itemWidth={440}
           //cardHeight={200} //Sets the minimum height of the timeline card.default=200
-          //cardWidth={} //Sets the maximum width of the timeline card
+          //cardWidth={1200} //Sets the maximum width of the timeline card
           cardPositionHorizontal="BOTTOM"
           theme={{
             primary: "#00415E",
@@ -51,23 +54,37 @@ export default function TimelineTemplate({ article_content, useLang }) {
             }
           }
           //mediaHeight={200}
+          //pl={10}
         >
           {article_content.timelineTemplate_timelines &&
             article_content.timelineTemplate_timelines.map((timeline) => (
-              <Box key={timeline.timelineInfos_id.id}>
+              <Box
+                key={timeline.timelineInfos_id.id}
+                sx={{
+                  background: "none",
+                  width: "100%",
+                }}
+              >
                 {useLang == true ? (
                   <Box
                     className="pt, timelineContent"
                     pt={2}
+                    pl={2}
                     sx={{
-                      width: { xs: "100%", md: "100%" },
-                      height: "50vh",
+                      position: "relative",
+                      left: 0,
+                      width: {
+                        xs: "100%",
+                        md: "1000px",
+                      },
+                      minWidth: "1000px",
+                      height: "60vh",
                       overflow: "scroll",
                       fontFamily: "Noto Sans JP",
                       fontWeight: 300,
                       fontSize: 20,
                       lineHeight: 1.75,
-                      textAlign: "justify",
+                      textAlign: "left",
                       letterSpacing: "-0.05em",
                     }}
                     dangerouslySetInnerHTML={{

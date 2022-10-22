@@ -54,8 +54,9 @@ function SamplePrevArrow(props) {
   );
 }
 const settings = {
-  dots: true,
-  infinite: true,
+  arrows: true,
+  dots: false,
+  infinite: false,
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
@@ -75,17 +76,23 @@ export default function TextImageTemplate({ article_content, useLang }) {
 
   return (
     <>
-      <Box p={"144px 32px 8px 32px"}>
-        <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 2, md: 2 }}>
+      <Box p={"104px 48px 10px 64px"}>
+        <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 2, md: 6 }}>
           {/*** row: text ***/}
           <Item sx={{ width: "50%", height: "100vh" }}>
             <Stack
               direction={{ xs: "row", md: "column" }}
-              spacing={{ xs: 18, md: 13 }}
+              spacing={{ xs: 0, md: 0 }}
             >
               {/*** column: title ***/}
               <Item>
-                <Box>
+                <Box
+                  sx={{
+                    position: "relative",
+                    height: "15vh",
+                    background: "none",
+                  }}
+                >
                   {useLang == true ? (
                     <Box
                       className="pt"
@@ -178,8 +185,19 @@ export default function TextImageTemplate({ article_content, useLang }) {
               <Slider {...settings}>
                 {article_content.textImageTemplate_images &&
                   article_content.textImageTemplate_images.map((image) => (
-                    <Box key={image.imageInfos_id.id}>
-                      {/* <Box>{image.imageInfos_id.image.filename_disk}</Box> */}
+                    <Box
+                      key={image.imageInfos_id.id}
+                      sx={{
+                        background: "none",
+                        position: "relative",
+                        height: "70vh",
+                        // borderTop: "5px solid #00415E",
+                        // overflowY: "scroll",
+                        // scrollbarWidth: "none",
+                        // "&::-webkit-scrollbar": { display: "none" },
+                      }}
+                    >
+                      {/*** column: image ***/}
                       <Box>
                         {image.imageInfos_id.videoURL == null ? (
                           <Box
@@ -216,17 +234,36 @@ export default function TextImageTemplate({ article_content, useLang }) {
                               url={image.imageInfos_id.videoURL}
                               width="100%"
                               height="100%"
-                              controls={true}
+                              controls="true"
+                              config={{
+                                youtube: {
+                                  playerVars: {
+                                    enablejsapi: 1,
+                                    origin: "https://www.youtube.com",
+                                  },
+                                },
+                              }}
                             />
                           </Box>
                         )}
                       </Box>
-
-                      <Box>
+                      {/*** column: image description ***/}
+                      <Box
+                        sx={{
+                          background: "none",
+                          position: "absolute",
+                          width: "100%",
+                          height: "55%",
+                          overflowY: "scroll",
+                        }}
+                      >
                         {useLang == true ? (
                           <Box
                             className="pt"
-                            p={6}
+                            pt={3}
+                            pl={6}
+                            pr={6}
+                            pb={6}
                             sx={{
                               fontFamily: "Noto Sans JP",
                               fontWeight: 300,
@@ -240,7 +277,10 @@ export default function TextImageTemplate({ article_content, useLang }) {
                         ) : (
                           <Box
                             className="pt"
-                            p={6}
+                            pt={3}
+                            pl={6}
+                            pr={6}
+                            pb={6}
                             sx={{
                               fontFamily: "Noto Sans JP",
                               fontWeight: 300,

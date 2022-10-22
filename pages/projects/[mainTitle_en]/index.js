@@ -23,7 +23,7 @@ const Item = styled(Paper)(({ theme }) => ({
   background: "none",
   boxShadow: "none",
   borderRadius: 0,
-  backgroundColor: "#00415E",
+  backgroundColor: "#000",
 }));
 
 export default function Project({ projects, useLang }) {
@@ -97,7 +97,7 @@ export default function Project({ projects, useLang }) {
                   sx={{
                     position: "absolute",
                     left: 8,
-                    top: 40,
+                    top: 30,
                     display: "inline-flex",
                   }}
                 >
@@ -132,7 +132,7 @@ export default function Project({ projects, useLang }) {
                   sx={{
                     position: "absolute",
                     left: 8,
-                    bottom: 40,
+                    bottom: 30,
                     fontSize: 17,
                     display: "inline-flex",
                   }}
@@ -171,9 +171,10 @@ export default function Project({ projects, useLang }) {
               <Box
                 sx={{
                   position: "absolute",
-                  width: "calc(100vw - 500px)",
+                  width: "calc(100vw - 400px)",
                   height: "100vh",
                   zIndex: 0,
+                  opacity: 0.6,
                 }}
               >
                 <Image
@@ -299,7 +300,7 @@ export default function Project({ projects, useLang }) {
                 key={project.id}
                 sx={{
                   backgroundColor: "#fff",
-                  width: "360px",
+                  width: "260px",
                   height: "100vh",
                   color: "#ff0000",
                   borderRight: "1px solid #000",

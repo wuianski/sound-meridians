@@ -19,19 +19,19 @@ const nextConfig = {
     domains: [`${process.env.DIRECTUS_CDN_DOMAIN}`],
     minimumCacheTTL: 60,
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/_next/:path*",
-  //       headers: [
-  //         {
-  //           key: "Access-Control-Allow-Origin",
-  //           value: "http://localhost:3000",
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
+  async headers() {
+    return [
+      {
+        source: "/_next/:path*",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "http://localhost:3000",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
