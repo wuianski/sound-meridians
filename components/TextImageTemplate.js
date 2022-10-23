@@ -76,12 +76,20 @@ export default function TextImageTemplate({ article_content, useLang }) {
 
   return (
     <>
-      <Box p={"104px 48px 10px 64px"}>
-        <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 2, md: 6 }}>
+      <Box p={{ xs: "48px 8px 8px 8px", md: "104px 48px 10px 64px" }}>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={{ xs: 3, md: 6 }}
+        >
           {/*** row: text ***/}
-          <Item sx={{ width: "50%", height: "100vh" }}>
+          <Item
+            sx={{
+              width: { xs: "100%", md: "50%" },
+              height: { xs: "40vh", md: "100vh" },
+            }}
+          >
             <Stack
-              direction={{ xs: "row", md: "column" }}
+              direction={{ xs: "column", md: "column" }}
               spacing={{ xs: 0, md: 0 }}
             >
               {/*** column: title ***/}
@@ -89,7 +97,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                 <Box
                   sx={{
                     position: "relative",
-                    height: "15vh",
+                    height: { xs: "10vh", md: "15vh" },
                     background: "none",
                   }}
                 >
@@ -128,13 +136,21 @@ export default function TextImageTemplate({ article_content, useLang }) {
               {/*** column: content ***/}
               <Item>
                 <Box
+                  pr={2}
                   sx={{
                     position: "relative",
-                    height: "55vh",
+                    height: { xs: "30vh", md: "55vh" },
                     borderTop: "5px solid #00415E",
                     overflowY: "scroll",
-                    scrollbarWidth: "none",
-                    "&::-webkit-scrollbar": { display: "none" },
+                    scrollbarWidth: "1px !important",
+                    scrollbarColor: "#888 #333 !important",
+                    "&::-webkit-scrollbar": {
+                      width: "1px",
+                      //backgroundColor: "#333",
+                    },
+                    "&::-webkit-scrollbar-thumb ": {
+                      backgroundColor: "#888",
+                    },
                   }}
                 >
                   {useLang == true ? (
@@ -144,7 +160,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       sx={{
                         fontFamily: "Noto Sans JP",
                         fontWeight: 300,
-                        fontSize: 16,
+                        fontSize: { xs: 14, md: 16 },
                         lineHeight: 1.75,
                         textAlign: "justify",
                         letterSpacing: "-0.05em",
@@ -160,7 +176,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       sx={{
                         fontFamily: "Noto Sans JP",
                         fontWeight: 300,
-                        fontSize: 16,
+                        fontSize: { xs: 14, md: 16 },
                         lineHeight: 1.75,
                         textAlign: "justify",
                         letterSpacing: "-0.05em",
@@ -177,11 +193,11 @@ export default function TextImageTemplate({ article_content, useLang }) {
           {/*** row: image ***/}
           <Item
             sx={{
-              width: "50%",
-              height: "100vh",
+              width: { xs: "100%", md: "50%" },
+              height: { xs: "40vh", md: "100vh" },
             }}
           >
-            <Box pl={6}>
+            <Box pl={{ xs: 3, md: 6 }} pr={{ xs: 3, md: 0 }}>
               <Slider {...settings}>
                 {article_content.textImageTemplate_images &&
                   article_content.textImageTemplate_images.map((image) => (
@@ -190,7 +206,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       sx={{
                         background: "none",
                         position: "relative",
-                        height: "70vh",
+                        height: { xs: "30vh", md: "70vh" },
                         // borderTop: "5px solid #00415E",
                         // overflowY: "scroll",
                         // scrollbarWidth: "none",
@@ -199,12 +215,13 @@ export default function TextImageTemplate({ article_content, useLang }) {
                     >
                       {/*** column: image ***/}
                       <Box>
-                        {image.imageInfos_id.videoURL == null ? (
+                        {image.imageInfos_id.description_tw &&
+                        image.imageInfos_id.videoURL == null ? (
                           <Box
                             sx={{
                               position: "relative",
                               width: "100%",
-                              height: 300,
+                              height: { xs: 150, md: 300 },
                               zIndex: 0,
                             }}
                           >
@@ -222,12 +239,12 @@ export default function TextImageTemplate({ article_content, useLang }) {
                             sx={{
                               position: "relative",
                               width: "100%",
-                              height: 300,
+                              height: { xs: 150, md: 300 },
                               zIndex: 0,
                             }}
                             className="player-wrapper"
-                            mt={"15px"}
-                            mb={"15px"}
+                            mt={"0px"}
+                            mb={"0px"}
                           >
                             <ReactPlayer
                               className="react-player"
@@ -249,25 +266,35 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       </Box>
                       {/*** column: image description ***/}
                       <Box
+                        pr={2}
                         sx={{
                           background: "none",
                           position: "absolute",
                           width: "100%",
-                          height: "55%",
+                          height: { xs: "55%", md: "55%" },
                           overflowY: "scroll",
+                          scrollbarWidth: "1px !important",
+                          scrollbarColor: "#888 #333 !important",
+                          "&::-webkit-scrollbar": {
+                            width: "1px",
+                            //backgroundColor: "#333",
+                          },
+                          "&::-webkit-scrollbar-thumb ": {
+                            backgroundColor: "#888",
+                          },
                         }}
                       >
                         {useLang == true ? (
                           <Box
                             className="pt"
-                            pt={3}
-                            pl={6}
-                            pr={6}
-                            pb={6}
+                            p={{
+                              xs: "8px 8px 64px 8px",
+                              md: "24px 48px 64px 48px",
+                            }}
                             sx={{
                               fontFamily: "Noto Sans JP",
                               fontWeight: 300,
-                              fontSize: 14,
+                              fontSize: { xs: 12, md: 14 },
                               textAlign: "center",
                             }}
                             dangerouslySetInnerHTML={{
@@ -277,14 +304,14 @@ export default function TextImageTemplate({ article_content, useLang }) {
                         ) : (
                           <Box
                             className="pt"
-                            pt={3}
-                            pl={6}
-                            pr={6}
-                            pb={6}
+                            p={{
+                              xs: "8px 8px 16px 8px",
+                              md: "24px 48px 64px 48px",
+                            }}
                             sx={{
                               fontFamily: "Noto Sans JP",
                               fontWeight: 300,
-                              fontSize: 14,
+                              fontSize: { xs: 12, md: 14 },
                               textAlign: "center",
                             }}
                             dangerouslySetInnerHTML={{

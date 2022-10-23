@@ -46,275 +46,467 @@ export default function Project({ projects, useLang }) {
 
   return (
     <>
-      {projects.projects.map((project, idx) => (
-        <Box key={project.id}>
-          <Stack
-            direction={{ xs: "row", md: "row" }}
-            spacing={{ xs: 0, md: 0 }}
-          >
-            {/*** row: return home ***/}
-            <Item>
-              <Link href="/">
+      {/*** DESKTOP VERSION ***/}
+      <Box sx={{ display: { xs: "none", md: "block" } }}>
+        {projects.projects.map((project, idx) => (
+          <Box key={project.id}>
+            <Stack
+              direction={{ xs: "row", md: "row" }}
+              spacing={{ xs: 0, md: 0 }}
+            >
+              {/*** row: return home ***/}
+              <Item>
+                <Link href="/">
+                  <Box
+                    sx={{
+                      position: "relative",
+                      top: 0,
+                      left: 0,
+                      width: "92px",
+                      height: "100vh",
+                      cursor: "pointer",
+                      zIndex: 4,
+                    }}
+                    ml={-2}
+                    mr={-2}
+                  >
+                    <Image
+                      src="/imgs/returnHomePage.png"
+                      alt="about open image"
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  </Box>
+                </Link>
+              </Item>
+              {/*** row: project name and country name ***/}
+              <Item>
                 <Box
                   sx={{
                     position: "relative",
-                    top: 0,
-                    left: 0,
-                    width: "92px",
+                    width: 80,
                     height: "100vh",
-                    cursor: "pointer",
+                    color: "#000",
+                    writingMode: "vertical-lr",
+                    textOrientation: "mixed",
+                    backgroundColor: "#fff",
                     zIndex: 3,
+                    borderRight: "1px solid #000",
+                    borderLeft: "1px solid #000",
                   }}
-                  ml={-2}
-                  mr={-2}
+                >
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      left: 8,
+                      top: 30,
+                      display: "inline-flex",
+                    }}
+                  >
+                    <Box
+                      className="pt"
+                      sx={{
+                        fontSize: 22,
+                        textTransform: "uppercase",
+                        fontFamily: "Noto Serif JP",
+                        fontWeight: 700,
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: project.mainTitle_tw,
+                      }}
+                    ></Box>
+                    <Box
+                      className="pt"
+                      mt={2}
+                      sx={{
+                        fontSize: 13,
+                        textTransform: "uppercase",
+                        fontFamily: "BioRhyme Expanded",
+                        fontWeight: 700,
+                        letterSpacing: "-0.015em",
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: project.mainTitle_en,
+                      }}
+                    ></Box>
+                  </Box>
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      left: 8,
+                      bottom: 30,
+                      fontSize: 17,
+                      display: "inline-flex",
+                    }}
+                  >
+                    <Box
+                      className="pt"
+                      sx={{
+                        fontSize: 15,
+                        fontFamily: "Noto Sans JP",
+                        fontWeight: 500,
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: project.nation_tw,
+                      }}
+                    ></Box>
+                    <Box
+                      className="pt"
+                      mt={2}
+                      sx={{
+                        fontSize: 14,
+                        textTransform: "uppercase",
+                        fontFamily: "Noto Sans JP",
+                        fontWeight: 500,
+                        lineHeight: 1.4,
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: project.nation_en,
+                      }}
+                    ></Box>
+                  </Box>
+                </Box>
+              </Item>
+              {/*** row: project intro ***/}
+              <Item>
+                {/*** background image ***/}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    width: "calc(100vw - 400px)",
+                    height: "100vh",
+                    zIndex: 0,
+                    opacity: 0.6,
+                  }}
                 >
                   <Image
-                    src="/imgs/returnHomePage.png"
-                    alt="about open image"
+                    src={`${process.env.DIRECTUS_CDN}/assets/${project.cover.filename_disk}`}
+                    placeholder="blur"
+                    blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.cover.filename_disk}`}
+                    alt="bg"
                     layout="fill"
-                    objectFit="contain"
+                    objectFit="cover"
+                    priority="true"
+                    as="image"
                   />
                 </Box>
-              </Link>
-            </Item>
-            {/*** row: project name and country name ***/}
-            <Item>
-              <Box
-                sx={{
-                  position: "relative",
-                  width: 80,
-                  height: "100vh",
-                  color: "#000",
-                  writingMode: "vertical-lr",
-                  textOrientation: "mixed",
-                  backgroundColor: "#fff",
-                  zIndex: 3,
-                  borderRight: "1px solid #000",
-                  borderLeft: "1px solid #000",
-                }}
-              >
+                {/*** text ***/}
                 <Box
+                  p={"50px 68px 27px 220px"}
                   sx={{
-                    position: "absolute",
-                    left: 8,
-                    top: 30,
-                    display: "inline-flex",
+                    height: "96vh",
+                    position: "relative",
+                    zIndex: 3,
+                    overflowY: "scroll",
+                    scrollbarWidth: "thin !important",
+                    scrollbarColor: "#888 #333 !important",
+                    "&::-webkit-scrollbar": {
+                      width: "1px",
+                      //backgroundColor: "#666",
+                    },
+                    "&::-webkit-scrollbar-thumb ": {
+                      backgroundColor: "#fff",
+                    },
                   }}
                 >
-                  <Box
-                    className="pt"
-                    sx={{
-                      fontSize: 22,
-                      textTransform: "uppercase",
-                      fontFamily: "Noto Serif JP",
-                      fontWeight: 700,
-                    }}
-                    dangerouslySetInnerHTML={{
-                      __html: project.mainTitle_tw,
-                    }}
-                  ></Box>
-                  <Box
-                    className="pt"
-                    mt={2}
-                    sx={{
-                      fontSize: 13,
-                      textTransform: "uppercase",
-                      fontFamily: "BioRhyme Expanded",
-                      fontWeight: 700,
-                      letterSpacing: "-0.015em",
-                    }}
-                    dangerouslySetInnerHTML={{
-                      __html: project.mainTitle_en,
-                    }}
-                  ></Box>
-                </Box>
-                <Box
-                  sx={{
-                    position: "absolute",
-                    left: 8,
-                    bottom: 30,
-                    fontSize: 17,
-                    display: "inline-flex",
-                  }}
-                >
-                  <Box
-                    className="pt"
-                    sx={{
-                      fontSize: 15,
-                      fontFamily: "Noto Sans JP",
-                      fontWeight: 500,
-                    }}
-                    dangerouslySetInnerHTML={{
-                      __html: project.nation_tw,
-                    }}
-                  ></Box>
-                  <Box
-                    className="pt"
-                    mt={2}
-                    sx={{
-                      fontSize: 14,
-                      textTransform: "uppercase",
-                      fontFamily: "Noto Sans JP",
-                      fontWeight: 500,
-                      lineHeight: 1.4,
-                    }}
-                    dangerouslySetInnerHTML={{
-                      __html: project.nation_en,
-                    }}
-                  ></Box>
-                </Box>
-              </Box>
-            </Item>
-            {/*** row: project intro ***/}
-            <Item>
-              {/*** background image ***/}
-              <Box
-                sx={{
-                  position: "absolute",
-                  width: "calc(100vw - 400px)",
-                  height: "100vh",
-                  zIndex: 0,
-                  opacity: 0.6,
-                }}
-              >
-                <Image
-                  src={`${process.env.DIRECTUS_CDN}/assets/${project.cover.filename_disk}`}
-                  placeholder="blur"
-                  blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.cover.filename_disk}`}
-                  alt="bg"
-                  layout="fill"
-                  objectFit="cover"
-                  priority="true"
-                  as="image"
-                />
-              </Box>
-              {/*** text ***/}
-              <Box
-                p={"50px 52px 27px 220px"}
-                sx={{
-                  height: "96vh",
-                  overflowY: "scroll",
-                  scrollbarWidth: "none",
-                  "&::-webkit-scrollbar": { display: "none" },
-                  position: "relative",
-                  zIndex: 3,
-                }}
-              >
-                {useLang == true ? (
-                  <>
-                    <Box
-                      className="pt"
-                      sx={{
-                        textAlign: "left",
-                        fontFamily: "Noto Sans JP",
-                        fontSize: 40,
-                        fontWeight: 700,
-                        lineHeight: 1.4,
-                        color: "#fff",
-                        textShadow: "0.06em 0.06em 0.12em #000",
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: project.introTitle_tw,
-                      }}
-                    />
-                    <Box
-                      className="pt"
-                      pt={5}
-                      sx={{
-                        textAlign: "justify",
-                        fontWeight: 400,
-                        color: "#fff",
-                        fontFamily: "Noto Sans JP",
+                  {useLang == true ? (
+                    <>
+                      <Box
+                        className="pt"
+                        sx={{
+                          textAlign: "left",
+                          fontFamily: "Noto Sans JP",
+                          fontSize: 40,
+                          fontWeight: 700,
+                          lineHeight: 1.4,
+                          color: "#fff",
+                          textShadow: "0.06em 0.06em 0.12em #000",
+                        }}
+                        dangerouslySetInnerHTML={{
+                          __html: project.introTitle_tw,
+                        }}
+                      />
+                      <Box
+                        className="pt"
+                        pt={5}
+                        sx={{
+                          textAlign: "justify",
+                          fontWeight: 400,
+                          color: "#fff",
+                          fontFamily: "Noto Sans JP",
 
-                        fontSize: 16,
-                        fontWeight: 400,
-                        lineHeight: 1.75,
-                        letterSpacing: "-0.05em",
-                        textShadow: "0.06em 0.06em 0.12em #000",
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: project.introContent_tw,
-                      }}
-                    />
-                  </>
-                ) : (
+                          fontSize: 16,
+                          fontWeight: 400,
+                          lineHeight: 1.75,
+                          letterSpacing: "-0.05em",
+                          textShadow: "0.06em 0.06em 0.12em #000",
+                        }}
+                        dangerouslySetInnerHTML={{
+                          __html: project.introContent_tw,
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <Box
+                        className="pt"
+                        sx={{
+                          textAlign: "left",
+                          fontFamily: "Noto Sans JP",
+                          textTransform: "capitalize",
+                          fontSize: 40,
+                          fontWeight: 700,
+                          lineHeight: 1.4,
+                          color: "#fff",
+                          textShadow: "0.06em 0.06em 0.12em #000",
+                        }}
+                        dangerouslySetInnerHTML={{
+                          __html: project.introTitle_en,
+                        }}
+                      />
+                      <Box
+                        className="pt"
+                        pt={5}
+                        sx={{
+                          textAlign: "justify",
+                          fontWeight: 400,
+                          color: "#fff",
+                          fontFamily: "Noto Sans JP",
+                          fontSize: 16,
+                          fontWeight: 400,
+                          lineHeight: 1.75,
+                          letterSpacing: "-0.05em",
+                          textShadow: "0.06em 0.06em 0.12em #000",
+                        }}
+                        dangerouslySetInnerHTML={{
+                          __html: project.introContent_en,
+                        }}
+                      />
+                    </>
+                  )}
+                </Box>
+                {/* <Box
+                  pr={1}
+                  mt={-0.5}
+                  sx={{
+                    zIndex: 9,
+                    position: "relative",
+                    textAlign: "end",
+                    mixBlendMode: "difference",
+                    textShadow: "0.06em 0.06em 0.12em #000",
+                    color: "#fff",
+                  }}
+                >
+                  <KeyboardDoubleArrowDownSharpIcon
+                    alt="keyboard arrow down"
+                    sx={{ fontSize: "xx-large" }}
+                  />
+                </Box> */}
+              </Item>
+              {/*** row: slider of articles ***/}
+              <Item>
+                <Box
+                  key={project.id}
+                  sx={{
+                    backgroundColor: "#fff",
+                    width: "260px",
+                    height: "100vh",
+                    color: "#ff0000",
+                    borderRight: "1px solid #000",
+                  }}
+                  style={{ maxWidth: 480, maxHeight: "100vh" }}
+                >
                   <>
-                    <Box
-                      className="pt"
-                      sx={{
-                        textAlign: "left",
-                        fontFamily: "Noto Sans JP",
-                        textTransform: "capitalize",
-                        fontSize: 40,
-                        fontWeight: 700,
-                        lineHeight: 1.4,
-                        color: "#fff",
-                        textShadow: "0.06em 0.06em 0.12em #000",
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: project.introTitle_en,
-                      }}
-                    />
-                    <Box
-                      className="pt"
-                      pt={5}
-                      sx={{
-                        textAlign: "justify",
-                        fontWeight: 400,
-                        color: "#fff",
-                        fontFamily: "Noto Sans JP",
-                        fontSize: 16,
-                        fontWeight: 400,
-                        lineHeight: 1.75,
-                        letterSpacing: "-0.05em",
-                        textShadow: "0.06em 0.06em 0.12em #000",
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: project.introContent_en,
-                      }}
-                    />
+                    <ArticleSlider project={project} useLang={useLang} />
                   </>
-                )}
-              </Box>
-              <Box
-                pr={1}
-                mt={-0.5}
-                sx={{
-                  zIndex: 9,
-                  position: "relative",
-                  textAlign: "end",
-                  mixBlendMode: "difference",
-                  textShadow: "0.06em 0.06em 0.12em #000",
-                  color: "#fff",
-                }}
-              >
-                <KeyboardDoubleArrowDownSharpIcon
-                  alt="keyboard arrow down"
-                  sx={{ fontSize: "xx-large" }}
-                />
-              </Box>
-            </Item>
-            {/*** row: slider of articles ***/}
-            <Item>
-              <Box
-                key={project.id}
-                sx={{
-                  backgroundColor: "#fff",
-                  width: "260px",
-                  height: "100vh",
-                  color: "#ff0000",
-                  borderRight: "1px solid #000",
-                }}
-                style={{ maxWidth: 480, maxHeight: "100vh" }}
-              >
-                <>
-                  <ArticleSlider project={project} useLang={useLang} />
-                </>
-              </Box>
-            </Item>
-          </Stack>
-        </Box>
-      ))}
+                </Box>
+              </Item>
+            </Stack>
+          </Box>
+        ))}
+      </Box>
+
+      {/*** MOBILE VERSION ***/}
+      <Box sx={{ display: { xs: "block", md: "none" } }}>
+        {projects.projects.map((project, idx) => (
+          <Box key={project.id}>
+            <Stack
+              direction={{ xs: "row", md: "row" }}
+              spacing={{ xs: 0, md: 0 }}
+            >
+              {/*** row: return home ***/}
+              <Item>
+                <Link href="/">
+                  <Box
+                    sx={{
+                      position: "relative",
+                      top: 0,
+                      left: 0,
+                      width: "92px",
+                      height: "100vh",
+                      cursor: "pointer",
+                      zIndex: 3,
+                    }}
+                    ml={-2}
+                    mr={-2}
+                  >
+                    <Image
+                      src="/imgs/returnHomePage.png"
+                      alt="about open image"
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  </Box>
+                </Link>
+              </Item>
+
+              <Item>
+                <Stack
+                  direction={{ xs: "column", md: "column" }}
+                  spacing={{ xs: 0, md: 0 }}
+                >
+                  {/*** row: project intro ***/}
+                  <Item>
+                    {/*** background image ***/}
+                    {/* <Box
+                      sx={{
+                        position: "absolute",
+                        width: "20vw",
+                        height: "100vh",
+                        zIndex: 0,
+                        opacity: 0.6,
+                      }}
+                    >
+                      <Image
+                        src={`${process.env.DIRECTUS_CDN}/assets/${project.cover.filename_disk}`}
+                        placeholder="blur"
+                        blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.cover.filename_disk}`}
+                        alt="bg"
+                        layout="fill"
+                        objectFit="cover"
+                        priority="true"
+                        as="image"
+                      />
+                    </Box> */}
+                    {/*** text ***/}
+                    <Box
+                      p={"13px 8px 8px 8px"}
+                      sx={{
+                        width: "100%",
+                        height: "calc(100vh - 100px)",
+                        position: "relative",
+                        zIndex: 3,
+                        overflowY: "scroll",
+                        scrollbarWidth: "thin !important",
+                        scrollbarColor: "#888 #333 !important",
+                        "&::-webkit-scrollbar": {
+                          width: "4px",
+                          backgroundColor: "#333",
+                        },
+                        "&::-webkit-scrollbar-thumb ": {
+                          backgroundColor: "#888",
+                        },
+                      }}
+                    >
+                      {useLang == true ? (
+                        <>
+                          <Box
+                            className="pt"
+                            sx={{
+                              textAlign: "left",
+                              fontFamily: "Noto Sans JP",
+                              fontSize: { xs: 30, md: 40 },
+                              fontWeight: 700,
+                              lineHeight: 1.4,
+                              color: "#fff",
+                              textShadow: "0.06em 0.06em 0.12em #000",
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: project.introTitle_tw,
+                            }}
+                          />
+                          <Box
+                            className="pt"
+                            pt={5}
+                            sx={{
+                              textAlign: "justify",
+                              fontWeight: 400,
+                              color: "#fff",
+                              fontFamily: "Noto Sans JP",
+
+                              fontSize: { xs: 14, md: 16 },
+                              fontWeight: 400,
+                              lineHeight: 1.75,
+                              letterSpacing: "-0.05em",
+                              textShadow: "0.06em 0.06em 0.12em #000",
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: project.introContent_tw,
+                            }}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <Box
+                            className="pt"
+                            sx={{
+                              textAlign: "left",
+                              fontFamily: "Noto Sans JP",
+                              textTransform: "capitalize",
+                              fontSize: { xs: 30, md: 40 },
+                              fontWeight: 700,
+                              lineHeight: 1.4,
+                              color: "#fff",
+                              textShadow: "0.06em 0.06em 0.12em #000",
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: project.introTitle_en,
+                            }}
+                          />
+                          <Box
+                            className="pt"
+                            pt={5}
+                            sx={{
+                              textAlign: "justify",
+                              fontWeight: 400,
+                              color: "#fff",
+                              fontFamily: "Noto Sans JP",
+                              fontSize: { xs: 14, md: 16 },
+                              fontWeight: 400,
+                              lineHeight: 1.75,
+                              letterSpacing: "-0.05em",
+                              textShadow: "0.06em 0.06em 0.12em #000",
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: project.introContent_en,
+                            }}
+                          />
+                        </>
+                      )}
+                    </Box>
+                  </Item>
+                  {/*** row: slider of articles ***/}
+                  <Item>
+                    <Box
+                      key={project.id}
+                      sx={{
+                        backgroundColor: "#BCACA8",
+                        height: { xs: 100, md: "100vh" },
+                        maxWidth: { xs: "100%", md: 480 },
+                        maxHeight: { xs: 100, md: "100vh" },
+                      }}
+                    >
+                      <>
+                        <ArticleSlider project={project} useLang={useLang} />
+                      </>
+                    </Box>
+                  </Item>
+                </Stack>
+              </Item>
+            </Stack>
+          </Box>
+        ))}
+      </Box>
     </>
   );
 }

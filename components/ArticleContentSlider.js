@@ -78,7 +78,17 @@ export default function ArticleContentSlider({
           padding: "0px",
         }}
       >
-        <ul style={{ marginBottom: "6px", marginLeft: "-16px" }}> {dots} </ul>
+        <ul>
+          <Box
+            sx={{
+              marginBottom: "6px",
+              marginLeft: { xs: "-48px", md: "-16px" },
+            }}
+          >
+            {" "}
+            {dots}{" "}
+          </Box>
+        </ul>
       </div>
     ),
     customPaging: (i) => (
@@ -119,10 +129,11 @@ export default function ArticleContentSlider({
                   backgroundColor: "#000",
                   color: "#fff",
                   borderRight: "1px solid #000",
-                  width: "calc(100vw - 252px)", //-252px will see arrow, -200px will not see
-                  // position: "relative",
-                  // height: "50vh",
-                  // top: 0,
+                  width: {
+                    xs: "calc(100vw - 60px)",
+                    md: "calc(100vw - 252px)",
+                  },
+                  //width: "calc(100vw - 252px)", //-252px will see arrow, -200px will not see
                 }}
               >
                 {/*** vvv each article's contents ***/}
@@ -130,7 +141,12 @@ export default function ArticleContentSlider({
                   {article.articles_id &&
                     article.articles_id.contents.map((contents) => (
                       <Box key={contents.articleContents_id.id}>
-                        <Box sx={{ width: "100%", height: "95vh" }}>
+                        <Box
+                          sx={{
+                            width: "100%",
+                            height: { xs: "calc(97vh - 100px)", md: "95vh" },
+                          }}
+                        >
                           {/*** vvv each article's content of text template ***/}
                           {contents.articleContents_id.contentType == 1 && (
                             <>

@@ -13,6 +13,10 @@ import { motion } from "framer-motion";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import styles from "../styles/Home.module.css";
+import KeyboardArrowLeftSharpIcon from "@mui/icons-material/KeyboardArrowLeftSharp";
+import KeyboardArrowRightSharpIcon from "@mui/icons-material/KeyboardArrowRightSharp";
+import KeyboardArrowUpSharpIcon from "@mui/icons-material/KeyboardArrowUpSharp";
+import KeyboardArrowDownSharpIcon from "@mui/icons-material/KeyboardArrowDownSharp";
 
 import { useRouter } from "next/router";
 
@@ -222,406 +226,777 @@ export default function Home({ about, projects, useLang }) {
     setIsOpen(false);
   };
 
-  const [sliderRef] = useKeenSlider({
+  // const [sliderRef] = useKeenSlider({
+  //   initial: 0,
+  //   loop: false,
+  //   mode: "snap",
+  //   rtl: false,
+  //   slides: {
+  //     number: 4,
+  //     perView: 4,
+  //   },
+  //   breakpoints: {
+  //     "(max-width: 900px)": {
+  //       vertical: true,
+  //       slides: { perView: 1 },
+  //     },
+  //   },
+  // });
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
-    loop: false,
-    mode: "snap",
-    rtl: false,
     slides: {
       number: 4,
       perView: 4,
+    },
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    },
+    breakpoints: {
+      "(max-width: 900px)": {
+        vertical: true,
+        slides: { perView: 2 },
+      },
     },
   });
 
   return (
     <>
-      <Box>
-        {/*** about open icon  ***/}
-
-        <motion.div
-          variants={about_open}
-          initial="closed"
-          animate={isOpen ? "open" : "closed"}
-        >
-          <Box
-            sx={{
-              position: "absolute",
-              top: -90,
-              left: 0,
-              width: "443px",
-              height: "443px",
-              cursor: "pointer",
-              zIndex: 3,
-              //mixBlendMode: "lighten",
-            }}
-            onClick={openAbout}
+      {/*** DESKTOP VERSION ***/}
+      <Box sx={{ display: { xs: "none", md: "block" } }}>
+        <Box>
+          {/*** about open icon  ***/}
+          <motion.div
+            variants={about_open}
+            initial="closed"
+            animate={isOpen ? "open" : "closed"}
           >
-            <Image
-              src="/imgs/aboutOpen.png"
-              alt="about open image"
-              layout="intrinsic"
-              objectFit="cover"
-              width={443}
-              height={443}
-              placeholder="blur"
-              blurDataURL="/imgs/aboutOpen.png"
-            />
-          </Box>
-        </motion.div>
-        {/*** about return icon  ***/}
-        <motion.div
-          variants={about_return}
-          initial="closed"
-          animate={isOpen ? "open" : "closed"}
-        >
-          <Box
-            sx={{
-              position: "absolute",
-              bottom: -180,
-              left: "53vw",
-              width: "575px",
-              height: "575px",
-              cursor: "pointer",
-              zIndex: 3,
-            }}
-            onClick={returnAbout}
-          >
-            <Image
-              src="/imgs/aboutReturn.png"
-              alt="about open image"
-              layout="intrinsic"
-              objectFit="cover"
-              width={575}
-              height={575}
-              placeholder="blur"
-              blurDataURL="/imgs/aboutReturn.png"
-            />
-          </Box>
-        </motion.div>
-      </Box>
-
-      <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 0, md: 0 }}>
-        {/*** row: return home ***/}
-        <Item>
-          <Box
-            sx={{
-              position: "relative",
-              width: "60px",
-              height: "100vh",
-              backgroundColor: "#fff",
-              borderRight: "1px solid #000",
-              zIndex: 2,
-            }}
-          ></Box>
-        </Item>
-        {/*** row: about ***/}
-        <Item>
-          <Box sx={{ borderRight: "1px solid #000" }}>
-            <motion.div
-              variants={row2}
-              initial="closed"
-              animate={isOpen ? "open" : "closed"}
+            <Box
+              sx={{
+                position: "absolute",
+                top: -90,
+                left: 0,
+                width: "443px",
+                height: "443px",
+                cursor: "pointer",
+                zIndex: 3,
+                //mixBlendMode: "lighten",
+              }}
+              onClick={openAbout}
             >
-              <Box
-                sx={{
-                  background:
-                    "linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%)",
-                  height: "100vh",
-                  color: "#ff0000",
-                  textAlign: "center",
-                  borderRight: "1px solid #000",
-                }}
+              <Image
+                src="/imgs/aboutOpen.png"
+                alt="about open image"
+                layout="intrinsic"
+                objectFit="cover"
+                width={443}
+                height={443}
+                placeholder="blur"
+                blurDataURL="/imgs/aboutOpen.png"
+              />
+            </Box>
+          </motion.div>
+          {/*** about return icon  ***/}
+          <motion.div
+            variants={about_return}
+            initial="closed"
+            animate={isOpen ? "open" : "closed"}
+          >
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: -180,
+                left: "53vw",
+                width: "575px",
+                height: "575px",
+                cursor: "pointer",
+                zIndex: 3,
+              }}
+              onClick={returnAbout}
+            >
+              <Image
+                src="/imgs/aboutReturn.png"
+                alt="about open image"
+                layout="intrinsic"
+                objectFit="cover"
+                width={575}
+                height={575}
+                placeholder="blur"
+                blurDataURL="/imgs/aboutReturn.png"
+              />
+            </Box>
+          </motion.div>
+        </Box>
+        <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 0, md: 0 }}>
+          {/*** row: return home ***/}
+          <Item>
+            <Box
+              sx={{
+                position: "relative",
+                width: "60px",
+                height: "100vh",
+                backgroundColor: "#fff",
+                borderRight: "1px solid #000",
+                zIndex: 2,
+              }}
+            ></Box>
+          </Item>
+          {/*** row: about ***/}
+          <Item>
+            <Box sx={{ borderRight: "1px solid #000" }}>
+              <motion.div
+                variants={row2}
+                initial="closed"
+                animate={isOpen ? "open" : "closed"}
               >
-                {/*** site name en ***/}
-                <Box sx={{ position: "absolute" }}>
-                  <motion.div
-                    variants={siteName_en}
-                    initial="closed"
-                    animate={isOpen ? "open" : "closed"}
-                  >
-                    <Box
-                      sx={{
-                        position: "relative",
-                        width: 45,
-                        height: "100vh",
-                        zIndex: 0,
-                        mixBlendMode: "multiply",
-                      }}
+                <Box
+                  sx={{
+                    background:
+                      "linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%)",
+                    height: "100vh",
+                    color: "#ff0000",
+                    textAlign: "center",
+                    borderRight: "1px solid #000",
+                  }}
+                >
+                  {/*** site name en ***/}
+                  <Box sx={{ position: "absolute" }}>
+                    <motion.div
+                      variants={siteName_en}
+                      initial="closed"
+                      animate={isOpen ? "open" : "closed"}
                     >
-                      <Image
-                        src="/imgs/siteName_en.png"
-                        alt="bg"
-                        layout="fill"
-                        objectFit="contain"
-                        placeholder="blur"
-                        blurDataURL="/imgs/siteName_en.png"
-                      />
-                    </Box>
-                  </motion.div>
-                </Box>
-                {/*** site name tw ***/}
-                <Box sx={{ position: "absolute" }}>
-                  <motion.div
-                    variants={siteName_tw}
-                    initial="closed"
-                    animate={isOpen ? "open" : "closed"}
-                  >
-                    <Box
-                      sx={{
-                        position: "relative",
-                        left: -45,
-                        width: 621,
-                        height: "100vh",
-                        zIndex: 1,
-                        mixBlendMode: "difference",
-                      }}
-                    >
-                      <Image
-                        src="/imgs/sitename_tw.png"
-                        alt="bg"
-                        layout="fill"
-                        objectFit="contain"
-                        placeholder="blur"
-                        blurDataURL="/imgs/sitename_tw.png"
-                        // priority="true"
-                        // as="image"
-                      />
-                    </Box>
-                  </motion.div>
-                </Box>
-                {/*** about content ***/}
-                <Box sx={{ position: "absolute" }}>
-                  <motion.div
-                    variants={about_content}
-                    initial="closed"
-                    animate={isOpen ? "open" : "closed"}
-                  >
-                    <Box
-                      sx={{
-                        position: "relative",
-                        left: 0,
-                        width: "40%",
-                        height: "100vh",
-                        zIndex: 0,
-                        color: "#00415E",
-                        overflowY: "scroll",
-                        scrollbarWidth: "none",
-                        "&::-webkit-scrollbar": { display: "none" },
-                      }}
-                    >
-                      <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
                       <Box
                         sx={{
                           position: "relative",
-                          width: "100%",
-                          height: 146,
+                          width: 45,
+                          height: "100vh",
+                          zIndex: 0,
+                          mixBlendMode: "multiply",
                         }}
                       >
                         <Image
-                          src="/imgs/aboutTitle.png"
-                          //placeholder="blur"
+                          src="/imgs/siteName_en.png"
                           alt="bg"
                           layout="fill"
                           objectFit="contain"
                           placeholder="blur"
-                          blurDataURL="/imgs/aboutTitle.png"
+                          blurDataURL="/imgs/siteName_en.png"
                         />
                       </Box>
-                      <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
-                      {useLang == true ? (
-                        <Box
-                          sx={{
-                            textAlign: "justify",
-                            fontSize: 16,
-                            letterSpacing: "-0.05em",
-                            lineHeight: 1.75,
-                            fontWeight: 400,
-                          }}
-                          dangerouslySetInnerHTML={{
-                            __html: about.about.introContent_tw,
-                          }}
-                        />
-                      ) : (
-                        <Box
-                          sx={{
-                            textAlign: "justify",
-                            fontSize: 16,
-                            letterSpacing: "-0.05em",
-                            lineHeight: 1.75,
-                            fontWeight: 400,
-                          }}
-                          dangerouslySetInnerHTML={{
-                            __html: about.about.introContent_en,
-                          }}
-                        />
-                      )}
-
-                      <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
-                      <Box
-                        sx={{ textAlign: "left", fontSize: 12 }}
-                        dangerouslySetInnerHTML={{
-                          __html: about.about.credit_tw,
-                        }}
-                      />
-                      <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
-                    </Box>
-                  </motion.div>
-                </Box>
-              </Box>
-            </motion.div>
-          </Box>
-        </Item>
-        {/*** row: slider of projects ***/}
-        <Item>
-          <Box
-            sx={{
-              backgroundColor: "#fff",
-              width: "480px",
-              height: "100vh",
-              color: "#ff0000",
-              borderRight: "1px solid #000",
-            }}
-            ref={sliderRef}
-            className="keen-slider"
-            style={{ maxWidth: 480, maxHeight: "100vh" }}
-          >
-            {myProjects &&
-              myProjects.map((project, idx) => (
-                <Box
-                  key={idx}
-                  className={`keen-slider__slide ${styles.slider_entity}`}
-                  style={{ maxWidth: 120, minWidth: 120 }}
-                  sx={{ cursor: "pointer", borderRight: "1px solid #000" }}
-                >
-                  <Link
-                    href={`/projects/${encodeURIComponent(
-                      project.mainTitle_en
-                    )}`}
-                  >
-                    <Stack
-                      direction={{ xs: "row", md: "row" }}
-                      spacing={{ xs: 0, md: 0 }}
+                    </motion.div>
+                  </Box>
+                  {/*** site name tw ***/}
+                  <Box sx={{ position: "absolute" }}>
+                    <motion.div
+                      variants={siteName_tw}
+                      initial="closed"
+                      animate={isOpen ? "open" : "closed"}
                     >
-                      <Item>
+                      <Box
+                        sx={{
+                          position: "relative",
+                          left: -45,
+                          width: 621,
+                          height: "100vh",
+                          zIndex: 1,
+                          mixBlendMode: "difference",
+                        }}
+                      >
+                        <Image
+                          src="/imgs/sitename_tw.png"
+                          alt="bg"
+                          layout="fill"
+                          objectFit="contain"
+                          placeholder="blur"
+                          blurDataURL="/imgs/sitename_tw.png"
+                          // priority="true"
+                          // as="image"
+                        />
+                      </Box>
+                    </motion.div>
+                  </Box>
+                  {/*** about content ***/}
+                  <Box sx={{ position: "absolute" }}>
+                    <motion.div
+                      variants={about_content}
+                      initial="closed"
+                      animate={isOpen ? "open" : "closed"}
+                    >
+                      <Box
+                        pr={2}
+                        sx={{
+                          position: "relative",
+                          left: 0,
+                          width: "40%",
+                          height: "100vh",
+                          zIndex: 0,
+                          color: "#00415E",
+                          overflowY: "scroll",
+                          scrollbarWidth: "thin !important",
+                          scrollbarColor: "#888 #333 !important",
+                          "&::-webkit-scrollbar": {
+                            width: "1px",
+                            backgroundColor: "#666",
+                          },
+                          "&::-webkit-scrollbar-thumb ": {
+                            backgroundColor: "#00415E",
+                          },
+                        }}
+                      >
+                        <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
                         <Box
                           sx={{
                             position: "relative",
-                            width: 80,
-                            height: "100vh",
-                            color: "#000",
-                            writingMode: "vertical-lr",
-                            textOrientation: "mixed",
-                            backgroundColor: "#fff",
-                            zIndex: 1,
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              position: "absolute",
-                              left: 8,
-                              top: 30,
-                              display: "inline-flex",
-                            }}
-                          >
-                            <Box
-                              className={`${styles.pt}`}
-                              sx={{
-                                fontSize: 22,
-                                textTransform: "uppercase",
-                                fontFamily: "Noto Serif JP",
-                                fontWeight: 700,
-                              }}
-                              // dangerouslySetInnerHTML={{
-                              //   __html: project.mainTitle_tw,
-                              // }}
-                            >
-                              {project.mainTitle_tw}
-                            </Box>
-                            <Box
-                              className={`${styles.pt}`}
-                              mt={2}
-                              sx={{
-                                fontSize: 13,
-                                textTransform: "uppercase",
-                                fontFamily: "BioRhyme Expanded",
-                                fontWeight: 700,
-                                letterSpacing: "-0.015em",
-                              }}
-                              // dangerouslySetInnerHTML={{
-                              //   __html: project.mainTitle_en,
-                              // }}
-                            >
-                              {project.mainTitle_en}
-                            </Box>
-                          </Box>
-                          <Box
-                            sx={{
-                              position: "absolute",
-                              left: 8,
-                              bottom: 30,
-                              fontSize: 17,
-                              display: "inline-flex",
-                            }}
-                          >
-                            <Box
-                              //component={"span"}
-                              className={`${styles.pt}`}
-                              sx={{
-                                fontSize: 15,
-                                fontFamily: "Noto Sans JP",
-                                fontWeight: 500,
-                              }}
-                              // dangerouslySetInnerHTML={{
-                              //   __html: project.nation_tw,
-                              // }}
-                            >
-                              {project.nation_tw}
-                            </Box>
-                            <Box
-                              // component={"span"}
-                              className={`${styles.pt}`}
-                              mt={2}
-                              sx={{
-                                fontSize: 14,
-                                textTransform: "uppercase",
-                                fontFamily: "Noto Sans JP",
-                                fontWeight: 500,
-                              }}
-                              // dangerouslySetInnerHTML={{
-                              //   __html: project.nation_en,
-                              // }}
-                            >
-                              {project.nation_en}
-                            </Box>
-                          </Box>
-                        </Box>
-                      </Item>
-                      <Item>
-                        <Box
-                          sx={{
-                            position: "relative",
-                            width: 40,
-                            height: "100vh",
-                            zIndex: 0,
+                            width: "100%",
+                            height: 146,
                           }}
                         >
                           <Image
-                            src={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
-                            alt=""
+                            src="/imgs/aboutTitle.png"
+                            //placeholder="blur"
+                            alt="bg"
                             layout="fill"
-                            objectFit="cover"
+                            objectFit="contain"
                             placeholder="blur"
-                            blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
+                            blurDataURL="/imgs/aboutTitle.png"
                           />
                         </Box>
-                      </Item>
-                    </Stack>
-                  </Link>
+                        <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                        {useLang == true ? (
+                          <Box
+                            sx={{
+                              textAlign: "justify",
+                              fontSize: 16,
+                              letterSpacing: "-0.05em",
+                              lineHeight: 1.75,
+                              fontWeight: 400,
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: about.about.introContent_tw,
+                            }}
+                          />
+                        ) : (
+                          <Box
+                            sx={{
+                              textAlign: "justify",
+                              fontSize: 16,
+                              letterSpacing: "-0.05em",
+                              lineHeight: 1.75,
+                              fontWeight: 400,
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: about.about.introContent_en,
+                            }}
+                          />
+                        )}
+
+                        <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                        <Box
+                          sx={{ textAlign: "left", fontSize: 12 }}
+                          dangerouslySetInnerHTML={{
+                            __html: about.about.credit_tw,
+                          }}
+                        />
+                        <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                      </Box>
+                    </motion.div>
+                  </Box>
                 </Box>
-              ))}
-          </Box>
-        </Item>
-      </Stack>
+              </motion.div>
+            </Box>
+          </Item>
+          {/*** row: slider of projects ***/}
+          <Item>
+            <Box
+              sx={{
+                backgroundColor: "#fff",
+                height: "100vh",
+                color: "#ff0000",
+                borderRight: "1px solid #000",
+                maxWidth: 480,
+                maxHeight: "100vh",
+              }}
+              ref={sliderRef}
+              className="keen-slider"
+              //style={{ maxWidth: 480, maxHeight: "100vh" }}
+            >
+              {myProjects &&
+                myProjects.map((project, idx) => (
+                  <Box
+                    key={idx}
+                    className={`keen-slider__slide ${styles.slider_entity}`}
+                    style={{ maxWidth: 120, minWidth: 120 }}
+                    sx={{ cursor: "pointer", borderRight: "1px solid #000" }}
+                  >
+                    <Link
+                      href={`/projects/${encodeURIComponent(
+                        project.mainTitle_en
+                      )}`}
+                    >
+                      <Stack
+                        direction={{ xs: "row", md: "row" }}
+                        spacing={{ xs: 0, md: 0 }}
+                      >
+                        <Item>
+                          <Box
+                            sx={{
+                              position: "relative",
+                              width: 80,
+                              height: "100vh",
+                              color: "#000",
+                              writingMode: "vertical-lr",
+                              textOrientation: "mixed",
+                              backgroundColor: "#fff",
+                              zIndex: 1,
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                position: "absolute",
+                                left: 8,
+                                top: 30,
+                                display: "inline-flex",
+                              }}
+                            >
+                              <Box
+                                className={`${styles.pt}`}
+                                sx={{
+                                  fontSize: 22,
+                                  textTransform: "uppercase",
+                                  fontFamily: "Noto Serif JP",
+                                  fontWeight: 700,
+                                }}
+                              >
+                                {project.mainTitle_tw}
+                              </Box>
+                              <Box
+                                className={`${styles.pt}`}
+                                mt={2}
+                                sx={{
+                                  fontSize: 13,
+                                  textTransform: "uppercase",
+                                  fontFamily: "BioRhyme Expanded",
+                                  fontWeight: 700,
+                                  letterSpacing: "-0.015em",
+                                }}
+                              >
+                                {project.mainTitle_en}
+                              </Box>
+                            </Box>
+                            <Box
+                              sx={{
+                                position: "absolute",
+                                left: 8,
+                                bottom: 30,
+                                fontSize: 17,
+                                display: "inline-flex",
+                              }}
+                            >
+                              <Box
+                                className={`${styles.pt}`}
+                                sx={{
+                                  fontSize: 15,
+                                  fontFamily: "Noto Sans JP",
+                                  fontWeight: 500,
+                                }}
+                              >
+                                {project.nation_tw}
+                              </Box>
+                              <Box
+                                className={`${styles.pt}`}
+                                mt={2}
+                                sx={{
+                                  fontSize: 14,
+                                  textTransform: "uppercase",
+                                  fontFamily: "Noto Sans JP",
+                                  fontWeight: 500,
+                                }}
+                              >
+                                {project.nation_en}
+                              </Box>
+                            </Box>
+                          </Box>
+                        </Item>
+                        <Item>
+                          <Box
+                            sx={{
+                              position: "relative",
+                              width: 40,
+                              height: "100vh",
+                              zIndex: 0,
+                            }}
+                          >
+                            <Image
+                              src={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
+                              alt=""
+                              layout="fill"
+                              objectFit="cover"
+                              placeholder="blur"
+                              blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
+                            />
+                          </Box>
+                        </Item>
+                      </Stack>
+                    </Link>
+                  </Box>
+                ))}
+            </Box>
+          </Item>
+        </Stack>
+      </Box>
+
+      {/*** MOBILE VERSION ***/}
+      <Box sx={{ display: { xs: "block", md: "none" } }}>
+        <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 0, md: 0 }}>
+          {/*** row: return home ***/}
+          <Item>
+            <Link href="/">
+              <Box
+                sx={{
+                  position: "relative",
+                  top: 0,
+                  left: 0,
+                  width: "92px",
+                  height: "100vh",
+                  cursor: "pointer",
+                  zIndex: 0,
+                  border: "none",
+                }}
+                ml={-2}
+                mr={-2}
+              >
+                <Image
+                  src="/imgs/returnHomePage.png"
+                  alt="about open image"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </Box>
+            </Link>
+          </Item>
+          {/*** row: slider of projects and about ***/}
+          <Item>
+            <Stack direction="column" spacing={{ xs: 0, md: 0 }}>
+              {/*** column: about ***/}
+              <Item>
+                {/*** about content ***/}
+                <Box
+                  pr={1}
+                  pl={1}
+                  sx={{
+                    position: "relative",
+                    width: "calc(100vw - 60px)",
+                    height: "calc(100vh - 100px)",
+                    background:
+                      "linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.3) 100%)",
+                    zIndex: 1,
+                    color: "#00415E",
+                    overflowY: "scroll",
+                    scrollbarWidth: "thin !important",
+                    scrollbarColor: "#888 #333 !important",
+                    "&::-webkit-scrollbar": {
+                      width: "1px",
+                      backgroundColor: "#666",
+                    },
+                    "&::-webkit-scrollbar-thumb ": {
+                      backgroundColor: "#00415E",
+                    },
+                  }}
+                >
+                  <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                  <Box
+                    sx={{
+                      position: "relative",
+                      width: "100%",
+                      height: 146,
+                    }}
+                  >
+                    <Image
+                      src="/imgs/aboutTitle.png"
+                      //placeholder="blur"
+                      alt="bg"
+                      layout="fill"
+                      objectFit="contain"
+                      placeholder="blur"
+                      blurDataURL="/imgs/aboutTitle.png"
+                    />
+                  </Box>
+                  <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                  {useLang == true ? (
+                    <Box
+                      sx={{
+                        textAlign: "justify",
+                        fontSize: 16,
+                        letterSpacing: "-0.05em",
+                        lineHeight: 1.75,
+                        fontWeight: 400,
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: about.about.introContent_tw,
+                      }}
+                    />
+                  ) : (
+                    <Box
+                      sx={{
+                        textAlign: "justify",
+                        fontSize: 16,
+                        letterSpacing: "-0.05em",
+                        lineHeight: 1.75,
+                        fontWeight: 400,
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: about.about.introContent_en,
+                      }}
+                    />
+                  )}
+                  <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                  <Box
+                    sx={{ textAlign: "left", fontSize: 12 }}
+                    dangerouslySetInnerHTML={{
+                      __html: about.about.credit_tw,
+                    }}
+                  />
+                  <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                </Box>
+              </Item>
+              {/*** column: slider of projects and control ***/}
+              <Item>
+                <Stack
+                  direction="row"
+                  spacing={{ xs: 0, md: 0 }}
+                  sx={{ backgroundColor: "#fff", borderTop: "1px solid #000" }}
+                >
+                  {/*** row: slider of projects ***/}
+                  <Item>
+                    <Box
+                      sx={{
+                        backgroundColor: "#fff",
+                        width: "calc(100vw - 100px)",
+                        height: 100,
+                        color: "#ff0000",
+                        borderRight: "1px solid #000",
+                        maxWidth: { xs: "calc(100vw - 100px)", md: 100 },
+                        maxHeight: { xs: 100, md: "100vh" },
+                      }}
+                      ref={sliderRef}
+                      className="keen-slider"
+                      //style={{ maxWidth: 480, maxHeight: "100vh" }}
+                    >
+                      {myProjects &&
+                        myProjects.map((project, idx) => (
+                          <Box
+                            key={idx}
+                            className={`keen-slider__slide ${styles.slider_entity}`}
+                            sx={{
+                              cursor: "pointer",
+                              borderRight: { xs: "none", md: "1px solid #000" },
+                              borderBottom: {
+                                xs: "1px solid #000",
+                                md: "none",
+                              },
+                              maxWidth: { xs: "calc(100vw - 100px)", md: 56 },
+                              minWidth: { xs: "calc(100vw - 100px)", md: 56 },
+                            }}
+                          >
+                            <Link
+                              href={`/projects/${encodeURIComponent(
+                                project.mainTitle_en
+                              )}`}
+                            >
+                              <Stack
+                                direction={{ xs: "column", md: "column" }}
+                                spacing={{ xs: 0, md: 0 }}
+                              >
+                                <Item>
+                                  <Box
+                                    sx={{
+                                      position: "relative",
+                                      width: "100%",
+                                      height: 100,
+                                      color: "#000",
+                                      writingMode: {
+                                        xs: "horizontal-tb",
+                                        md: "vertical-lr",
+                                      },
+                                      textOrientation: "unset",
+                                      backgroundColor: "#fff",
+                                      zIndex: 1,
+                                    }}
+                                  >
+                                    {/*** column: main title ***/}
+                                    <Box
+                                      sx={{
+                                        position: "absolute",
+                                        left: 8,
+                                        top: 8,
+                                        display: "inline",
+                                        width: "100%",
+                                      }}
+                                    >
+                                      <Box
+                                        className={`${styles.pt}`}
+                                        sx={{
+                                          fontSize: 16,
+                                          lineHeight: 1.4,
+                                          textTransform: "uppercase",
+                                          fontFamily: "Noto Serif JP",
+                                          fontWeight: 700,
+                                          width: "100%",
+                                        }}
+                                      >
+                                        {project.mainTitle_tw}
+                                      </Box>
+                                      <Box
+                                        className={`${styles.pt}`}
+                                        mt={0}
+                                        sx={{
+                                          fontSize: 11,
+                                          lineHeight: 1.4,
+                                          textTransform: "uppercase",
+                                          fontFamily: "BioRhyme Expanded",
+                                          fontWeight: 700,
+                                          letterSpacing: "-0.015em",
+                                          width: "100%",
+                                        }}
+                                      >
+                                        {project.mainTitle_en}
+                                      </Box>
+                                    </Box>
+                                    {/*** column: nation ***/}
+                                    <Box
+                                      sx={{
+                                        position: "absolute",
+                                        right: 8,
+                                        bottom: 8,
+                                        fontSize: 17,
+                                        display: "inline-flex",
+                                      }}
+                                    >
+                                      <Box
+                                        className={`${styles.pt}`}
+                                        sx={{
+                                          fontSize: 11,
+                                          fontFamily: "Noto Sans JP",
+                                          fontWeight: 500,
+                                          lineHeight: 1.4,
+                                        }}
+                                      >
+                                        {project.nation_tw}
+                                      </Box>
+                                      <Box
+                                        pl={1}
+                                        className={`${styles.pt}`}
+                                        mt={0}
+                                        sx={{
+                                          fontSize: 11,
+                                          textTransform: "uppercase",
+                                          fontFamily: "Noto Sans JP",
+                                          fontWeight: 500,
+                                          lineHeight: 1.4,
+                                        }}
+                                      >
+                                        {project.nation_en}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                                {/* <Item>
+                          <Box
+                            sx={{
+                              position: "relative",
+                              width: 40,
+                              height: "100vh",
+                              zIndex: 0,
+                            }}
+                          >
+                            <Image
+                              src={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
+                              alt=""
+                              layout="fill"
+                              objectFit="cover"
+                              placeholder="blur"
+                              blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
+                            />
+                          </Box>
+                        </Item> */}
+                              </Stack>
+                            </Link>
+                          </Box>
+                        ))}
+                    </Box>
+                  </Item>
+                  {/*** row: control of slider ***/}
+                  <Item>
+                    {/*** pagination ***/}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        bottom: 10,
+                        right: 2,
+                        // backgroundColor: "#fff",
+                      }}
+                    >
+                      {loaded && instanceRef.current && (
+                        <>
+                          <Box
+                            sx={{
+                              width: { xs: 60, md: 260 },
+                              textAlign: "right",
+                            }}
+                          >
+                            <KeyboardArrowUpSharpIcon
+                              left="true"
+                              onClick={(e) =>
+                                e.stopPropagation() ||
+                                instanceRef.current?.prev()
+                              }
+                              disabled={currentSlide === 0}
+                              sx={{
+                                cursor: "pointer",
+                                color: "#000",
+                                fontSize: "xx-large",
+                              }}
+                            />
+                          </Box>
+                          <Box
+                            sx={{
+                              width: { xs: 60, md: 260 },
+                              textAlign: "right",
+                            }}
+                          >
+                            <KeyboardArrowDownSharpIcon
+                              onClick={(e) =>
+                                e.stopPropagation() ||
+                                instanceRef.current?.next()
+                              }
+                              disabled={
+                                currentSlide ===
+                                instanceRef.current.track.details.slides
+                                  .length -
+                                  1
+                              }
+                              sx={{
+                                cursor: "pointer",
+                                color: "#000",
+                                fontSize: "xx-large",
+                              }}
+                            />
+                          </Box>
+                        </>
+                      )}
+                    </Box>
+                  </Item>
+                </Stack>
+              </Item>
+            </Stack>
+          </Item>
+        </Stack>
+      </Box>
     </>
   );
 }

@@ -20,23 +20,38 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function TextTemplate({ article_content, useLang }) {
   return (
     <>
-      <Box pt={13} pb={13} pl={24} pr={20}>
+      <Box p={{ xs: "48px 8px 8px 12px", md: "104px 160px 104px 192px" }}>
         <Stack
-          direction={{ xs: "row", md: "column" }}
-          spacing={{ xs: 18, md: 13 }}
+          direction={{ xs: "column", md: "column" }}
+          spacing={{ xs: 2, md: 4 }}
         >
           {/*** column: title ***/}
           <Item>
-            <Box>
+            <Box
+              sx={{
+                position: "relative",
+                width: "100%",
+                height: { xs: "15vh", md: "15vh" },
+                background: "none",
+                // display: "table-cell",
+                // verticalAlign: "middle",
+              }}
+            >
               {useLang == true ? (
                 <Box
                   className="pt"
                   sx={{
                     fontFamily: "Noto Serif JP",
                     fontWeight: 900,
-                    fontSize: 78,
-                    lineHeight: 1,
+                    fontSize: { xs: 22, md: 40 },
+                    lineHeight: 1.2,
                     textAlign: "center",
+                    width: "100%",
+                    height: { xs: "15vh", md: "15vh" },
+                    display: "table-cell",
+                    verticalAlign: "middle",
+                    marginLeft: "auto",
+                    marginRight: "auto",
                   }}
                   dangerouslySetInnerHTML={{
                     __html: article_content.textTemplate_title_tw,
@@ -49,8 +64,8 @@ export default function TextTemplate({ article_content, useLang }) {
                     fontFamily: "Noto Serif JP",
                     textTransform: "capitalize",
                     fontWeight: 900,
-                    fontSize: 78,
-                    lineHeight: 1,
+                    fontSize: { xs: 18, md: 36 },
+                    lineHeight: 1.1,
                     textAlign: "center",
                   }}
                   dangerouslySetInnerHTML={{
@@ -63,13 +78,23 @@ export default function TextTemplate({ article_content, useLang }) {
           {/*** column: content ***/}
           <Item>
             <Box
+              pr={2}
+              className="scroller"
               sx={{
                 position: "relative",
-                height: "50vh",
+                height: { xs: "calc(67vh - 100px)", md: "55vh" },
+
                 borderTop: "5px solid #00415E",
                 overflowY: "scroll",
-                scrollbarWidth: "none",
-                "&::-webkit-scrollbar": { display: "none" },
+                scrollbarWidth: "1px !important",
+                scrollbarColor: "#888 #333 !important",
+                "&::-webkit-scrollbar": {
+                  width: "1px",
+                  //backgroundColor: "#333",
+                },
+                "&::-webkit-scrollbar-thumb ": {
+                  backgroundColor: "#888",
+                },
               }}
             >
               <Box>
@@ -77,10 +102,11 @@ export default function TextTemplate({ article_content, useLang }) {
                   <Box
                     className="pt"
                     pt={2}
+                    pb={{ xs: "100px", md: 0 }}
                     sx={{
                       fontFamily: "Noto Sans JP",
                       fontWeight: 300,
-                      fontSize: 16,
+                      fontSize: { xs: 14, md: 16 },
                       lineHeight: 1.75,
                       textAlign: "justify",
                       letterSpacing: "-0.05em",
@@ -93,10 +119,11 @@ export default function TextTemplate({ article_content, useLang }) {
                   <Box
                     className="pt"
                     pt={2}
+                    pb={{ xs: "100px", md: 0 }}
                     sx={{
                       fontFamily: "Noto Sans JP",
                       fontWeight: 300,
-                      fontSize: 16,
+                      fontSize: { xs: 14, md: 16 },
                       lineHeight: 1.75,
                       textAlign: "justify",
                       letterSpacing: "-0.05em",

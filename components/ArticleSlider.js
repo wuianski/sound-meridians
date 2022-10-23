@@ -5,6 +5,10 @@ import Box from "@mui/material/Box";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import { styled } from "@mui/material/styles";
+
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import SwipeRightIcon from "@mui/icons-material/SwipeRight";
@@ -12,6 +16,17 @@ import SwipeLeftIcon from "@mui/icons-material/SwipeLeft";
 import SwipeIcon from "@mui/icons-material/Swipe";
 import KeyboardArrowLeftSharpIcon from "@mui/icons-material/KeyboardArrowLeftSharp";
 import KeyboardArrowRightSharpIcon from "@mui/icons-material/KeyboardArrowRightSharp";
+import KeyboardArrowUpSharpIcon from "@mui/icons-material/KeyboardArrowUpSharp";
+import KeyboardArrowDownSharpIcon from "@mui/icons-material/KeyboardArrowDownSharp";
+
+/******************/
+/*** stack ***/
+const Item = styled(Paper)(({ theme }) => ({
+  background: "none",
+  boxShadow: "none",
+  borderRadius: 0,
+  backgroundColor: "#00415E",
+}));
 
 export default function ArticleSlider({ project, useLang }) {
   /*******************/
@@ -39,136 +54,213 @@ export default function ArticleSlider({ project, useLang }) {
     created() {
       setLoaded(true);
     },
+    breakpoints: {
+      "(max-width: 900px)": {
+        vertical: true,
+        slides: { perView: 2 },
+      },
+    },
   });
 
   return (
     <>
-      <Box
-        sx={{
-          backgroundColor: "#BCACA8",
-          width: "260px",
-          height: "100vh",
-          color: "#ff0000",
-          borderRight: "1px solid #000",
-        }}
-        ref={sliderRef}
-        className="keen-slider"
-        style={{ maxWidth: 260, maxHeight: "100vh" }}
+      <Stack
+        direction="row"
+        spacing={{ xs: 0, md: 0 }}
+        sx={{ backgroundColor: "#BCACA8", borderTop: "1px solid #000" }}
       >
-        {project &&
-          project.articles.map((article) => (
-            <Box key={article.articles_id.id} sx={{ cursor: "pointer" }}>
-              <Link
-                href={`/projects/${project.mainTitle_en}/${article.articles_id.slug}`}
-              >
-                <Box
-                  className="keen-slider__slide"
-                  style={{ maxWidth: 56, minWidth: 56 }}
-                  sx={{ backgroundColor: "#BCACA8" }}
-                >
-                  <Box
-                    sx={{
-                      position: "relative",
-                      // width: "100%",
-                      height: "100vh",
-                      color: "#000",
-                      writingMode: "vertical-lr",
-                      backgroundColor: "#BCACA8",
-                      borderRight: "1px solid #000",
-                      zIndex: 1,
-                    }}
+        {/*** row: slider of projects ***/}
+        <Item>
+          {/*** slider ***/}
+          <Box
+            sx={{
+              backgroundColor: "#BCACA8",
+              // width: "calc(100vw - 100px)",
+              height: { xs: 100, md: "100vh" },
+              color: "#ff0000",
+              borderRight: { xs: "1px solid #000", md: "1px solid #000" },
+              borderBottom: { xs: "1px solid #000", md: "none" },
+              maxWidth: { xs: "calc(100vw - 100px)", md: 260 },
+              maxHeight: { xs: 100, md: "100vh" },
+            }}
+            ref={sliderRef}
+            className="keen-slider"
+          >
+            {project &&
+              project.articles.map((article) => (
+                <Box key={article.articles_id.id} sx={{ cursor: "pointer" }}>
+                  <Link
+                    href={`/projects/${project.mainTitle_en}/${article.articles_id.slug}`}
                   >
                     <Box
+                      className="keen-slider__slide"
                       sx={{
-                        position: "absolute",
-                        left: 8,
-                        top: 30,
-                        display: "inline-flex",
+                        backgroundColor: "#BCACA8",
+                        maxWidth: { xs: "calc(100vw - 60px)", md: 56 },
+                        minWidth: { xs: "calc(100vw - 60px)", md: 56 },
                       }}
                     >
-                      {useLang == true ? (
+                      <Box
+                        sx={{
+                          position: "relative",
+                          width: "auto",
+                          height: { xs: 50, md: "100vh" },
+                          color: "#000",
+                          writingMode: {
+                            xs: "horizontal-tb",
+                            md: "vertical-lr",
+                          },
+                          backgroundColor: "#BCACA8",
+                          borderRight: { xs: "none", md: "1px solid #000" },
+                          borderBottom: { xs: "1px solid #000", md: "none" },
+                          zIndex: 1,
+                        }}
+                      >
                         <Box
-                          className="pt"
                           sx={{
-                            fontSize: 22,
-                            fontFamily: "Noto Serif JP",
-                            fontWeight: 700,
-                            textOrientation: "upright",
+                            position: "absolute",
+                            left: 8,
+                            top: { xs: 8, md: 30 },
+                            display: "inline-flex",
                           }}
-                          dangerouslySetInnerHTML={{
-                            __html: article.articles_id.title_tw,
-                          }}
-                        />
-                      ) : (
-                        <Box
-                          className="pt"
-                          sx={{
-                            fontSize: 13,
-                            fontFamily: "BioRhyme Expanded",
-                            fontWeight: 700,
-                            textOrientation: "unset",
-                            textTransform: "uppercase",
-                          }}
-                          dangerouslySetInnerHTML={{
-                            __html: article.articles_id.title_en,
-                          }}
-                        />
-                      )}
+                        >
+                          {useLang == true ? (
+                            <Box
+                              className="pt"
+                              sx={{
+                                fontSize: { xs: 16, md: 22 },
+                                fontFamily: "Noto Serif JP",
+                                fontWeight: 700,
+                                lineHeight: 1.4,
+                                letterSpacing: { xs: "-0.05em", md: "unset" },
+                                textOrientation: "upright",
+                              }}
+                              dangerouslySetInnerHTML={{
+                                __html: article.articles_id.title_tw,
+                              }}
+                            />
+                          ) : (
+                            <Box
+                              className="pt"
+                              sx={{
+                                fontSize: { xs: 11, md: 13 },
+                                fontFamily: "BioRhyme Expanded",
+                                fontWeight: 700,
+                                textOrientation: "unset",
+                                textTransform: "uppercase",
+                              }}
+                              dangerouslySetInnerHTML={{
+                                __html: article.articles_id.title_en,
+                              }}
+                            />
+                          )}
+                        </Box>
+                      </Box>
                     </Box>
-                  </Box>
+                  </Link>
                 </Box>
-              </Link>
-            </Box>
-          ))}
-      </Box>
-      <Box sx={{ position: "absolute", bottom: 0 }}>
-        {/* <Box pb={0} pr={2} sx={{ width: 360, textAlign: "right" }}>
-          <SwipeIcon sx={{ color: "#000" }} />
-        </Box> */}
-        {loaded && instanceRef.current && (
-          <>
-            <Box pl={1} x={{ width: 260, textAlign: "left" }}>
-              <KeyboardArrowLeftSharpIcon
-                left="true"
-                onClick={(e) =>
-                  e.stopPropagation() || instanceRef.current?.prev()
-                }
-                disabled={currentSlide === 0}
-                sx={{ cursor: "pointer", color: "#000", fontSize: "xx-large" }}
-              />
-            </Box>
-            <Box mt={"-36.95px"} pr={1} sx={{ width: 260, textAlign: "right" }}>
-              <KeyboardArrowRightSharpIcon
-                onClick={(e) =>
-                  e.stopPropagation() || instanceRef.current?.next()
-                }
-                disabled={
-                  currentSlide ===
-                  instanceRef.current.track.details.slides.length - 1
-                }
-                sx={{ cursor: "pointer", color: "#000", fontSize: "xx-large" }}
-              />
-            </Box>
-          </>
-        )}
-      </Box>
-      {/* {loaded && instanceRef.current && (
-        <div className="dots">
-          {[
-            ...Array(instanceRef.current.track.details.slides.length).keys(),
-          ].map((idx) => {
-            return (
-              <button
-                key={idx}
-                onClick={() => {
-                  instanceRef.current?.moveToIdx(idx);
-                }}
-                className={"dot" + (currentSlide === idx ? " active" : "")}
-              ></button>
-            );
-          })}
-        </div>
-      )} */}
+              ))}
+          </Box>
+        </Item>
+        <Item>
+          {/*** pagination desktop ***/}
+          <Box
+            sx={{
+              display: { xs: "none", md: "block" },
+              position: "absolute",
+              bottom: 10,
+              right: 0,
+            }}
+          >
+            {loaded && instanceRef.current && (
+              <>
+                <Box
+                  pl={1}
+                  ml={{ xs: -2, md: -1 }}
+                  sx={{ width: { xs: 60, md: 260 }, textAlign: "left" }}
+                >
+                  <KeyboardArrowLeftSharpIcon
+                    left="true"
+                    onClick={(e) =>
+                      e.stopPropagation() || instanceRef.current?.prev()
+                    }
+                    disabled={currentSlide === 0}
+                    sx={{
+                      cursor: "pointer",
+                      color: "#000",
+                      fontSize: "xx-large",
+                    }}
+                  />
+                </Box>
+                <Box
+                  mt={"-36.95px"}
+                  pr={{ xs: 1.5, md: 0 }}
+                  sx={{ width: { xs: 60, md: 260 }, textAlign: "right" }}
+                >
+                  <KeyboardArrowRightSharpIcon
+                    onClick={(e) =>
+                      e.stopPropagation() || instanceRef.current?.next()
+                    }
+                    disabled={
+                      currentSlide ===
+                      instanceRef.current.track.details.slides.length - 1
+                    }
+                    sx={{
+                      cursor: "pointer",
+                      color: "#000",
+                      fontSize: "xx-large",
+                    }}
+                  />
+                </Box>
+              </>
+            )}
+          </Box>
+          {/*** pagination mobile ***/}
+          <Box
+            sx={{
+              display: { xs: "block", md: "none" },
+              position: "absolute",
+              bottom: 10,
+              right: 2,
+            }}
+          >
+            {loaded && instanceRef.current && (
+              <>
+                <Box sx={{ width: { xs: 60, md: 260 }, textAlign: "right" }}>
+                  <KeyboardArrowUpSharpIcon
+                    left="true"
+                    onClick={(e) =>
+                      e.stopPropagation() || instanceRef.current?.prev()
+                    }
+                    disabled={currentSlide === 0}
+                    sx={{
+                      cursor: "pointer",
+                      color: "#000",
+                      fontSize: "xx-large",
+                    }}
+                  />
+                </Box>
+                <Box sx={{ width: { xs: 60, md: 260 }, textAlign: "right" }}>
+                  <KeyboardArrowDownSharpIcon
+                    onClick={(e) =>
+                      e.stopPropagation() || instanceRef.current?.next()
+                    }
+                    disabled={
+                      currentSlide ===
+                      instanceRef.current.track.details.slides.length - 1
+                    }
+                    sx={{
+                      cursor: "pointer",
+                      color: "#000",
+                      fontSize: "xx-large",
+                    }}
+                  />
+                </Box>
+              </>
+            )}
+          </Box>
+        </Item>
+      </Stack>
     </>
   );
 }
