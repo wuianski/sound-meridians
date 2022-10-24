@@ -44,20 +44,34 @@ export default function Article({ projects, useLang }) {
                       position: "relative",
                       top: 0,
                       left: 0,
-                      width: "92px",
+                      width: "80px",
                       height: "100vh",
                       cursor: "pointer",
-                      zIndex: 3,
+                      zIndex: 4,
+                      backgroundColor: "#00415E",
                     }}
-                    ml={-2}
-                    mr={-2}
                   >
-                    <Image
-                      src="/imgs/returnHomePage.png"
-                      alt="about open image"
-                      layout="fill"
-                      objectFit="contain"
-                    />
+                    <Box
+                      pt={4}
+                      sx={{
+                        position: "relative",
+                        top: 0,
+                        left: 0,
+                        width: "80px",
+                        height: "100vh",
+                        background:
+                          "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
+                      }}
+                    >
+                      <Box>
+                        <Image
+                          src="/imgs/returnHomePage2.png"
+                          alt="about open image"
+                          width={80}
+                          height={572}
+                        />
+                      </Box>
+                    </Box>
                   </Box>
                 </Link>
               </Item>
@@ -254,20 +268,34 @@ export default function Article({ projects, useLang }) {
                       position: "relative",
                       top: 0,
                       left: 0,
-                      width: "92px",
+                      width: "60px",
                       height: "100vh",
                       cursor: "pointer",
                       zIndex: 4,
+                      backgroundColor: "#00415E",
                     }}
-                    ml={-2}
-                    mr={-2}
                   >
-                    <Image
-                      src="/imgs/returnHomePage.png"
-                      alt="about open image"
-                      layout="fill"
-                      objectFit="contain"
-                    />
+                    <Box
+                      pt={4}
+                      sx={{
+                        position: "relative",
+                        top: 0,
+                        left: 0,
+                        width: "60px",
+                        height: "100vh",
+                        background:
+                          "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
+                      }}
+                    >
+                      <Box>
+                        <Image
+                          src="/imgs/returnHomePage2.png"
+                          alt="about open image"
+                          width={60}
+                          height={429}
+                        />
+                      </Box>
+                    </Box>
                   </Box>
                 </Link>
               </Item>
@@ -436,7 +464,7 @@ export default function Article({ projects, useLang }) {
                     <Box
                       sx={{
                         width: "100%",
-                        height: "calc(100vh - 100px)",
+                        height: "calc(100vh - 50px)",
                         backgroundColor: "#000",
                       }}
                     >
@@ -454,7 +482,7 @@ export default function Article({ projects, useLang }) {
                         sx={{
                           position: "relative",
                           width: "100%",
-                          height: 100,
+                          height: 50,
                           color: "#000",
                           writingMode: {
                             xs: "horizontal-tb",
@@ -469,84 +497,100 @@ export default function Article({ projects, useLang }) {
                         }}
                         //ml={0.5}
                       >
-                        <Box>
-                          <Box
-                            sx={{
-                              position: "absolute",
-                              left: 8,
-                              top: 8,
-                              display: "inline",
-                              // width: "100%",
-                            }}
-                          >
-                            <Box
-                              className="pt"
-                              sx={{
-                                fontSize: 16,
-                                lineHeight: 1.4,
-                                textTransform: "uppercase",
-                                fontFamily: "Noto Serif JP",
-                                fontWeight: 700,
-                                width: "100%",
-                              }}
-                              dangerouslySetInnerHTML={{
-                                __html: project.mainTitle_tw,
-                              }}
-                            ></Box>
-                            <Box
-                              className="pt"
-                              mt={0}
-                              sx={{
-                                fontSize: 11,
-                                lineHeight: 1.4,
-                                textTransform: "uppercase",
-                                fontFamily: "BioRhyme Expanded",
-                                fontWeight: 700,
-                                letterSpacing: "-0.015em",
-                                width: "100%",
-                              }}
-                              dangerouslySetInnerHTML={{
-                                __html: project.mainTitle_en,
-                              }}
-                            ></Box>
-                          </Box>
-                          <Box
-                            sx={{
-                              position: "absolute",
-                              right: 8,
-                              bottom: 8,
-                              fontSize: 17,
-                              display: "inline-flex",
-                            }}
-                          >
-                            <Box
-                              className="pt"
-                              sx={{
-                                fontSize: 11,
-                                fontFamily: "Noto Sans JP",
-                                fontWeight: 500,
-                                lineHeight: 1.4,
-                              }}
-                              dangerouslySetInnerHTML={{
-                                __html: project.nation_tw,
-                              }}
-                            ></Box>
-                            <Box
-                              pl={1}
-                              className="pt"
-                              mt={0}
-                              sx={{
-                                fontSize: 11,
-                                textTransform: "uppercase",
-                                fontFamily: "Noto Sans JP",
-                                fontWeight: 500,
-                                lineHeight: 1.4,
-                              }}
-                              dangerouslySetInnerHTML={{
-                                __html: project.nation_en,
-                              }}
-                            ></Box>
-                          </Box>
+                        {/*** column: main title ***/}
+                        <Box
+                          pl={1}
+                          pr={1}
+                          sx={{
+                            position: "absolute",
+                            left: 0,
+                            top: 8,
+                            display: "inline",
+                            width: "100%",
+                          }}
+                        >
+                          {useLang == true ? (
+                            <>
+                              <Box
+                                sx={{
+                                  position: "relative",
+                                  left: 0,
+                                  top: 0,
+                                  display: "flex",
+                                  // width: "100%",
+                                }}
+                              >
+                                <Box
+                                  className="pt"
+                                  sx={{
+                                    fontSize: 18,
+                                    lineHeight: 1.4,
+                                    textTransform: "uppercase",
+                                    fontFamily: "Noto Serif JP",
+                                    fontWeight: 700,
+                                    width: "100%",
+                                  }}
+                                >
+                                  {project.mainTitle_tw}
+                                </Box>
+                                <Box
+                                  className="pt"
+                                  sx={{
+                                    position: "absolute",
+                                    right: 8,
+                                    fontSize: 13,
+                                    fontFamily: "Noto Sans JP",
+                                    fontWeight: 500,
+                                    lineHeight: 1.4,
+                                  }}
+                                >
+                                  {project.nation_tw}
+                                </Box>
+                              </Box>
+                            </>
+                          ) : (
+                            <>
+                              <Box
+                                sx={{
+                                  position: "relative",
+                                  left: 0,
+                                  top: 0,
+                                  display: "flex",
+                                  // width: "100%",
+                                }}
+                              >
+                                <Box
+                                  className="pt"
+                                  sx={{
+                                    fontSize: 12,
+                                    lineHeight: 1.4,
+                                    textTransform: "uppercase",
+                                    fontFamily: "BioRhyme Expanded",
+                                    fontWeight: 700,
+                                    letterSpacing: "-0.015em",
+                                    width: "100%",
+                                    zIndex: 1,
+                                  }}
+                                >
+                                  {project.mainTitle_en}
+                                </Box>
+                                <Box
+                                  className="pt"
+                                  sx={{
+                                    fontSize: 12,
+                                    textTransform: "uppercase",
+                                    fontFamily: "Noto Sans JP",
+                                    fontWeight: 500,
+                                    lineHeight: 1.4,
+                                    //width: "30%",
+                                    zIndex: 0,
+                                  }}
+                                >
+                                  {project.nation_en}
+                                </Box>
+                              </Box>
+                            </>
+                          )}
                         </Box>
                       </Box>
                     </Link>

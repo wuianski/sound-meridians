@@ -9,7 +9,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family:  'Noto Serif JP','Noto Sans JP','Noto Serif TC','BioRhyme Expanded', serif, 'Roboto','Helvetica Neue', 'sans-serif';
+  font-family: 'BioRhyme', 'Noto Serif JP','Noto Sans JP','Noto Serif TC','BioRhyme Expanded', serif, 'Roboto','sans-serif';
   font-weight: 400;
   font-style: normal;
   position: absolute;
@@ -117,6 +117,16 @@ a {
 /*** force img size in timeline  ***/
 .timelineContent span img {
   width:200px;
+}
+
+/*** force timeline font (year)  ***/
+.buYvqM{
+  font-size: 40px !important;
+}
+@media only screen and (max-width: 900px) {
+  .buYvqM{
+    font-size: 16px !important;
+  }
 }
 
 /* react-player video player*/

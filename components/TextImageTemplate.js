@@ -266,12 +266,16 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       </Box>
                       {/*** column: image description ***/}
                       <Box
+                        mt={1}
                         pr={2}
                         sx={{
                           background: "none",
                           position: "absolute",
                           width: "100%",
-                          height: { xs: "55%", md: "55%" },
+                          height: {
+                            xs: "calc(100% - 100px)",
+                            md: "calc(100% - 260px)",
+                          },
                           overflowY: "scroll",
                           scrollbarWidth: "1px !important",
                           scrollbarColor: "#888 #333 !important",
@@ -320,7 +324,6 @@ export default function TextImageTemplate({ article_content, useLang }) {
                           />
                         )}
                       </Box>
-
                       {/* <Box>{image.imageInfos_id.image.filename_disk}</Box> */}
                     </Box>
                   ))}

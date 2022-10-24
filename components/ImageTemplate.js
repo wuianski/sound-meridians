@@ -66,12 +66,12 @@ export default function ImageTemplate({ article_content, useLang }) {
     <>
       <Box pt={6}>
         <Stack
-          direction={{ xs: "row", md: "column" }}
+          direction={{ xs: "column", md: "column" }}
           spacing={{ xs: 0, md: 0 }}
         >
           {/*** column: image ***/}
           <Item>
-            <Box pl={4}>
+            <Box ml={{ xs: 0, md: 4 }} p={1}>
               <Slider {...settings}>
                 {article_content.imageTemplate_images &&
                   article_content.imageTemplate_images.map((image) => (

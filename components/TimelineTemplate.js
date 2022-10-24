@@ -17,75 +17,65 @@ export default function TimelineTemplate({ article_content, useLang }) {
 
     return result;
   });
-  // console.log(myTimeline);
+  //console.log(myTimeline);
   return (
     <>
       <Box
-        pt={8}
-        pb={13}
-        pl={8}
-        pr={4}
-        ml={"auto"}
-        mr={"auto"}
-        //sx={{ backgroundColor: "blue", width: "calc(100vw - 200px)" }}
+        pt={{ xs: 2, md: 8 }}
+        ml={{ xs: -4, md: 0 }}
+        sx={{
+          backgroundColor: "none",
+          width: { xs: "calc(100vw - 0px)", md: "calc(100vw - 300px)" },
+          height: "95vh",
+        }}
       >
         <Chrono
+          classNames="myChrono"
+          mode="VERTICAL"
+          //cardLess={true}
+          //enableOutline
           items={myTimeline}
-          activeItemIndex={0}
-          focusActiveItemOnLoad={true}
-          allowDynamicUpdate={true}
+          //scrollable={{ scrollbar: false }}
+          // activeItemIndex={0}
+          // focusActiveItemOnLoad={true}
+          // allowDynamicUpdate={true}
           //hideControls={true}
-          mode="HORIZONTAL"
-          itemWidth={440}
-          //cardHeight={200} //Sets the minimum height of the timeline card.default=200
-          //cardWidth={1200} //Sets the maximum width of the timeline card
-          cardPositionHorizontal="BOTTOM"
+          //showAllCardsHorizontal={true}
+          //mode="HORIZONTAL"
+          //itemWidth={300}
+          //cardHeight={400} //Sets the minimum height of the timeline card.default=200
+          cardWidth={700} //Sets the maximum width of the timeline card
+          //cardPositionHorizontal="BOTTOM"
           theme={{
             primary: "#00415E",
             secondary: "#000",
-            cardBgColor: "none",
+            cardBgColor: "#00415E",
             cardForeColor: "#fff",
             titleColor: "#00415E",
             titleColorActive: "#fff",
           }}
-          fontSizes={
-            {
-              // title: "30px",
-            }
-          }
+          // fontSizes={{
+          //   title: "40px",
+          // }}
           //mediaHeight={200}
-          //pl={10}
         >
           {article_content.timelineTemplate_timelines &&
             article_content.timelineTemplate_timelines.map((timeline) => (
               <Box
                 key={timeline.timelineInfos_id.id}
                 sx={{
-                  background: "none",
-                  width: "100%",
+                  width: { xs: "100%", md: "90%" },
                 }}
               >
                 {useLang == true ? (
                   <Box
                     className="pt, timelineContent"
-                    pt={2}
-                    pl={2}
                     sx={{
-                      position: "relative",
-                      left: 0,
-                      width: {
-                        xs: "100%",
-                        md: "1000px",
-                      },
-                      minWidth: "1000px",
-                      height: "60vh",
-                      overflow: "scroll",
                       fontFamily: "Noto Sans JP",
                       fontWeight: 300,
-                      fontSize: 20,
-                      lineHeight: 1.75,
+                      fontSize: { xs: 14, md: 20 },
+                      lineHeight: { xs: 1.3, md: 1.75 },
                       textAlign: "left",
-                      letterSpacing: "-0.05em",
                     }}
                     dangerouslySetInnerHTML={{
                       __html: timeline.timelineInfos_id.content_tw,
@@ -94,17 +84,12 @@ export default function TimelineTemplate({ article_content, useLang }) {
                 ) : (
                   <Box
                     className="pt, timelineContent"
-                    pt={2}
                     sx={{
-                      width: "100%",
-                      height: "50vh",
-                      overflow: "scroll",
                       fontFamily: "Noto Sans JP",
                       fontWeight: 300,
                       fontSize: 20,
-                      lineHeight: 1.75,
+                      lineHeight: { xs: 1.3, md: 1.75 },
                       textAlign: "justify",
-                      letterSpacing: "-0.05em",
                     }}
                     dangerouslySetInnerHTML={{
                       __html: timeline.timelineInfos_id.content_en,

@@ -32,18 +32,6 @@ export default function Project({ projects, useLang }) {
   // const langEN = query.useLang;
   //console.log(langEN);
 
-  // useEffect(() => {
-  //   if (langEN === true) {
-  //     console.log("switch to tab1");
-  //     /*** switch to tab1 ***/
-  //     //setValue(0);
-  //   } else if (tabState === false) {
-  //     console.log("switch to tab2");
-  //     /*** switch to tab2 ***/
-  //     //setValue(1);
-  //   }
-  // }, [langEN]);
-
   return (
     <>
       {/*** DESKTOP VERSION ***/}
@@ -62,20 +50,34 @@ export default function Project({ projects, useLang }) {
                       position: "relative",
                       top: 0,
                       left: 0,
-                      width: "92px",
+                      width: "80px",
                       height: "100vh",
                       cursor: "pointer",
                       zIndex: 4,
+                      backgroundColor: "#00415E",
                     }}
-                    ml={-2}
-                    mr={-2}
                   >
-                    <Image
-                      src="/imgs/returnHomePage.png"
-                      alt="about open image"
-                      layout="fill"
-                      objectFit="contain"
-                    />
+                    <Box
+                      pt={4}
+                      sx={{
+                        position: "relative",
+                        top: 0,
+                        left: 0,
+                        width: "80px",
+                        height: "100vh",
+                        background:
+                          "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
+                      }}
+                    >
+                      <Box>
+                        <Image
+                          src="/imgs/returnHomePage2.png"
+                          alt="about open image"
+                          width={80}
+                          height={572}
+                        />
+                      </Box>
+                    </Box>
                   </Box>
                 </Link>
               </Item>
@@ -99,7 +101,7 @@ export default function Project({ projects, useLang }) {
                     sx={{
                       position: "absolute",
                       left: 8,
-                      top: 30,
+                      top: 32,
                       display: "inline-flex",
                     }}
                   >
@@ -342,20 +344,34 @@ export default function Project({ projects, useLang }) {
                       position: "relative",
                       top: 0,
                       left: 0,
-                      width: "92px",
+                      width: "60px",
                       height: "100vh",
                       cursor: "pointer",
-                      zIndex: 3,
+                      zIndex: 4,
+                      backgroundColor: "#00415E",
                     }}
-                    ml={-2}
-                    mr={-2}
                   >
-                    <Image
-                      src="/imgs/returnHomePage.png"
-                      alt="about open image"
-                      layout="fill"
-                      objectFit="contain"
-                    />
+                    <Box
+                      pt={4}
+                      sx={{
+                        position: "relative",
+                        top: 0,
+                        left: 0,
+                        width: "60px",
+                        height: "100vh",
+                        background:
+                          "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
+                      }}
+                    >
+                      <Box>
+                        <Image
+                          src="/imgs/returnHomePage2.png"
+                          alt="about open image"
+                          width={60}
+                          height={429}
+                        />
+                      </Box>
+                    </Box>
                   </Box>
                 </Link>
               </Item>
@@ -368,10 +384,10 @@ export default function Project({ projects, useLang }) {
                   {/*** row: project intro ***/}
                   <Item>
                     {/*** background image ***/}
-                    {/* <Box
+                    <Box
                       sx={{
                         position: "absolute",
-                        width: "20vw",
+                        width: "calc(100vw - 60px)",
                         height: "100vh",
                         zIndex: 0,
                         opacity: 0.6,
@@ -387,7 +403,7 @@ export default function Project({ projects, useLang }) {
                         priority="true"
                         as="image"
                       />
-                    </Box> */}
+                    </Box>
                     {/*** text ***/}
                     <Box
                       p={"13px 8px 8px 8px"}
@@ -492,7 +508,7 @@ export default function Project({ projects, useLang }) {
                       sx={{
                         backgroundColor: "#BCACA8",
                         height: { xs: 100, md: "100vh" },
-                        maxWidth: { xs: "100%", md: 480 },
+                        maxWidth: { xs: "calc(100% - 0px)", md: 480 },
                         maxHeight: { xs: 100, md: "100vh" },
                       }}
                     >

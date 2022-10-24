@@ -64,11 +64,7 @@ export default function ArticleSlider({ project, useLang }) {
 
   return (
     <>
-      <Stack
-        direction="row"
-        spacing={{ xs: 0, md: 0 }}
-        sx={{ backgroundColor: "#BCACA8", borderTop: "1px solid #000" }}
-      >
+      <Stack direction="row" spacing={{ xs: 0, md: 0 }}>
         {/*** row: slider of projects ***/}
         <Item>
           {/*** slider ***/}
@@ -79,7 +75,7 @@ export default function ArticleSlider({ project, useLang }) {
               height: { xs: 100, md: "100vh" },
               color: "#ff0000",
               borderRight: { xs: "1px solid #000", md: "1px solid #000" },
-              borderBottom: { xs: "1px solid #000", md: "none" },
+              borderTop: { xs: "1px solid #000", md: "none" },
               maxWidth: { xs: "calc(100vw - 100px)", md: 260 },
               maxHeight: { xs: 100, md: "100vh" },
             }}
@@ -96,8 +92,8 @@ export default function ArticleSlider({ project, useLang }) {
                       className="keen-slider__slide"
                       sx={{
                         backgroundColor: "#BCACA8",
-                        maxWidth: { xs: "calc(100vw - 60px)", md: 56 },
-                        minWidth: { xs: "calc(100vw - 60px)", md: 56 },
+                        maxWidth: { xs: "calc(100vw - 100px)", md: 56 },
+                        minWidth: { xs: "calc(100vw - 100px)", md: 56 },
                       }}
                     >
                       <Box
@@ -128,7 +124,7 @@ export default function ArticleSlider({ project, useLang }) {
                             <Box
                               className="pt"
                               sx={{
-                                fontSize: { xs: 16, md: 22 },
+                                fontSize: { xs: 18, md: 22 },
                                 fontFamily: "Noto Serif JP",
                                 fontWeight: 700,
                                 lineHeight: 1.4,
@@ -220,13 +216,19 @@ export default function ArticleSlider({ project, useLang }) {
             sx={{
               display: { xs: "block", md: "none" },
               position: "absolute",
-              bottom: 10,
-              right: 2,
+              width: 40,
+              height: 100,
+              backgroundColor: "#BCACA8",
+              borderTop: { xs: "1px solid #000", md: "none" },
             }}
           >
             {loaded && instanceRef.current && (
               <>
-                <Box sx={{ width: { xs: 60, md: 260 }, textAlign: "right" }}>
+                <Box
+                  sx={{ width: { xs: 60, md: 260 }, textAlign: "left" }}
+                  ml={0.5}
+                  mt={1.5}
+                >
                   <KeyboardArrowUpSharpIcon
                     left="true"
                     onClick={(e) =>
@@ -240,7 +242,10 @@ export default function ArticleSlider({ project, useLang }) {
                     }}
                   />
                 </Box>
-                <Box sx={{ width: { xs: 60, md: 260 }, textAlign: "right" }}>
+                <Box
+                  sx={{ width: { xs: 60, md: 260 }, textAlign: "left" }}
+                  ml={0.5}
+                >
                   <KeyboardArrowDownSharpIcon
                     onClick={(e) =>
                       e.stopPropagation() || instanceRef.current?.next()

@@ -82,7 +82,7 @@ export default function TextTemplate({ article_content, useLang }) {
               className="scroller"
               sx={{
                 position: "relative",
-                height: { xs: "calc(67vh - 100px)", md: "55vh" },
+                height: { xs: "calc(67vh - 50px)", md: "55vh" },
 
                 borderTop: "5px solid #00415E",
                 overflowY: "scroll",
