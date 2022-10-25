@@ -39,19 +39,19 @@ function MyApp({ Component, pageProps }) {
   /*** click on tw ***/
   const click_on_tw = {
     tw: {
-      display: "none",
+      opacity: 0,
     },
     en: {
-      display: "block",
+      opacity: 1,
     },
   };
   /*** click on en ***/
   const click_on_en = {
     tw: {
-      display: "block",
+      opacity: 1,
     },
     en: {
-      display: "none",
+      opacity: 0,
     },
   };
 
@@ -65,70 +65,70 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <Box>
-        {/* <motion.div
+        <motion.div
           variants={click_on_en}
           initial="tw"
           animate={useLang ? "tw" : "en"}
           exit="tw"
-        > */}
-        <Box
-          //p={1}
-          className={styles.switch}
-          // sx={{
-          //   position: "absolute",
-          //   zIndex: 99,
-          //   display: "block",
-          //   top: 0,
-          //   // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 92px)" },
-          //   //left: { xs: 3, md: 13 },
-          //   fontFamily: "BioRhyme",
-          //   fontSize: 22,
-          //   lineHeight: 1.3,
-          //   textDecoration: "underline",
-          //   textTransform: "uppercase",
-          //   mixBlendMode: "difference",
-          //   cursor: "pointer",
-          // }}
-          onClick={switchToEN}
         >
-          en
-        </Box>
-        {/* </motion.div> */}
+          <Box
+            //p={1}
+            className={styles.switch}
+            // sx={{
+            //   position: "absolute",
+            //   zIndex: 99,
+            //   display: "block",
+            //   top: 0,
+            //   // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 92px)" },
+            //   //left: { xs: 3, md: 13 },
+            //   fontFamily: "BioRhyme",
+            //   fontSize: 22,
+            //   lineHeight: 1.3,
+            //   textDecoration: "underline",
+            //   textTransform: "uppercase",
+            //   mixBlendMode: "difference",
+            //   cursor: "pointer",
+            // }}
+            onClick={switchToEN}
+          >
+            en
+          </Box>
+        </motion.div>
       </Box>
       <Box>
-        {/* <motion.div
+        <motion.div
           variants={click_on_tw}
           initial="tw"
           animate={useLang ? "tw" : "en"}
           exit="tw"
-        > */}
-        <Box
-          //p={1}
-          className={styles.switchT}
-          // sx={{
-          //   position: "absolute",
-          //   zIndex: 99,
-          //   display: "block",
-          //   top: 30,
-          //   // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
-          //   //left: { xs: 3, md: 13 },
-          //   fontFamily: "BioRhyme",
-          //   fontSize: 22,
-          //   lineHeight: 1.3,
-          //   textDecoration: "underline",
-          //   textTransform: "uppercase",
-          //   mixBlendMode: "difference",
-          //   cursor: "pointer",
-          // }}
-          onClick={switchToTW}
         >
-          ch
-        </Box>
-        {/* </motion.div> */}
+          <Box
+            //p={1}
+            className={styles.switchT}
+            // sx={{
+            //   position: "absolute",
+            //   zIndex: 99,
+            //   display: "block",
+            //   top: 30,
+            //   // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
+            //   //left: { xs: 3, md: 13 },
+            //   fontFamily: "BioRhyme",
+            //   fontSize: 22,
+            //   lineHeight: 1.3,
+            //   textDecoration: "underline",
+            //   textTransform: "uppercase",
+            //   mixBlendMode: "difference",
+            //   cursor: "pointer",
+            // }}
+            onClick={switchToTW}
+          >
+            ch
+          </Box>
+        </motion.div>
       </Box>
 
       {/*** !!important when use router to query value from component. Use a React key to tell React to remount the component. ***/}
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence>
         <motion.div
           key={router.route}
           initial={{ opacity: 0, x: -80 }}
