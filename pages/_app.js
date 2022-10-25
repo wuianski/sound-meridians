@@ -34,7 +34,14 @@ function MyApp({ Component, pageProps }) {
   };
   /*** click on en ***/
   const click_on_en = {
-    tw: { opacity: 1, zIndex: 99, transition: { duration: 0.5 } },
+    tw: {
+      position: "fixed",
+      display: "block",
+      top: 0,
+      opacity: 1,
+      zIndex: 99,
+      transition: { duration: 0.5 },
+    },
     en: { opacity: 0, zIndex: 99, transition: { duration: 0.5 } },
   };
 

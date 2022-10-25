@@ -79,7 +79,7 @@ export default function TextTemplate({ article_content, useLang }) {
           {/*** column: content ***/}
           <Item>
             <Box
-              pr={0}
+              pr={2}
               mr={2}
               className="scroller"
               sx={{

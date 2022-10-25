@@ -96,7 +96,6 @@ export default function TextImageTemplate({ article_content, useLang }) {
               <Item>
                 <Box
                   ml={{ xs: 2, md: 0 }}
-                  //pl={2}
                   sx={{
                     position: "relative",
                     width: { xs: "calc(100% - 30px)", md: "calc(100% - 30px)" },
@@ -140,7 +139,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
               {/*** column: content ***/}
               <Item>
                 <Box
-                  //mr={-1.6}
+                  pr={2}
                   mr={2}
                   ml={{ xs: 2, md: 0 }}
                   sx={{
@@ -274,7 +273,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       {/*** column: image description ***/}
                       <Box
                         mt={1}
-                        pr={0}
+                        pr={2}
                         sx={{
                           background: "none",
                           position: "absolute",
