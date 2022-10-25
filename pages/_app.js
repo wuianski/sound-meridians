@@ -72,12 +72,12 @@ function MyApp({ Component, pageProps }) {
         <Box
           p={1}
           sx={{
-            position: "fixed",
+            position: "absolute",
             zIndex: 99,
             display: "block",
             top: 0,
             // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 92px)" },
-            left: { xs: 3, md: 13 },
+            //left: { xs: 3, md: 13 },
             fontFamily: "BioRhyme",
             fontSize: 22,
             lineHeight: 1.3,
@@ -102,12 +102,12 @@ function MyApp({ Component, pageProps }) {
         <Box
           p={1}
           sx={{
-            position: "fixed",
+            position: "absolute",
             zIndex: 99,
             display: "block",
             top: 30,
             // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
-            left: { xs: 3, md: 13 },
+            //left: { xs: 3, md: 13 },
             fontFamily: "BioRhyme",
             fontSize: 22,
             lineHeight: 1.3,
@@ -124,7 +124,7 @@ function MyApp({ Component, pageProps }) {
       </Box>
 
       {/*** !!important when use router to query value from component. Use a React key to tell React to remount the component. ***/}
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         <motion.div
           key={router.route}
           initial={{ opacity: 0, x: -80 }}
