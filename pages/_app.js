@@ -30,38 +30,22 @@ function MyApp({ Component, pageProps }) {
   /*** click on tw ***/
   const click_on_tw = {
     tw: {
-      position: "fixed",
-      display: "block",
-      top: 0,
       opacity: 0,
-      zIndex: 99,
       transition: { duration: 0.5 },
     },
     en: {
-      position: "fixed",
-      display: "block",
-      top: 0,
       opacity: 1,
-      zIndex: 99,
       transition: { duration: 0.5 },
     },
   };
   /*** click on en ***/
   const click_on_en = {
     tw: {
-      position: "fixed",
-      display: "block",
-      top: 0,
       opacity: 1,
-      zIndex: 99,
       transition: { duration: 0.5 },
     },
     en: {
-      position: "fixed",
-      display: "block",
-      top: 0,
       opacity: 0,
-      zIndex: 99,
       transition: { duration: 0.5 },
     },
   };
