@@ -70,22 +70,23 @@ function MyApp({ Component, pageProps }) {
           exit="tw"
         > */}
         <Box
-          p={1}
-          sx={{
-            position: "absolute",
-            zIndex: 99,
-            display: "block",
-            top: 0,
-            // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 92px)" },
-            //left: { xs: 3, md: 13 },
-            fontFamily: "BioRhyme",
-            fontSize: 22,
-            lineHeight: 1.3,
-            textDecoration: "underline",
-            textTransform: "uppercase",
-            mixBlendMode: "difference",
-            cursor: "pointer",
-          }}
+          //p={1}
+          className="switch"
+          // sx={{
+          //   position: "absolute",
+          //   zIndex: 99,
+          //   display: "block",
+          //   top: 0,
+          //   // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 92px)" },
+          //   //left: { xs: 3, md: 13 },
+          //   fontFamily: "BioRhyme",
+          //   fontSize: 22,
+          //   lineHeight: 1.3,
+          //   textDecoration: "underline",
+          //   textTransform: "uppercase",
+          //   mixBlendMode: "difference",
+          //   cursor: "pointer",
+          // }}
           onClick={switchToEN}
         >
           en
@@ -100,22 +101,23 @@ function MyApp({ Component, pageProps }) {
           exit="tw"
         > */}
         <Box
-          p={1}
-          sx={{
-            position: "absolute",
-            zIndex: 99,
-            display: "block",
-            top: 30,
-            // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
-            //left: { xs: 3, md: 13 },
-            fontFamily: "BioRhyme",
-            fontSize: 22,
-            lineHeight: 1.3,
-            textDecoration: "underline",
-            textTransform: "uppercase",
-            mixBlendMode: "difference",
-            cursor: "pointer",
-          }}
+          //p={1}
+          className="switchT"
+          // sx={{
+          //   position: "absolute",
+          //   zIndex: 99,
+          //   display: "block",
+          //   top: 30,
+          //   // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
+          //   //left: { xs: 3, md: 13 },
+          //   fontFamily: "BioRhyme",
+          //   fontSize: 22,
+          //   lineHeight: 1.3,
+          //   textDecoration: "underline",
+          //   textTransform: "uppercase",
+          //   mixBlendMode: "difference",
+          //   cursor: "pointer",
+          // }}
           onClick={switchToTW}
         >
           ch
