@@ -30,19 +30,19 @@ function MyApp({ Component, pageProps }) {
   /*** click on tw ***/
   const click_on_tw = {
     tw: {
-      opacity: 0,
+      display: "none",
     },
     en: {
-      opacity: 1,
+      display: "block",
     },
   };
   /*** click on en ***/
   const click_on_en = {
     tw: {
-      opacity: 1,
+      display: "block",
     },
     en: {
-      opacity: 0,
+      display: "none",
     },
   };
 
@@ -62,60 +62,64 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
 
-      <motion.div
-        variants={click_on_en}
-        initial="tw"
-        animate={useLang ? "tw" : "en"}
-        exit="tw"
-      >
-        <Box
-          p={1}
-          sx={{
-            position: "fixed",
-            display: "block",
-            top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
-            left: { xs: 3, md: 13 },
-            zIndex: 99,
-            fontFamily: "BioRhyme",
-            fontSize: 22,
-            lineHeight: 1.3,
-            textDecoration: "underline",
-            textTransform: "uppercase",
-            mixBlendMode: "difference",
-            cursor: "pointer",
-          }}
-          onClick={switchToEN}
+      <Box>
+        <motion.div
+          variants={click_on_en}
+          initial="tw"
+          animate={useLang ? "tw" : "en"}
+          exit="tw"
         >
-          en
-        </Box>
-      </motion.div>
-      <motion.div
-        variants={click_on_tw}
-        initial="tw"
-        animate={useLang ? "tw" : "en"}
-        exit="tw"
-      >
-        <Box
-          p={1}
-          sx={{
-            position: "fixed",
-            display: "block",
-            top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
-            left: { xs: 3, md: 13 },
-            zIndex: 99,
-            fontFamily: "BioRhyme",
-            fontSize: 22,
-            lineHeight: 1.3,
-            textDecoration: "underline",
-            textTransform: "uppercase",
-            mixBlendMode: "difference",
-            cursor: "pointer",
-          }}
-          onClick={switchToTW}
+          <Box
+            p={1}
+            sx={{
+              position: "fixed",
+              // display: "block",
+              top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
+              left: { xs: 3, md: 13 },
+              zIndex: 99,
+              fontFamily: "BioRhyme",
+              fontSize: 22,
+              lineHeight: 1.3,
+              textDecoration: "underline",
+              textTransform: "uppercase",
+              mixBlendMode: "difference",
+              cursor: "pointer",
+            }}
+            onClick={switchToEN}
+          >
+            en
+          </Box>
+        </motion.div>
+      </Box>
+      <Box>
+        <motion.div
+          variants={click_on_tw}
+          initial="tw"
+          animate={useLang ? "tw" : "en"}
+          exit="tw"
         >
-          ch
-        </Box>
-      </motion.div>
+          <Box
+            p={1}
+            sx={{
+              position: "fixed",
+              // display: "block",
+              top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
+              left: { xs: 3, md: 13 },
+              zIndex: 99,
+              fontFamily: "BioRhyme",
+              fontSize: 22,
+              lineHeight: 1.3,
+              textDecoration: "underline",
+              textTransform: "uppercase",
+              mixBlendMode: "difference",
+              cursor: "pointer",
+            }}
+            onClick={switchToTW}
+          >
+            ch
+          </Box>
+        </motion.div>
+      </Box>
 
       {/*** !!important when use router to query value from component. Use a React key to tell React to remount the component. ***/}
       <AnimatePresence>
