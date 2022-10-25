@@ -164,17 +164,18 @@ export default function ArticleSlider({ project, useLang }) {
             sx={{
               display: { xs: "none", md: "block" },
               position: "absolute",
-              bottom: 10,
+              bottom: 20,
               right: 0,
             }}
           >
             {loaded && instanceRef.current && (
               <>
                 <Box
-                  pl={1}
+                  pl={2.5}
                   ml={{ xs: -2, md: -1 }}
                   sx={{ width: { xs: 60, md: 260 }, textAlign: "left" }}
                 >
+                  <Box>prev</Box>
                   <KeyboardArrowLeftSharpIcon
                     left="true"
                     onClick={(e) =>
@@ -189,10 +190,11 @@ export default function ArticleSlider({ project, useLang }) {
                   />
                 </Box>
                 <Box
-                  mt={"-36.95px"}
-                  pr={{ xs: 1.5, md: 0 }}
+                  mt={"-64px"}
+                  pr={2}
                   sx={{ width: { xs: 60, md: 260 }, textAlign: "right" }}
                 >
+                  <Box>next</Box>
                   <KeyboardArrowRightSharpIcon
                     onClick={(e) =>
                       e.stopPropagation() || instanceRef.current?.next()

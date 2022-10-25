@@ -95,10 +95,14 @@ export default function TextImageTemplate({ article_content, useLang }) {
               {/*** column: title ***/}
               <Item>
                 <Box
+                  ml={{ xs: 2, md: 0 }}
+                  //pl={2}
                   sx={{
                     position: "relative",
+                    width: { xs: "calc(100% - 30px)", md: "calc(100% - 30px)" },
                     height: { xs: "10vh", md: "15vh" },
                     background: "none",
+                    borderBottom: "5px solid #00415E",
                   }}
                 >
                   {useLang == true ? (
@@ -136,56 +140,58 @@ export default function TextImageTemplate({ article_content, useLang }) {
               {/*** column: content ***/}
               <Item>
                 <Box
-                  pr={2}
+                  //mr={-1.6}
+                  ml={{ xs: 2, md: 0 }}
                   sx={{
                     position: "relative",
                     height: { xs: "30vh", md: "55vh" },
-                    borderTop: "5px solid #00415E",
-                    overflowY: "scroll",
-                    scrollbarWidth: "1px !important",
-                    scrollbarColor: "#888 #333 !important",
-                    "&::-webkit-scrollbar": {
-                      width: "1px",
-                      //backgroundColor: "#333",
-                    },
-                    "&::-webkit-scrollbar-thumb ": {
-                      backgroundColor: "#888",
-                    },
+                    //borderTop: "5px solid #00415E",
+                    // overflowY: "scroll",
+                    // scrollbarWidth: "1px !important",
+                    // scrollbarColor: "#888 #333 !important",
+                    // "&::-webkit-scrollbar": {
+                    //   width: "1px",
+                    // },
+                    // "&::-webkit-scrollbar-thumb ": {
+                    //   backgroundColor: "#888",
+                    // },
                   }}
                 >
-                  {useLang == true ? (
-                    <Box
-                      className="pt"
-                      pt={2}
-                      sx={{
-                        fontFamily: "Noto Sans JP",
-                        fontWeight: 300,
-                        fontSize: { xs: 14, md: 16 },
-                        lineHeight: 1.75,
-                        textAlign: "justify",
-                        letterSpacing: "-0.05em",
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: article_content.textImageTemplate_content_tw,
-                      }}
-                    />
-                  ) : (
-                    <Box
-                      className="pt"
-                      pt={2}
-                      sx={{
-                        fontFamily: "Noto Sans JP",
-                        fontWeight: 300,
-                        fontSize: { xs: 14, md: 16 },
-                        lineHeight: 1.75,
-                        textAlign: "justify",
-                        letterSpacing: "-0.05em",
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: article_content.textImageTemplate_content_en,
-                      }}
-                    />
-                  )}
+                  <Box pr={0} className="scrollContent">
+                    {useLang == true ? (
+                      <Box
+                        className="pt"
+                        pt={2}
+                        sx={{
+                          fontFamily: "Noto Sans JP",
+                          fontWeight: 300,
+                          fontSize: { xs: 14, md: 16 },
+                          lineHeight: 1.75,
+                          textAlign: "justify",
+                          letterSpacing: "-0.05em",
+                        }}
+                        dangerouslySetInnerHTML={{
+                          __html: article_content.textImageTemplate_content_tw,
+                        }}
+                      />
+                    ) : (
+                      <Box
+                        className="pt"
+                        pt={2}
+                        sx={{
+                          fontFamily: "Noto Sans JP",
+                          fontWeight: 300,
+                          fontSize: { xs: 14, md: 16 },
+                          lineHeight: 1.75,
+                          textAlign: "justify",
+                          letterSpacing: "-0.05em",
+                        }}
+                        dangerouslySetInnerHTML={{
+                          __html: article_content.textImageTemplate_content_en,
+                        }}
+                      />
+                    )}
+                  </Box>
                 </Box>
               </Item>
             </Stack>
@@ -251,7 +257,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                               url={image.imageInfos_id.videoURL}
                               width="100%"
                               height="100%"
-                              controls="true"
+                              controls={true}
                               config={{
                                 youtube: {
                                   playerVars: {
@@ -267,7 +273,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       {/*** column: image description ***/}
                       <Box
                         mt={1}
-                        pr={2}
+                        pr={0}
                         sx={{
                           background: "none",
                           position: "absolute",
@@ -276,53 +282,55 @@ export default function TextImageTemplate({ article_content, useLang }) {
                             xs: "calc(100% - 100px)",
                             md: "calc(100% - 260px)",
                           },
-                          overflowY: "scroll",
-                          scrollbarWidth: "1px !important",
-                          scrollbarColor: "#888 #333 !important",
-                          "&::-webkit-scrollbar": {
-                            width: "1px",
-                            //backgroundColor: "#333",
-                          },
-                          "&::-webkit-scrollbar-thumb ": {
-                            backgroundColor: "#888",
-                          },
+                          // overflowY: "scroll",
+                          // scrollbarWidth: "1px !important",
+                          // scrollbarColor: "#888 #333 !important",
+                          // "&::-webkit-scrollbar": {
+                          //   width: "1px",
+                          //   //backgroundColor: "#333",
+                          // },
+                          // "&::-webkit-scrollbar-thumb ": {
+                          //   backgroundColor: "#888",
+                          // },
                         }}
                       >
-                        {useLang == true ? (
-                          <Box
-                            className="pt"
-                            p={{
-                              xs: "8px 8px 64px 8px",
-                              md: "24px 48px 64px 48px",
-                            }}
-                            sx={{
-                              fontFamily: "Noto Sans JP",
-                              fontWeight: 300,
-                              fontSize: { xs: 12, md: 14 },
-                              textAlign: "center",
-                            }}
-                            dangerouslySetInnerHTML={{
-                              __html: image.imageInfos_id.description_tw,
-                            }}
-                          />
-                        ) : (
-                          <Box
-                            className="pt"
-                            p={{
-                              xs: "8px 8px 16px 8px",
-                              md: "24px 48px 64px 48px",
-                            }}
-                            sx={{
-                              fontFamily: "Noto Sans JP",
-                              fontWeight: 300,
-                              fontSize: { xs: 12, md: 14 },
-                              textAlign: "center",
-                            }}
-                            dangerouslySetInnerHTML={{
-                              __html: image.imageInfos_id.description_en,
-                            }}
-                          />
-                        )}
+                        <Box pl={{ xs: 2, md: 3 }} className="scrollContent">
+                          {useLang == true ? (
+                            <Box
+                              className="pt"
+                              p={{
+                                xs: "8px 8px 64px 16px",
+                                md: "24px 8px 64px 20px",
+                              }}
+                              sx={{
+                                fontFamily: "Noto Sans JP",
+                                fontWeight: 300,
+                                fontSize: { xs: 12, md: 14 },
+                                textAlign: "center",
+                              }}
+                              dangerouslySetInnerHTML={{
+                                __html: image.imageInfos_id.description_tw,
+                              }}
+                            />
+                          ) : (
+                            <Box
+                              className="pt"
+                              p={{
+                                xs: "8px 8px 16px 8px",
+                                md: "24px 48px 64px 48px",
+                              }}
+                              sx={{
+                                fontFamily: "Noto Sans JP",
+                                fontWeight: 300,
+                                fontSize: { xs: 12, md: 14 },
+                                textAlign: "center",
+                              }}
+                              dangerouslySetInnerHTML={{
+                                __html: image.imageInfos_id.description_en,
+                              }}
+                            />
+                          )}
+                        </Box>
                       </Box>
                       {/* <Box>{image.imageInfos_id.image.filename_disk}</Box> */}
                     </Box>

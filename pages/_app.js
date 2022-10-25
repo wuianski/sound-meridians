@@ -69,13 +69,13 @@ function MyApp({ Component, pageProps }) {
             animate={useLang ? "tw" : "en"}
           >
             <Box
+              p={1}
               sx={{
                 position: "fixed",
                 display: "block",
-                bottom: 10,
-                left: { xs: 8, md: 18 },
+                top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
+                left: { xs: 3, md: 13 },
                 zIndex: 999,
-                //color: "#00415E",
                 fontFamily: "BioRhyme",
                 fontSize: 22,
                 lineHeight: 1.3,
@@ -86,7 +86,7 @@ function MyApp({ Component, pageProps }) {
               }}
               onClick={switchToTW}
             >
-              tw
+              ch
             </Box>
           </motion.div>
           <motion.div
@@ -95,13 +95,13 @@ function MyApp({ Component, pageProps }) {
             animate={useLang ? "tw" : "en"}
           >
             <Box
+              p={1}
               sx={{
                 position: "fixed",
                 display: "block",
-                bottom: 10,
-                left: { xs: 11, md: 18 },
+                top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
+                left: { xs: 3, md: 13 },
                 zIndex: 999,
-                //color: "#00415E",
                 fontFamily: "BioRhyme",
                 fontSize: 22,
                 lineHeight: 1.3,

@@ -71,7 +71,7 @@ export default function ImageTemplate({ article_content, useLang }) {
         >
           {/*** column: image ***/}
           <Item>
-            <Box ml={{ xs: 0, md: 4 }} p={1}>
+            <Box ml={{ xs: 0, md: 4 }} p={2}>
               <Slider {...settings}>
                 {article_content.imageTemplate_images &&
                   article_content.imageTemplate_images.map((image) => (

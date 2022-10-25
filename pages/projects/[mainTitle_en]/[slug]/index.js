@@ -38,32 +38,31 @@ export default function Article({ projects, useLang }) {
             >
               {/*** row: return home ***/}
               <Item>
-                <Link href="/">
+                <Box
+                  sx={{
+                    position: "relative",
+                    top: 0,
+                    left: 0,
+                    width: "80px",
+                    height: "100vh",
+                    zIndex: 4,
+                    backgroundColor: "#00415E",
+                  }}
+                >
                   <Box
+                    pt={4}
                     sx={{
                       position: "relative",
                       top: 0,
                       left: 0,
                       width: "80px",
                       height: "100vh",
-                      cursor: "pointer",
-                      zIndex: 4,
-                      backgroundColor: "#00415E",
+                      background:
+                        "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
                     }}
                   >
-                    <Box
-                      pt={4}
-                      sx={{
-                        position: "relative",
-                        top: 0,
-                        left: 0,
-                        width: "80px",
-                        height: "100vh",
-                        background:
-                          "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
-                      }}
-                    >
-                      <Box>
+                    <Link href="/">
+                      <Box sx={{ cursor: "pointer" }}>
                         <Image
                           src="/imgs/returnHomePage2.png"
                           alt="about open image"
@@ -71,9 +70,9 @@ export default function Article({ projects, useLang }) {
                           height={572}
                         />
                       </Box>
-                    </Box>
+                    </Link>
                   </Box>
-                </Link>
+                </Box>
               </Item>
               {/*** row: project name and country name ***/}
               <Item>
@@ -132,7 +131,7 @@ export default function Article({ projects, useLang }) {
                       <Box
                         sx={{
                           position: "absolute",
-                          left: 8,
+                          right: 8,
                           bottom: 30,
                           fontSize: 17,
                           display: "inline-flex",
@@ -145,10 +144,10 @@ export default function Article({ projects, useLang }) {
                             fontFamily: "Noto Sans JP",
                             fontWeight: 500,
                           }}
-                          dangerouslySetInnerHTML={{
-                            __html: project.nation_tw,
-                          }}
-                        ></Box>
+                        >
+                          返回列表
+                        </Box>
+
                         <Box
                           className="pt"
                           mt={2}
@@ -159,10 +158,9 @@ export default function Article({ projects, useLang }) {
                             fontWeight: 500,
                             lineHeight: 1.4,
                           }}
-                          dangerouslySetInnerHTML={{
-                            __html: project.nation_en,
-                          }}
-                        ></Box>
+                        >
+                          return
+                        </Box>
                       </Box>
                     </Box>
                   </Box>
@@ -262,32 +260,31 @@ export default function Article({ projects, useLang }) {
             >
               {/*** row: return home ***/}
               <Item>
-                <Link href="/">
+                <Box
+                  sx={{
+                    position: "relative",
+                    top: 0,
+                    left: 0,
+                    width: "60px",
+                    height: "100vh",
+                    zIndex: 4,
+                    backgroundColor: "#00415E",
+                  }}
+                >
                   <Box
+                    pt={4}
                     sx={{
                       position: "relative",
                       top: 0,
                       left: 0,
                       width: "60px",
                       height: "100vh",
-                      cursor: "pointer",
-                      zIndex: 4,
-                      backgroundColor: "#00415E",
+                      background:
+                        "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
                     }}
                   >
-                    <Box
-                      pt={4}
-                      sx={{
-                        position: "relative",
-                        top: 0,
-                        left: 0,
-                        width: "60px",
-                        height: "100vh",
-                        background:
-                          "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
-                      }}
-                    >
-                      <Box>
+                    <Link href="/">
+                      <Box sx={{ cursor: "pointer" }}>
                         <Image
                           src="/imgs/returnHomePage2.png"
                           alt="about open image"
@@ -295,9 +292,9 @@ export default function Article({ projects, useLang }) {
                           height={429}
                         />
                       </Box>
-                    </Box>
+                    </Link>
                   </Box>
-                </Link>
+                </Box>
               </Item>
               {/*** row: project name and country name ***/}
               {/* <Item>
@@ -544,7 +541,7 @@ export default function Article({ projects, useLang }) {
                                     lineHeight: 1.4,
                                   }}
                                 >
-                                  {project.nation_tw}
+                                  返回列表
                                 </Box>
                               </Box>
                             </>
@@ -586,7 +583,7 @@ export default function Article({ projects, useLang }) {
                                     zIndex: 0,
                                   }}
                                 >
-                                  {project.nation_en}
+                                  return
                                 </Box>
                               </Box>
                             </>

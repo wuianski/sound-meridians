@@ -20,7 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function TextTemplate({ article_content, useLang }) {
   return (
     <>
-      <Box p={{ xs: "48px 8px 8px 12px", md: "104px 160px 104px 192px" }}>
+      <Box p={{ xs: "48px 8px 8px 24px", md: "104px 160px 104px 192px" }}>
         <Stack
           direction={{ xs: "column", md: "column" }}
           spacing={{ xs: 2, md: 4 }}
@@ -28,13 +28,14 @@ export default function TextTemplate({ article_content, useLang }) {
           {/*** column: title ***/}
           <Item>
             <Box
+              //mr={2.8}
+              //pb={2}
               sx={{
                 position: "relative",
-                width: "100%",
+                width: { xs: "calc(100% - 17px)", md: "calc(100% - 30px)" },
                 height: { xs: "15vh", md: "15vh" },
                 background: "none",
-                // display: "table-cell",
-                // verticalAlign: "middle",
+                borderBottom: "5px solid #00415E",
               }}
             >
               {useLang == true ? (
@@ -78,30 +79,29 @@ export default function TextTemplate({ article_content, useLang }) {
           {/*** column: content ***/}
           <Item>
             <Box
-              pr={2}
+              pr={0}
               className="scroller"
               sx={{
                 position: "relative",
                 height: { xs: "calc(67vh - 50px)", md: "55vh" },
-
-                borderTop: "5px solid #00415E",
-                overflowY: "scroll",
-                scrollbarWidth: "1px !important",
-                scrollbarColor: "#888 #333 !important",
-                "&::-webkit-scrollbar": {
-                  width: "1px",
-                  //backgroundColor: "#333",
-                },
-                "&::-webkit-scrollbar-thumb ": {
-                  backgroundColor: "#888",
-                },
+                //borderTop: "5px solid #00415E",
+                // overflowY: "scroll",
+                // scrollbarWidth: "1px !important",
+                // scrollbarColor: "#888 #333 !important",
+                // "&::-webkit-scrollbar": {
+                //   width: "1px",
+                //   //backgroundColor: "#333",
+                // },
+                // "&::-webkit-scrollbar-thumb ": {
+                //   backgroundColor: "#888",
+                // },
               }}
             >
-              <Box>
+              <Box pr={0} className="scrollContent">
                 {useLang == true ? (
                   <Box
                     className="pt"
-                    pt={2}
+                    pt={0}
                     pb={{ xs: "100px", md: 0 }}
                     sx={{
                       fontFamily: "Noto Sans JP",
@@ -118,7 +118,7 @@ export default function TextTemplate({ article_content, useLang }) {
                 ) : (
                   <Box
                     className="pt"
-                    pt={2}
+                    pt={0}
                     pb={{ xs: "100px", md: 0 }}
                     sx={{
                       fontFamily: "Noto Sans JP",
