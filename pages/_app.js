@@ -19,11 +19,11 @@ function MyApp({ Component, pageProps }) {
 
   const [useLang, setLang] = useState(true);
   const switchToEN = async (event) => {
-    console.log("switchToEN");
+    //console.log("switchToEN");
     setLang(false);
   };
   const switchToTW = async (event) => {
-    console.log("switchToTW");
+    //console.log("switchToTW");
     setLang(true);
   };
 
@@ -75,8 +75,8 @@ function MyApp({ Component, pageProps }) {
             position: "fixed",
             zIndex: 99,
             display: "block",
-            //bottom: 100,
-            top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 92px)" },
+            top: 0,
+            // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 92px)" },
             left: { xs: 3, md: 13 },
             fontFamily: "BioRhyme",
             fontSize: 22,
@@ -105,7 +105,8 @@ function MyApp({ Component, pageProps }) {
             position: "fixed",
             zIndex: 99,
             display: "block",
-            top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
+            top: 30,
+            // top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
             left: { xs: 3, md: 13 },
             fontFamily: "BioRhyme",
             fontSize: 22,
