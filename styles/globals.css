@@ -185,7 +185,7 @@ a {
   -webkit-mask-position: left top;
 }
 
-.switch{
+/* .switch{
   position: absolute;
   z-index: 99;
   display: block;
@@ -210,4 +210,4 @@ a {
   text-transform: uppercase;
   mix-blend-mode: difference;
   cursor: pointer;
-}
+} */

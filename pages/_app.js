@@ -11,12 +11,21 @@ import "slick-carousel/slick/slick-theme.css";
 import Box from "@mui/material/Box";
 import { fontSize } from "@mui/system";
 
+import styles from "../components/layout.module.css";
+
 /*** delay ***/
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+  const getLayout = Component.getLayout || ((page) => page);
+  useEffect(() => {
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
 
+  const router = useRouter();
   const [useLang, setLang] = useState(true);
   const switchToEN = async (event) => {
     //console.log("switchToEN");
@@ -46,14 +55,7 @@ function MyApp({ Component, pageProps }) {
     },
   };
 
-  useEffect(() => {
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
-  }, []);
-
-  return (
+  return getLayout(
     <>
       <Head>
         <meta
@@ -71,7 +73,7 @@ function MyApp({ Component, pageProps }) {
         > */}
         <Box
           //p={1}
-          className="switch"
+          className={styles.switch}
           // sx={{
           //   position: "absolute",
           //   zIndex: 99,
@@ -102,7 +104,7 @@ function MyApp({ Component, pageProps }) {
         > */}
         <Box
           //p={1}
-          className="switchT"
+          className={styles.switchT}
           // sx={{
           //   position: "absolute",
           //   zIndex: 99,

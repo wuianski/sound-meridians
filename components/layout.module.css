@@ -1,0 +1,26 @@
+.switch{
+    position: absolute;
+    z-index: 99;
+    display: block;
+    top: 0px;
+    font-family: BioRhyme;
+    font-size: 22px;
+    line-height: 1.3;
+    text-decoration: underline;
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+    cursor: pointer;
+  }
+  .switchT{
+    position: absolute;
+    z-index: 99;
+    display: block;
+    top: 60px;
+    font-family: BioRhyme;
+    font-size: 22px;
+    line-height: 1.3;
+    text-decoration: underline;
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+    cursor: pointer;
+  }
