@@ -31,24 +31,27 @@ function MyApp({ Component, pageProps }) {
   const click_on_tw = {
     tw: {
       opacity: 0,
-      transition: { duration: 0.5 },
     },
     en: {
       opacity: 1,
-      transition: { duration: 0.5 },
     },
   };
   /*** click on en ***/
   const click_on_en = {
     tw: {
       opacity: 1,
-      transition: { duration: 0.5 },
     },
     en: {
       opacity: 0,
-      transition: { duration: 0.5 },
     },
   };
+
+  useEffect(() => {
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
 
   return (
     <>
@@ -58,6 +61,61 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
         />
       </Head>
+
+      <motion.div
+        variants={click_on_en}
+        initial="tw"
+        animate={useLang ? "tw" : "en"}
+        exit="tw"
+      >
+        <Box
+          p={1}
+          sx={{
+            position: "fixed",
+            display: "block",
+            top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
+            left: { xs: 3, md: 13 },
+            zIndex: 99,
+            fontFamily: "BioRhyme",
+            fontSize: 22,
+            lineHeight: 1.3,
+            textDecoration: "underline",
+            textTransform: "uppercase",
+            mixBlendMode: "difference",
+            cursor: "pointer",
+          }}
+          onClick={switchToEN}
+        >
+          en
+        </Box>
+      </motion.div>
+      <motion.div
+        variants={click_on_tw}
+        initial="tw"
+        animate={useLang ? "tw" : "en"}
+        exit="tw"
+      >
+        <Box
+          p={1}
+          sx={{
+            position: "fixed",
+            display: "block",
+            top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
+            left: { xs: 3, md: 13 },
+            zIndex: 99,
+            fontFamily: "BioRhyme",
+            fontSize: 22,
+            lineHeight: 1.3,
+            textDecoration: "underline",
+            textTransform: "uppercase",
+            mixBlendMode: "difference",
+            cursor: "pointer",
+          }}
+          onClick={switchToTW}
+        >
+          ch
+        </Box>
+      </motion.div>
 
       {/*** !!important when use router to query value from component. Use a React key to tell React to remount the component. ***/}
       <AnimatePresence>
@@ -76,7 +134,7 @@ function MyApp({ Component, pageProps }) {
           }}
           className="content"
         >
-          <motion.div
+          {/* <motion.div
             variants={click_on_en}
             initial="tw"
             animate={useLang ? "tw" : "en"}
@@ -129,7 +187,7 @@ function MyApp({ Component, pageProps }) {
             >
               ch
             </Box>
-          </motion.div>
+          </motion.div> */}
 
           <Component
             key={router.route}
