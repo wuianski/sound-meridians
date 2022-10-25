@@ -13,16 +13,6 @@ import { fontSize } from "@mui/system";
 
 /*** delay ***/
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-/*** click on tw ***/
-const click_on_tw = {
-  tw: { opacity: 0, zIndex: 99, transition: { duration: 0.5 } },
-  en: { opacity: 1, zIndex: 99, transition: { duration: 0.5 } },
-};
-/*** click on en ***/
-const click_on_en = {
-  tw: { opacity: 1, zIndex: 99, transition: { duration: 0.5 } },
-  en: { opacity: 0, zIndex: 99, transition: { duration: 0.5 } },
-};
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -35,6 +25,17 @@ function MyApp({ Component, pageProps }) {
   const switchToTW = async (event) => {
     console.log("switchToTW");
     setLang(true);
+  };
+
+  /*** click on tw ***/
+  const click_on_tw = {
+    tw: { opacity: 0, zIndex: 99, transition: { duration: 0.5 } },
+    en: { opacity: 1, zIndex: 99, transition: { duration: 0.5 } },
+  };
+  /*** click on en ***/
+  const click_on_en = {
+    tw: { opacity: 1, zIndex: 99, transition: { duration: 0.5 } },
+    en: { opacity: 0, zIndex: 99, transition: { duration: 0.5 } },
   };
 
   return (
