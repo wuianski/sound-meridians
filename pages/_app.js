@@ -42,7 +42,14 @@ function MyApp({ Component, pageProps }) {
       zIndex: 99,
       transition: { duration: 0.5 },
     },
-    en: { opacity: 0, zIndex: 99, transition: { duration: 0.5 } },
+    en: {
+      position: "fixed",
+      display: "block",
+      top: 0,
+      opacity: 0,
+      zIndex: 99,
+      transition: { duration: 0.5 },
+    },
   };
 
   return (
