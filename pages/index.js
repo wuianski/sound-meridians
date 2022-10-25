@@ -774,7 +774,6 @@ export default function Home({ about, projects, useLang }) {
                   width: "60px",
                   height: "100vh",
                   cursor: "pointer",
-                  zIndex: 4,
                   backgroundColor: "#00415E",
                 }}
               >
