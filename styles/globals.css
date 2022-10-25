@@ -155,7 +155,7 @@ a {
   -webkit-mask-size: 100% 20000px;
   -webkit-mask-position: left bottom;
   transition: mask-position 0.3s, -webkit-mask-position 0.3s;
-  scrollbar-color: #666 black !important;
+  scrollbar-color: #666 transparent !important;
 }
 
 ::-webkit-scrollbar {

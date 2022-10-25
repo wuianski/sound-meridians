@@ -141,6 +141,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
               <Item>
                 <Box
                   //mr={-1.6}
+                  mr={2}
                   ml={{ xs: 2, md: 0 }}
                   sx={{
                     position: "relative",

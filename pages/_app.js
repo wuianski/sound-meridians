@@ -15,13 +15,13 @@ import { fontSize } from "@mui/system";
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 /*** click on tw ***/
 const click_on_tw = {
-  tw: { opacity: 0 },
-  en: { opacity: 1 },
+  tw: { opacity: 0, zIndex: 99, transition: { duration: 0.5 } },
+  en: { opacity: 1, zIndex: 99, transition: { duration: 0.5 } },
 };
 /*** click on en ***/
 const click_on_en = {
-  tw: { opacity: 1 },
-  en: { opacity: 0 },
+  tw: { opacity: 1, zIndex: 99, transition: { duration: 0.5 } },
+  en: { opacity: 0, zIndex: 99, transition: { duration: 0.5 } },
 };
 
 function MyApp({ Component, pageProps }) {
@@ -64,35 +64,10 @@ function MyApp({ Component, pageProps }) {
           className="content"
         >
           <motion.div
-            variants={click_on_tw}
-            initial="tw"
-            animate={useLang ? "tw" : "en"}
-          >
-            <Box
-              p={1}
-              sx={{
-                position: "fixed",
-                display: "block",
-                top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
-                left: { xs: 3, md: 13 },
-                zIndex: 999,
-                fontFamily: "BioRhyme",
-                fontSize: 22,
-                lineHeight: 1.3,
-                textDecoration: "underline",
-                textTransform: "uppercase",
-                mixBlendMode: "difference",
-                cursor: "pointer",
-              }}
-              onClick={switchToTW}
-            >
-              ch
-            </Box>
-          </motion.div>
-          <motion.div
             variants={click_on_en}
             initial="tw"
             animate={useLang ? "tw" : "en"}
+            exit="tw"
           >
             <Box
               p={1}
@@ -101,7 +76,7 @@ function MyApp({ Component, pageProps }) {
                 display: "block",
                 top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
                 left: { xs: 3, md: 13 },
-                zIndex: 999,
+                zIndex: 99,
                 fontFamily: "BioRhyme",
                 fontSize: 22,
                 lineHeight: 1.3,
@@ -115,6 +90,34 @@ function MyApp({ Component, pageProps }) {
               en
             </Box>
           </motion.div>
+          <motion.div
+            variants={click_on_tw}
+            initial="tw"
+            animate={useLang ? "tw" : "en"}
+            exit="tw"
+          >
+            <Box
+              p={1}
+              sx={{
+                position: "fixed",
+                display: "block",
+                top: { xs: "calc(100vh - 50px)", md: "calc(100vh - 62px)" },
+                left: { xs: 3, md: 13 },
+                zIndex: 99,
+                fontFamily: "BioRhyme",
+                fontSize: 22,
+                lineHeight: 1.3,
+                textDecoration: "underline",
+                textTransform: "uppercase",
+                mixBlendMode: "difference",
+                cursor: "pointer",
+              }}
+              onClick={switchToTW}
+            >
+              ch
+            </Box>
+          </motion.div>
+
           <Component
             key={router.route}
             {...pageProps}

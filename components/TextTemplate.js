@@ -80,6 +80,7 @@ export default function TextTemplate({ article_content, useLang }) {
           <Item>
             <Box
               pr={0}
+              mr={2}
               className="scroller"
               sx={{
                 position: "relative",

@@ -193,6 +193,7 @@ export default function Project({ projects, useLang }) {
                 </Box>
                 {/*** text ***/}
                 <Box
+                  mr={2}
                   p={"50px 68px 27px 220px"}
                   sx={{
                     height: "96vh",
@@ -406,7 +407,7 @@ export default function Project({ projects, useLang }) {
                     </Box>
                     {/*** text ***/}
                     <Box
-                      p={"13px 8px 8px 24px"}
+                      p={"13px 16px 8px 24px"}
                       sx={{
                         width: "100%",
                         height: "calc(100vh - 100px)",
