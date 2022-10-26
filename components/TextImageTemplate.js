@@ -139,7 +139,6 @@ export default function TextImageTemplate({ article_content, useLang }) {
               {/*** column: content ***/}
               <Item>
                 <Box
-                  pr={2}
                   sx={{
                     position: "relative",
                     //width: "100%",
@@ -156,12 +155,11 @@ export default function TextImageTemplate({ article_content, useLang }) {
                     // },
                   }}
                 >
-                  <Box pl={0} className="scrollContent">
+                  <Box className="scrollContent">
                     {useLang == true ? (
                       <Box
                         className="pt"
                         pt={2}
-                        pr={2}
                         sx={{
                           fontFamily: "Noto Sans JP",
                           fontWeight: 300,
@@ -178,7 +176,6 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       <Box
                         className="pt"
                         pt={2}
-                        pr={2}
                         sx={{
                           fontFamily: "Noto Sans JP",
                           fontWeight: 300,
