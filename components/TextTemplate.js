@@ -15,12 +15,27 @@ const Item = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
   backgroundColor: "none",
   color: "#fff",
+  // marginLeft: "auto",
+  // marginRight: "auto",
+  //width: 600,
 }));
 
 export default function TextTemplate({ article_content, useLang }) {
   return (
     <>
-      <Box p={{ xs: "48px 8px 8px 24px", md: "104px 160px 104px 192px" }}>
+      <Box
+        p={{
+          xs: "48px 8px 8px 24px",
+          md: "104px 0px 104px 48px",
+        }}
+        sx={{
+          width: "100%",
+          maxWidth: 1000,
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+        //sx={{ marginLeft: "auto", marginRight: "auto" }}
+      >
         <Stack
           direction={{ xs: "column", md: "column" }}
           spacing={{ xs: 2, md: 4 }}
@@ -36,6 +51,7 @@ export default function TextTemplate({ article_content, useLang }) {
                 height: { xs: "15vh", md: "15vh" },
                 background: "none",
                 borderBottom: "5px solid #00415E",
+                //maxWidth: "800px",
               }}
             >
               {useLang == true ? (
@@ -46,11 +62,13 @@ export default function TextTemplate({ article_content, useLang }) {
                     fontWeight: 900,
                     fontSize: { xs: 22, md: 40 },
                     lineHeight: 1.2,
-                    textAlign: "center",
+                    textAlign: { xs: "left", md: "center" },
                     width: "100%",
                     height: { xs: "15vh", md: "15vh" },
-                    display: "table-cell",
-                    verticalAlign: "middle",
+                    display: { xs: "table-cell", md: "block" },
+                    verticalAlign: { xs: "middle", md: "unset" },
+                    // display: "table-cell",
+                    // verticalAlign: "c",
                     marginLeft: "auto",
                     marginRight: "auto",
                   }}
@@ -83,6 +101,7 @@ export default function TextTemplate({ article_content, useLang }) {
               sx={{
                 position: "relative",
                 height: { xs: "calc(67vh - 50px)", md: "55vh" },
+                //maxWidth: "800px",
                 //borderTop: "5px solid #00415E",
                 // overflowY: "scroll",
                 // scrollbarWidth: "1px !important",
