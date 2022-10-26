@@ -256,7 +256,7 @@ export default function Project({ projects, useLang }) {
                           sx={{
                             textAlign: "left",
                             fontFamily: "Noto Sans JP",
-                            textTransform: "capitalize",
+                            // textTransform: "capitalize",
                             fontSize: 40,
                             fontWeight: 700,
                             lineHeight: 1.4,
@@ -470,7 +470,7 @@ export default function Project({ projects, useLang }) {
                               sx={{
                                 textAlign: "left",
                                 fontFamily: "Noto Sans JP",
-                                textTransform: "capitalize",
+                                // textTransform: "capitalize",
                                 fontSize: { xs: 30, md: 40 },
                                 fontWeight: 700,
                                 lineHeight: 1.4,

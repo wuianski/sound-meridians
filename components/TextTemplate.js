@@ -63,7 +63,7 @@ export default function TextTemplate({ article_content, useLang }) {
                   className="pt"
                   sx={{
                     fontFamily: "Noto Serif JP",
-                    textTransform: "capitalize",
+                    // textTransform: "capitalize",
                     fontWeight: 900,
                     fontSize: { xs: 18, md: 36 },
                     lineHeight: 1.1,

@@ -123,7 +123,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       className="pt"
                       sx={{
                         fontFamily: "Noto Serif JP",
-                        textTransform: "capitalize",
+                        // textTransform: "capitalize",
                         fontWeight: 700,
                         fontSize: 30,
                         lineHeight: 1.2,
@@ -140,10 +140,9 @@ export default function TextImageTemplate({ article_content, useLang }) {
               <Item>
                 <Box
                   pr={2}
-                  mr={2}
-                  ml={{ xs: 2, md: 0 }}
                   sx={{
                     position: "relative",
+                    //width: "100%",
                     height: { xs: "30vh", md: "55vh" },
                     //borderTop: "5px solid #00415E",
                     // overflowY: "scroll",
@@ -157,11 +156,12 @@ export default function TextImageTemplate({ article_content, useLang }) {
                     // },
                   }}
                 >
-                  <Box pr={0} className="scrollContent">
+                  <Box pl={0} className="scrollContent">
                     {useLang == true ? (
                       <Box
                         className="pt"
                         pt={2}
+                        pr={2}
                         sx={{
                           fontFamily: "Noto Sans JP",
                           fontWeight: 300,
@@ -178,6 +178,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       <Box
                         className="pt"
                         pt={2}
+                        pr={2}
                         sx={{
                           fontFamily: "Noto Sans JP",
                           fontWeight: 300,
@@ -294,14 +295,14 @@ export default function TextImageTemplate({ article_content, useLang }) {
                           // },
                         }}
                       >
-                        <Box pl={{ xs: 2, md: 3 }} className="scrollContent">
+                        <Box pl={{ xs: 0, md: 0 }} className="scrollContent">
                           {useLang == true ? (
                             <Box
                               className="pt"
-                              p={{
-                                xs: "8px 8px 64px 16px",
-                                md: "24px 8px 64px 20px",
-                              }}
+                              // p={{
+                              //   xs: "8px 8px 64px 16px",
+                              //   md: "24px 8px 64px 20px",
+                              // }}
                               sx={{
                                 fontFamily: "Noto Sans JP",
                                 fontWeight: 300,

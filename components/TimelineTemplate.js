@@ -74,7 +74,7 @@ export default function TimelineTemplate({ article_content, useLang }) {
                       fontFamily: "Noto Sans JP",
                       fontWeight: 300,
                       fontSize: { xs: 14, md: 20 },
-                      lineHeight: { xs: 1.3, md: 1.75 },
+                      lineHeight: { xs: 1.3, md: 1 },
                       textAlign: "left",
                     }}
                     dangerouslySetInnerHTML={{
@@ -88,7 +88,7 @@ export default function TimelineTemplate({ article_content, useLang }) {
                       fontFamily: "Noto Sans JP",
                       fontWeight: 300,
                       fontSize: 20,
-                      lineHeight: { xs: 1.3, md: 1.75 },
+                      lineHeight: { xs: 1.3, md: 1 },
                       textAlign: "justify",
                     }}
                     dangerouslySetInnerHTML={{
