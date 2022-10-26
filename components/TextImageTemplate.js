@@ -201,7 +201,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
               height: { xs: "40vh", md: "100vh" },
             }}
           >
-            <Box pl={{ xs: 3, md: 6 }} pr={{ xs: 3, md: 0 }}>
+            <Box pl={{ xs: 3, md: 3 }} pr={{ xs: 3, md: 0 }}>
               <Slider {...settings}>
                 {article_content.textImageTemplate_images &&
                   article_content.textImageTemplate_images.map((image) => (
@@ -247,8 +247,6 @@ export default function TextImageTemplate({ article_content, useLang }) {
                               zIndex: 0,
                             }}
                             className="player-wrapper"
-                            mt={"0px"}
-                            mb={"0px"}
                           >
                             <ReactPlayer
                               className="react-player"
@@ -271,7 +269,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       {/*** column: image description ***/}
                       <Box
                         mt={1}
-                        pr={2}
+                        pl={4}
                         sx={{
                           background: "none",
                           position: "absolute",
@@ -292,14 +290,14 @@ export default function TextImageTemplate({ article_content, useLang }) {
                           // },
                         }}
                       >
-                        <Box pl={{ xs: 0, md: 0 }} className="scrollContent">
+                        <Box className="scrollContent">
                           {useLang == true ? (
                             <Box
                               className="pt"
-                              // p={{
-                              //   xs: "8px 8px 64px 16px",
-                              //   md: "24px 8px 64px 20px",
-                              // }}
+                              p={{
+                                xs: "8px 8px 64px 16px",
+                                md: "24px 0px 64px 0px",
+                              }}
                               sx={{
                                 fontFamily: "Noto Sans JP",
                                 fontWeight: 300,
