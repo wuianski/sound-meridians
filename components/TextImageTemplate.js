@@ -76,7 +76,15 @@ export default function TextImageTemplate({ article_content, useLang }) {
 
   return (
     <>
-      <Box p={{ xs: "48px 8px 8px 8px", md: "104px 48px 10px 64px" }}>
+      <Box
+        p={{ xs: "48px 8px 8px 8px", md: "104px 0px 10px 0px" }}
+        sx={{
+          width: "100%",
+          maxWidth: 1000,
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={{ xs: 3, md: 6 }}
