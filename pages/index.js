@@ -414,8 +414,6 @@ export default function Home({ about, projects, useLang }) {
                       animate={isOpen ? "open" : "closed"}
                     >
                       <Box
-                        pr={3}
-                        mr={2}
                         sx={{
                           position: "relative",
                           left: 0,
@@ -424,7 +422,7 @@ export default function Home({ about, projects, useLang }) {
                           color: "#00415E",
                         }}
                       >
-                        <Box pr={0} className="scrollContent">
+                        <Box className="scrollContent">
                           <Box
                             sx={{ height: 40, backgroundColor: "#00415E" }}
                           />
@@ -808,7 +806,6 @@ export default function Home({ about, projects, useLang }) {
               <Item>
                 {/*** about content ***/}
                 <Box
-                  pr={3}
                   pl={3}
                   sx={{
                     position: "relative",
@@ -831,7 +828,7 @@ export default function Home({ about, projects, useLang }) {
                     // },
                   }}
                 >
-                  <Box pr={0} className="scrollContent">
+                  <Box className="scrollContent">
                     <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
                     <Box
                       sx={{

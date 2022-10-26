@@ -98,7 +98,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                   ml={{ xs: 2, md: 0 }}
                   sx={{
                     position: "relative",
-                    width: { xs: "calc(100% - 30px)", md: "calc(100% - 30px)" },
+                    width: { xs: "calc(100% - 40px)", md: "calc(100% - 40px)" },
                     height: { xs: "10vh", md: "15vh" },
                     background: "none",
                     borderBottom: "5px solid #00415E",
@@ -160,6 +160,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       <Box
                         className="pt"
                         pt={2}
+                        pl={{ xs: 2, md: 0 }}
                         sx={{
                           fontFamily: "Noto Sans JP",
                           fontWeight: 300,
@@ -269,7 +270,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       {/*** column: image description ***/}
                       <Box
                         mt={1}
-                        pl={4}
+                        pl={{ xs: 2, md: 4 }}
                         sx={{
                           background: "none",
                           position: "absolute",
@@ -313,7 +314,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                               className="pt"
                               p={{
                                 xs: "8px 8px 16px 8px",
-                                md: "24px 48px 64px 48px",
+                                md: "24px 0px 64px 0px",
                               }}
                               sx={{
                                 fontFamily: "Noto Sans JP",

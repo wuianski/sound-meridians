@@ -32,7 +32,7 @@ export default function TextTemplate({ article_content, useLang }) {
               //pb={2}
               sx={{
                 position: "relative",
-                width: { xs: "calc(100% - 17px)", md: "calc(100% - 30px)" },
+                width: { xs: "calc(100% - 24px)", md: "calc(100% - 40px)" },
                 height: { xs: "15vh", md: "15vh" },
                 background: "none",
                 borderBottom: "5px solid #00415E",
@@ -79,8 +79,6 @@ export default function TextTemplate({ article_content, useLang }) {
           {/*** column: content ***/}
           <Item>
             <Box
-              pr={2}
-              mr={2}
               className="scroller"
               sx={{
                 position: "relative",
@@ -98,7 +96,7 @@ export default function TextTemplate({ article_content, useLang }) {
                 // },
               }}
             >
-              <Box pr={0} className="scrollContent">
+              <Box className="scrollContent">
                 {useLang == true ? (
                   <Box
                     className="pt"

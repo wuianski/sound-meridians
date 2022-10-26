@@ -211,7 +211,7 @@ export default function Project({ projects, useLang }) {
                     // },
                   }}
                 >
-                  <Box pr={0} className="scrollContent">
+                  <Box className="scrollContent">
                     {useLang == true ? (
                       <>
                         <Box
@@ -407,7 +407,7 @@ export default function Project({ projects, useLang }) {
                     </Box>
                     {/*** text ***/}
                     <Box
-                      p={"13px 16px 8px 24px"}
+                      p={"48px 16px 8px 24px"}
                       sx={{
                         width: "100%",
                         height: "calc(100vh - 100px)",
@@ -425,7 +425,7 @@ export default function Project({ projects, useLang }) {
                         // },
                       }}
                     >
-                      <Box pr={0} className="scrollContent">
+                      <Box className="scrollContent">
                         {useLang == true ? (
                           <>
                             <Box
