@@ -178,3 +178,7 @@ a {
 .logos img{
   width: 150px;
 }
+.slick-dots .slick-active div{
+  background-color:#fff;
+  color:#000 !important;
+}

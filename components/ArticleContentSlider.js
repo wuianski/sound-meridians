@@ -85,8 +85,7 @@ export default function ArticleContentSlider({
               marginLeft: { xs: "-48px", md: "-16px" },
             }}
           >
-            {" "}
-            {dots}{" "}
+            {dots}
           </Box>
         </ul>
       </div>

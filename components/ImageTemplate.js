@@ -81,7 +81,7 @@ export default function ImageTemplate({ article_content, useLang }) {
                         sx={{
                           position: "relative",
                           width: "100%",
-                          height: "80vh",
+                          height: "75vh",
                           zIndex: 0,
                         }}
                       >
