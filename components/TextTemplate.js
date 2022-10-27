@@ -30,8 +30,7 @@ export default function TextTemplate({ article_content, useLang }) {
         }}
         sx={{
           width: "100%",
-          maxWidth: 1000,
-          // minWidth: 900,
+          maxWidth: { md: "60vw", lg: 800, xl: 1000 },
           marginLeft: "auto",
           marginRight: "auto",
         }}
