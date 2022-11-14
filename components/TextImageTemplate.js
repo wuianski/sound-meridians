@@ -24,33 +24,69 @@ const Item = styled(Paper)(({ theme }) => ({
 /***************************/
 /*** react-slick setting ***/
 function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
+  const { style, onClick } = props;
   return (
     <div
-      className={className}
       style={{
         ...style,
         display: "block",
-        background: "#00415E",
-        borderRadius: "50%",
+        width: 53.7,
+        height: 56,
       }}
       onClick={onClick}
-    />
+    >
+      <Box
+        sx={{
+          cursor: "pointer",
+          position: "absolute",
+          top: "50%",
+          right: { xs: "-18px", md: "-50px" },
+          width: { xs: 30, md: 53.7 },
+          height: { xs: 33, md: 56 },
+          zIndex: 9,
+        }}
+      >
+        <Image
+          src="/imgs/nextBtn.png"
+          alt="about open image"
+          width={53.7}
+          height={56}
+        />
+      </Box>
+    </div>
   );
 }
 function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { style, onClick } = props;
   return (
     <div
-      className={className}
       style={{
         ...style,
         display: "block",
-        background: "#00415E",
-        borderRadius: "50%",
+        width: 53.7,
+        height: 56,
       }}
       onClick={onClick}
-    />
+    >
+      <Box
+        sx={{
+          cursor: "pointer",
+          position: "absolute",
+          top: "50%",
+          left: { xs: "-18px", md: "-50px" },
+          width: { xs: 30, md: 53.7 },
+          height: { xs: 33, md: 56 },
+          zIndex: 9,
+        }}
+      >
+        <Image
+          src="/imgs/prevBtn.png"
+          alt="about open image"
+          width={53.7}
+          height={56}
+        />
+      </Box>
+    </div>
   );
 }
 const settings = {

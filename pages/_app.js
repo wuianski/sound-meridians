@@ -10,6 +10,8 @@ import "keen-slider/keen-slider.min.css";
 /** react-slick css (slider) **/
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+/** next-seo **/
+import { DefaultSeo } from "next-seo";
 
 /*** delay ***/
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -53,6 +55,28 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
         />
       </Head>
+      <DefaultSeo
+        title="聲經絡 Sound Meridians"
+        description="聲經絡 Sound Meridians : 聲響文化製圖 Cultural Counter-mapping through Sound"
+        canonical="https://soundmeridians.net/"
+        openGraph={{
+          type: "website",
+          locale: "zh_TW",
+          url: "https://soundmeridians.net/",
+          site_name: "聲經絡 Sound Meridians",
+          title: "聲經絡 Sound Meridians",
+          description:
+            "聲經絡 Sound Meridians : 聲響文化製圖 Cultural Counter-mapping through Sound",
+          images: [
+            {
+              url: "/imgs/og.png",
+              width: 1724,
+              height: 836,
+              alt: "Sound Meridians",
+            },
+          ],
+        }}
+      />
 
       {/*** !!important when use router to query value from component. Use a React key to tell React to remount the component. ***/}
       <AnimatePresence>

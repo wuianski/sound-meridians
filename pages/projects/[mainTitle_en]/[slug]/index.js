@@ -11,6 +11,7 @@ import { styled } from "@mui/material/styles";
 
 import TextTemplate from "../../../../components/TextTemplate";
 import ArticleContentSlider from "../../../../components/ArticleContentSlider";
+import { motion } from "framer-motion";
 
 /******************/
 /*** stack ***/
@@ -62,14 +63,29 @@ export default function Article({ projects, useLang }) {
                     }}
                   >
                     <Link href="/">
-                      <Box sx={{ cursor: "pointer" }}>
-                        <Image
-                          src="/imgs/returnHomePage2.png"
-                          alt="about open image"
-                          width={80}
-                          height={572}
-                        />
-                      </Box>
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            cursor: "pointer",
+                            position: "absolute",
+                            zIndex: 3,
+                          }}
+                        >
+                          <Image
+                            src="/imgs/returnHomePage2.png"
+                            alt="about open image"
+                            width={80}
+                            height={572}
+                          />
+                        </Box>
+                      </motion.div>
                     </Link>
                   </Box>
                 </Box>
@@ -77,93 +93,102 @@ export default function Article({ projects, useLang }) {
               {/*** row: project name and country name ***/}
               <Item>
                 <Link href={`/projects/${project.mainTitle_en}`}>
-                  <Box
-                    sx={{
-                      position: "relative",
-                      width: 80,
-                      height: "100vh",
-                      color: "#000",
-                      writingMode: "vertical-lr",
-                      textOrientation: "mixed",
-                      backgroundColor: "#fff",
-                      zIndex: 3,
-                      cursor: "pointer",
-                      borderRight: "1px solid #000",
-                      borderLeft: "1px solid #000",
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 10,
                     }}
                   >
-                    <Box>
-                      <Box
-                        sx={{
-                          position: "absolute",
-                          left: 8,
-                          top: 30,
-                          display: "inline-flex",
-                        }}
-                      >
+                    <Box
+                      sx={{
+                        position: "relative",
+                        width: 80,
+                        height: "100vh",
+                        color: "#000",
+                        writingMode: "vertical-lr",
+                        textOrientation: "mixed",
+                        backgroundColor: "#fff",
+                        zIndex: 4,
+                        cursor: "pointer",
+                        borderRight: "1px solid #000",
+                        borderLeft: "1px solid #000",
+                      }}
+                    >
+                      <Box>
                         <Box
-                          className="pt"
                           sx={{
-                            fontSize: 22,
-                            textTransform: "uppercase",
-                            fontFamily: "Noto Serif JP",
-                            fontWeight: 700,
-                          }}
-                          dangerouslySetInnerHTML={{
-                            __html: project.mainTitle_tw,
-                          }}
-                        ></Box>
-                        <Box
-                          className="pt"
-                          mt={2}
-                          sx={{
-                            fontSize: 13,
-                            textTransform: "uppercase",
-                            fontFamily: "BioRhyme Expanded",
-                            fontWeight: 700,
-                            letterSpacing: "-0.015em",
-                          }}
-                          dangerouslySetInnerHTML={{
-                            __html: project.mainTitle_en,
-                          }}
-                        ></Box>
-                      </Box>
-                      <Box
-                        sx={{
-                          position: "absolute",
-                          right: 8,
-                          bottom: 30,
-                          fontSize: 17,
-                          display: "inline-flex",
-                        }}
-                      >
-                        <Box
-                          className="pt"
-                          sx={{
-                            fontSize: 15,
-                            fontFamily: "Noto Sans JP",
-                            fontWeight: 500,
+                            position: "absolute",
+                            left: 8,
+                            top: 30,
+                            display: "inline-flex",
                           }}
                         >
-                          返回列表
+                          <Box
+                            className="pt"
+                            sx={{
+                              fontSize: 22,
+                              textTransform: "uppercase",
+                              fontFamily: "Noto Serif JP",
+                              fontWeight: 700,
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: project.mainTitle_tw,
+                            }}
+                          ></Box>
+                          <Box
+                            className="pt"
+                            mt={2}
+                            sx={{
+                              fontSize: 13,
+                              textTransform: "uppercase",
+                              fontFamily: "BioRhyme Expanded",
+                              fontWeight: 700,
+                              letterSpacing: "-0.015em",
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: project.mainTitle_en,
+                            }}
+                          ></Box>
                         </Box>
-
                         <Box
-                          className="pt"
-                          mt={2}
                           sx={{
-                            fontSize: 14,
-                            textTransform: "uppercase",
-                            fontFamily: "Noto Sans JP",
-                            fontWeight: 500,
-                            lineHeight: 1.4,
+                            position: "absolute",
+                            right: 8,
+                            bottom: 30,
+                            fontSize: 17,
+                            display: "inline-flex",
                           }}
                         >
-                          return
+                          <Box
+                            className="pt"
+                            sx={{
+                              fontSize: 15,
+                              fontFamily: "Noto Sans JP",
+                              fontWeight: 500,
+                            }}
+                          >
+                            返回列表
+                          </Box>
+
+                          <Box
+                            className="pt"
+                            mt={2}
+                            sx={{
+                              fontSize: 14,
+                              textTransform: "uppercase",
+                              fontFamily: "Noto Sans JP",
+                              fontWeight: 500,
+                              lineHeight: 1.4,
+                            }}
+                          >
+                            return
+                          </Box>
                         </Box>
                       </Box>
                     </Box>
-                  </Box>
+                  </motion.div>
                 </Link>
               </Item>
               {/*** row: article name ***/}

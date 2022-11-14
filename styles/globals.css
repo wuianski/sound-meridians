@@ -103,7 +103,12 @@ a {
 
 .pt p{
   margin: 0;
-  }
+}
+
+/* .pt p img {
+  width:100px;
+} */
+
 
 .thumbnail .keen-slider__slide {
     font-size: 30px;
@@ -126,6 +131,13 @@ a {
 @media only screen and (max-width: 900px) {
   .buYvqM{
     font-size: 16px !important;
+  }
+  /* for images in project intro */
+  .pt p img {
+    width:70vw;
+  }
+  .slick-dots{
+    bottom: -60px !important;
   }
 }
 

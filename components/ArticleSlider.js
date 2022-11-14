@@ -9,15 +9,11 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import SwipeRightIcon from "@mui/icons-material/SwipeRight";
-import SwipeLeftIcon from "@mui/icons-material/SwipeLeft";
-import SwipeIcon from "@mui/icons-material/Swipe";
 import KeyboardArrowLeftSharpIcon from "@mui/icons-material/KeyboardArrowLeftSharp";
 import KeyboardArrowRightSharpIcon from "@mui/icons-material/KeyboardArrowRightSharp";
 import KeyboardArrowUpSharpIcon from "@mui/icons-material/KeyboardArrowUpSharp";
 import KeyboardArrowDownSharpIcon from "@mui/icons-material/KeyboardArrowDownSharp";
+import { motion } from "framer-motion";
 
 /******************/
 /*** stack ***/
@@ -88,71 +84,80 @@ export default function ArticleSlider({ project, useLang }) {
                   <Link
                     href={`/projects/${project.mainTitle_en}/${article.articles_id.slug}`}
                   >
-                    <Box
-                      className="keen-slider__slide"
-                      sx={{
-                        backgroundColor: "#BCACA8",
-                        maxWidth: { xs: "calc(100vw - 100px)", md: 56 },
-                        minWidth: { xs: "calc(100vw - 100px)", md: 56 },
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
                       }}
                     >
                       <Box
+                        className="keen-slider__slide"
                         sx={{
-                          position: "relative",
-                          width: "auto",
-                          height: { xs: 50, md: "100vh" },
-                          color: "#000",
-                          writingMode: {
-                            xs: "horizontal-tb",
-                            md: "vertical-lr",
-                          },
                           backgroundColor: "#BCACA8",
-                          borderRight: { xs: "none", md: "1px solid #000" },
-                          borderBottom: { xs: "1px solid #000", md: "none" },
-                          zIndex: 1,
+                          maxWidth: { xs: "calc(100vw - 100px)", md: 56 },
+                          minWidth: { xs: "calc(100vw - 100px)", md: 56 },
                         }}
                       >
                         <Box
                           sx={{
-                            position: "absolute",
-                            left: 8,
-                            top: { xs: 8, md: 30 },
-                            display: "inline-flex",
+                            position: "relative",
+                            width: "auto",
+                            height: { xs: 50, md: "100vh" },
+                            color: "#000",
+                            writingMode: {
+                              xs: "horizontal-tb",
+                              md: "vertical-lr",
+                            },
+                            backgroundColor: "#BCACA8",
+                            borderRight: { xs: "none", md: "1px solid #000" },
+                            borderBottom: { xs: "1px solid #000", md: "none" },
+                            zIndex: 1,
                           }}
                         >
-                          {useLang == true ? (
-                            <Box
-                              className="pt"
-                              sx={{
-                                fontSize: { xs: 18, md: 22 },
-                                fontFamily: "Noto Serif JP",
-                                fontWeight: 700,
-                                lineHeight: 1.4,
-                                letterSpacing: { xs: "-0.05em", md: "unset" },
-                                textOrientation: "upright",
-                              }}
-                              dangerouslySetInnerHTML={{
-                                __html: article.articles_id.title_tw,
-                              }}
-                            />
-                          ) : (
-                            <Box
-                              className="pt"
-                              sx={{
-                                fontSize: { xs: 11, md: 13 },
-                                fontFamily: "BioRhyme Expanded",
-                                fontWeight: 700,
-                                textOrientation: "unset",
-                                textTransform: "uppercase",
-                              }}
-                              dangerouslySetInnerHTML={{
-                                __html: article.articles_id.title_en,
-                              }}
-                            />
-                          )}
+                          <Box
+                            sx={{
+                              position: "absolute",
+                              left: 8,
+                              top: { xs: 8, md: 30 },
+                              display: "inline-flex",
+                            }}
+                          >
+                            {useLang == true ? (
+                              <Box
+                                className="pt"
+                                sx={{
+                                  fontSize: { xs: 18, md: 22 },
+                                  fontFamily: "Noto Serif JP",
+                                  fontWeight: 700,
+                                  lineHeight: 1.4,
+                                  letterSpacing: { xs: "-0.05em", md: "unset" },
+                                  textOrientation: "upright",
+                                }}
+                                dangerouslySetInnerHTML={{
+                                  __html: article.articles_id.title_tw,
+                                }}
+                              />
+                            ) : (
+                              <Box
+                                className="pt"
+                                sx={{
+                                  fontSize: { xs: 11, md: 13 },
+                                  fontFamily: "BioRhyme Expanded",
+                                  fontWeight: 700,
+                                  textOrientation: "unset",
+                                  textTransform: "uppercase",
+                                }}
+                                dangerouslySetInnerHTML={{
+                                  __html: article.articles_id.title_en,
+                                }}
+                              />
+                            )}
+                          </Box>
                         </Box>
                       </Box>
-                    </Box>
+                    </motion.div>
                   </Link>
                 </Box>
               ))}
@@ -173,17 +178,20 @@ export default function ArticleSlider({ project, useLang }) {
                 <Box
                   pl={2.5}
                   ml={{ xs: -2, md: -1 }}
-                  sx={{ width: { xs: 60, md: 260 }, textAlign: "left" }}
+                  sx={{
+                    width: { xs: 60, md: 260 },
+                    textAlign: "left",
+                    cursor: "pointer",
+                  }}
+                  onClick={(e) =>
+                    e.stopPropagation() || instanceRef.current?.prev()
+                  }
+                  disabled={currentSlide === 0}
                 >
                   <Box>prev</Box>
                   <KeyboardArrowLeftSharpIcon
                     left="true"
-                    onClick={(e) =>
-                      e.stopPropagation() || instanceRef.current?.prev()
-                    }
-                    disabled={currentSlide === 0}
                     sx={{
-                      cursor: "pointer",
                       color: "#000",
                       fontSize: "xx-large",
                     }}
@@ -192,19 +200,22 @@ export default function ArticleSlider({ project, useLang }) {
                 <Box
                   mt={"-64px"}
                   pr={2}
-                  sx={{ width: { xs: 60, md: 260 }, textAlign: "right" }}
+                  sx={{
+                    width: { xs: 60, md: 260 },
+                    textAlign: "right",
+                    cursor: "pointer",
+                  }}
+                  onClick={(e) =>
+                    e.stopPropagation() || instanceRef.current?.next()
+                  }
+                  disabled={
+                    currentSlide ===
+                    instanceRef.current.track.details.slides.length - 1
+                  }
                 >
                   <Box>next</Box>
                   <KeyboardArrowRightSharpIcon
-                    onClick={(e) =>
-                      e.stopPropagation() || instanceRef.current?.next()
-                    }
-                    disabled={
-                      currentSlide ===
-                      instanceRef.current.track.details.slides.length - 1
-                    }
                     sx={{
-                      cursor: "pointer",
                       color: "#000",
                       fontSize: "xx-large",
                     }}

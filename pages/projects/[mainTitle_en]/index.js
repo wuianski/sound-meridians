@@ -10,12 +10,10 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 
 import ArticleSlider from "../../../components/ArticleSlider";
-//import returnHomePage from "../../../public/imgs/returnHomePage.png";
 
 import { useRouter } from "next/router";
-
-import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
-import KeyboardDoubleArrowDownSharpIcon from "@mui/icons-material/KeyboardDoubleArrowDownSharp";
+import { motion } from "framer-motion";
+import { NextSeo } from "next-seo";
 
 /******************/
 /*** stack ***/
@@ -68,14 +66,29 @@ export default function Project({ projects, useLang }) {
                     }}
                   >
                     <Link href="/">
-                      <Box sx={{ cursor: "pointer" }}>
-                        <Image
-                          src="/imgs/returnHomePage2.png"
-                          alt="about open image"
-                          width={80}
-                          height={572}
-                        />
-                      </Box>
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            cursor: "pointer",
+                            position: "absolute",
+                            zIndex: 3,
+                          }}
+                        >
+                          <Image
+                            src="/imgs/returnHomePage2.png"
+                            alt="about open image"
+                            width={80}
+                            height={572}
+                          />
+                        </Box>
+                      </motion.div>
                     </Link>
                   </Box>
                 </Box>
@@ -199,16 +212,6 @@ export default function Project({ projects, useLang }) {
                     height: "96vh",
                     position: "relative",
                     zIndex: 3,
-                    // overflowY: "scroll",
-                    // scrollbarWidth: "thin !important",
-                    // scrollbarColor: "#888 #333 !important",
-                    // "&::-webkit-scrollbar": {
-                    //   width: "1px",
-                    //   //backgroundColor: "#666",
-                    // },
-                    // "&::-webkit-scrollbar-thumb ": {
-                    //   backgroundColor: "#fff",
-                    // },
                   }}
                 >
                   <Box className="scrollContent">
@@ -237,7 +240,6 @@ export default function Project({ projects, useLang }) {
                             fontWeight: 400,
                             color: "#fff",
                             fontFamily: "Noto Sans JP",
-
                             fontSize: 16,
                             fontWeight: 400,
                             lineHeight: 1.75,
