@@ -82,7 +82,7 @@ export default function ArticleSlider({ project, useLang }) {
               project.articles.map((article) => (
                 <Box key={article.articles_id.id} sx={{ cursor: "pointer" }}>
                   <Link
-                    href={`/projects/${project.mainTitle_en}/${article.articles_id.slug}`}
+                    href={`/projects/${project.mainTitle_en}/${article.order}`}
                   >
                     <motion.div
                       whileHover={{ scale: 1.02 }}

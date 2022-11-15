@@ -22,11 +22,22 @@ const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#00415E",
 }));
 
-export default function Article({ projects, useLang }) {
-  //console.log(projects);
+export default function Article({ projects, useLang, allprojects }) {
+  //console.log(allprojects);
   // const router = useRouter();
   // const id = router.query.id;
   const sliderRef = useRef();
+
+  /**********************************************************************/
+  /*** organize all articles' length  for using in go to next article ***/
+  const articleLength = allprojects.allprojects.map((myprojects) => {
+    const result = {
+      mylength: myprojects.articles.length,
+    };
+
+    return result;
+  });
+  // console.log(articleLength[0].mylength);
   return (
     <>
       {/*** DESKTOP VERSION ***/}
@@ -630,7 +641,7 @@ export default function Article({ projects, useLang }) {
 export async function getServerSideProps({ params }) {
   //console.log(params); // { id: '2', sort: '2' }
   // Run API calls in parallel
-  const [projects] = await Promise.all([
+  const [projects, allprojects] = await Promise.all([
     await fetchData(
       `
       query  {
@@ -640,9 +651,10 @@ export async function getServerSideProps({ params }) {
           mainTitle_en,
           nation_tw,
           nation_en,
-          articles {
+          articles (filter: { order: { _eq: "${params.order}" } }){
             id 
-            articles_id (filter: { slug: { _eq: "${params.slug}" } }){
+            order
+            articles_id {
                 id
                 sort
                 slug
@@ -706,11 +718,31 @@ export async function getServerSideProps({ params }) {
         variables: {},
       }
     ),
+    await fetchData(
+      `
+      query  {
+        allprojects: projects (filter: { mainTitle_en: { _eq: "${params.mainTitle_en}"} }) {
+          id
+          articles {
+            id 
+            order
+            articles_id {
+                id  
+            }
+          }
+        }
+      }
+      `,
+      {
+        variables: {},
+      }
+    ),
   ]);
 
   return {
     props: {
       projects: projects?.data || {},
+      allprojects: allprojects?.data || {},
     },
     //revalidate: 1,
   };

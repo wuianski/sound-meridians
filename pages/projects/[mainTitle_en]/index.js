@@ -555,6 +555,7 @@ export async function getServerSideProps({ params }) {
           introContent_en,
           articles{
             id     
+            order
             articles_id {
                 id
                 sort
