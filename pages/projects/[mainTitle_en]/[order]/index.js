@@ -37,7 +37,8 @@ export default function Article({ projects, useLang, allprojects }) {
 
     return result;
   });
-  // console.log(articleLength[0].mylength);
+  //console.log(articleLength[0].mylength);
+
   return (
     <>
       {/*** DESKTOP VERSION ***/}
@@ -80,6 +81,7 @@ export default function Article({ projects, useLang, allprojects }) {
                           type: "spring",
                           stiffness: 400,
                           damping: 10,
+                          mass: 0.8,
                         }}
                       >
                         <Box
@@ -105,11 +107,12 @@ export default function Article({ projects, useLang, allprojects }) {
               <Item>
                 <Link href={`/projects/${project.mainTitle_en}`}>
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.03 }}
                     transition={{
                       type: "spring",
                       stiffness: 400,
                       damping: 10,
+                      mass: 0.8,
                     }}
                   >
                     <Box
@@ -204,66 +207,192 @@ export default function Article({ projects, useLang, allprojects }) {
               </Item>
               {/*** row: article name ***/}
               <Item>
-                <Box
-                  sx={{
-                    position: "relative",
-                    width: 64.75,
-                    height: "100vh",
-                    color: "#000",
-                    writingMode: "vertical-lr",
-                    textOrientation: "mixed",
-                    backgroundColor: "#BCACA8",
-                    zIndex: 3,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      left: 8,
-                      top: 30,
-                      display: "inline-flex",
-                    }}
-                  >
-                    {project.articles &&
-                      project.articles.map((article) => (
-                        <Box key={article.id}>
-                          {/*** article's title_tw ***/}
-                          {article.articles_id && (
-                            <Box>
-                              {useLang == true ? (
+                {project.articles &&
+                  project.articles.map((article) => (
+                    <Box key={article.id}>
+                      {article.order < articleLength[0].mylength ? (
+                        <>
+                          {/*** if article.order less then total article length then with link ***/}
+                          <Box>
+                            <Link
+                              href={`/projects/${project.mainTitle_en}/${
+                                article.order + 1
+                              }`}
+                            >
+                              <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                transition={{
+                                  type: "spring",
+                                  stiffness: 400,
+                                  damping: 10,
+                                  mass: 0.8,
+                                }}
+                              >
                                 <Box
-                                  className="pt"
                                   sx={{
-                                    fontSize: 22,
-                                    fontFamily: "Noto Serif JP",
-                                    fontWeight: 700,
+                                    position: "relative",
+                                    width: 64.75,
+                                    height: "100vh",
+                                    color: "#000",
+                                    writingMode: "vertical-lr",
                                     textOrientation: "mixed",
+                                    backgroundColor: "#BCACA8",
+                                    zIndex: 3,
+                                    cursor: "pointer",
                                   }}
-                                  dangerouslySetInnerHTML={{
-                                    __html: article.articles_id.title_tw,
-                                  }}
-                                />
-                              ) : (
-                                <Box
-                                  className="pt"
-                                  sx={{
-                                    fontSize: 13,
-                                    fontFamily: "BioRhyme Expanded",
-                                    fontWeight: 700,
-                                    textOrientation: "unset",
-                                    textTransform: "uppercase",
-                                  }}
-                                  dangerouslySetInnerHTML={{
-                                    __html: article.articles_id.title_en,
-                                  }}
-                                />
+                                >
+                                  {/*** article title ***/}
+                                  <Box
+                                    sx={{
+                                      position: "absolute",
+                                      left: 8,
+                                      top: 30,
+                                      display: "inline-flex",
+                                    }}
+                                  >
+                                    {/*** article's title_tw ***/}
+                                    {article.articles_id && (
+                                      <Box>
+                                        <Box>
+                                          {useLang == true ? (
+                                            <Box
+                                              className="pt"
+                                              sx={{
+                                                fontSize: 22,
+                                                fontFamily: "Noto Serif JP",
+                                                fontWeight: 700,
+                                                textOrientation: "mixed",
+                                              }}
+                                              dangerouslySetInnerHTML={{
+                                                __html:
+                                                  article.articles_id.title_tw,
+                                              }}
+                                            />
+                                          ) : (
+                                            <Box
+                                              className="pt"
+                                              sx={{
+                                                fontSize: 13,
+                                                fontFamily: "BioRhyme Expanded",
+                                                fontWeight: 700,
+                                                textOrientation: "unset",
+                                                textTransform: "uppercase",
+                                              }}
+                                              dangerouslySetInnerHTML={{
+                                                __html:
+                                                  article.articles_id.title_en,
+                                              }}
+                                            />
+                                          )}
+                                        </Box>
+                                      </Box>
+                                    )}
+                                  </Box>
+                                  {/*** next chapter ***/}
+                                  <Box
+                                    sx={{
+                                      position: "absolute",
+                                      right: 8,
+                                      bottom: 30,
+                                      fontSize: 17,
+                                      display: "inline-flex",
+                                    }}
+                                  >
+                                    <Box
+                                      className="pt"
+                                      sx={{
+                                        fontSize: 15,
+                                        fontFamily: "Noto Sans JP",
+                                        fontWeight: 500,
+                                      }}
+                                    >
+                                      下一章節
+                                    </Box>
+
+                                    <Box
+                                      className="pt"
+                                      mt={2}
+                                      sx={{
+                                        fontSize: 14,
+                                        textTransform: "uppercase",
+                                        fontFamily: "Noto Sans JP",
+                                        fontWeight: 500,
+                                        lineHeight: 1.4,
+                                      }}
+                                    >
+                                      forward
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </motion.div>
+                            </Link>
+                          </Box>
+                        </>
+                      ) : (
+                        <>
+                          {/*** else if article.order equal to total article length then with no link ***/}
+                          <Box
+                            sx={{
+                              position: "relative",
+                              width: 64.75,
+                              height: "100vh",
+                              color: "#000",
+                              writingMode: "vertical-lr",
+                              textOrientation: "mixed",
+                              backgroundColor: "#BCACA8",
+                              zIndex: 3,
+                            }}
+                          >
+                            {/*** article title ***/}
+                            <Box
+                              sx={{
+                                position: "absolute",
+                                left: 8,
+                                top: 30,
+                                display: "inline-flex",
+                              }}
+                            >
+                              {/*** article's title_tw ***/}
+                              {article.articles_id && (
+                                <Box>
+                                  <Box>
+                                    {useLang == true ? (
+                                      <Box
+                                        className="pt"
+                                        sx={{
+                                          fontSize: 22,
+                                          fontFamily: "Noto Serif JP",
+                                          fontWeight: 700,
+                                          textOrientation: "mixed",
+                                        }}
+                                        dangerouslySetInnerHTML={{
+                                          __html: article.articles_id.title_tw,
+                                        }}
+                                      />
+                                    ) : (
+                                      <Box
+                                        className="pt"
+                                        sx={{
+                                          fontSize: 13,
+                                          fontFamily: "BioRhyme Expanded",
+                                          fontWeight: 700,
+                                          textOrientation: "unset",
+                                          textTransform: "uppercase",
+                                        }}
+                                        dangerouslySetInnerHTML={{
+                                          __html: article.articles_id.title_en,
+                                        }}
+                                      />
+                                    )}
+                                  </Box>
+                                </Box>
                               )}
                             </Box>
-                          )}
-                        </Box>
-                      ))}
-                  </Box>
-                </Box>
+                          </Box>
+                        </>
+                      )}
+                    </Box>
+                  ))}
               </Item>
               {/*** row: article content ***/}
               <Item>

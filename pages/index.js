@@ -22,6 +22,10 @@ import { useRouter } from "next/router";
 import fetchData from "../lib/api";
 import { NextSeo } from "next-seo";
 
+import { useCallback } from "react";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+
 /******************/
 /*** stack ***/
 const Item = styled(Paper)(({ theme }) => ({
@@ -264,27 +268,19 @@ export default function Home({ about, projects, useLang }) {
     // },
   });
 
+  /*****************/
+  /*** particles ***/
+  const particlesInit = useCallback(async (engine) => {
+    //console.log(engine);
+    await loadFull(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container) => {
+    //await console.log(container);
+  }, []);
+
   return (
     <>
-      {/* <NextSeo
-        title="聲經絡 Sound Meridians"
-        description="聲經絡 Sound Meridians : 聲響文化製圖 Cultural Counter-mapping through Sound"
-        canonical="https://soundmeridians.net/"
-        openGraph={{
-          url: "https://soundmeridians.net/",
-          title: "聲經絡 Sound Meridians",
-          description:
-            "聲經絡 Sound Meridians : 聲響文化製圖 Cultural Counter-mapping through Sound",
-          images: [
-            {
-              url: "/imgs/og.png",
-              width: 1724,
-              height: 836,
-              alt: "Sound Meridians",
-            },
-          ],
-        }}
-      /> */}
       {/*** DESKTOP VERSION ***/}
       <Box sx={{ display: { xs: "none", md: "block" } }}>
         <Box>
@@ -378,9 +374,82 @@ export default function Home({ about, projects, useLang }) {
                     height: "100vh",
                     color: "#ff0000",
                     textAlign: "center",
-                    borderRight: "1px solid #000",
+                    //borderRight: "1px solid #000",
                   }}
                 >
+                  {/*** particles ***/}
+                  <Particles
+                    id="tsparticles"
+                    init={particlesInit}
+                    loaded={particlesLoaded}
+                    options={{
+                      //fpsLimit: 120,
+                      interactivity: {
+                        events: {
+                          onClick: {
+                            enable: true,
+                            mode: "push",
+                          },
+                          onHover: {
+                            enable: true,
+                            mode: "repulse",
+                          },
+                          resize: true,
+                        },
+                        modes: {
+                          push: {
+                            quantity: 4,
+                          },
+                          repulse: {
+                            distance: 200,
+                            duration: 0.4,
+                          },
+                        },
+                      },
+                      particles: {
+                        color: {
+                          value: "#ffffff",
+                        },
+                        links: {
+                          color: "#ffffff",
+                          distance: 150,
+                          enable: true,
+                          opacity: 0.5,
+                          width: 1,
+                        },
+                        collisions: {
+                          enable: true,
+                        },
+                        move: {
+                          directions: "none",
+                          enable: true,
+                          outModes: {
+                            default: "bounce",
+                          },
+                          random: false,
+                          speed: 1,
+                          straight: false,
+                        },
+                        number: {
+                          density: {
+                            enable: true,
+                            area: 800,
+                          },
+                          value: 80,
+                        },
+                        opacity: {
+                          value: 0.5,
+                        },
+                        shape: {
+                          type: "circle",
+                        },
+                        size: {
+                          value: { min: 1, max: 5 },
+                        },
+                      },
+                      detectRetina: true,
+                    }}
+                  />
                   {/*** site name en ***/}
                   <Box sx={{ position: "absolute" }}>
                     <motion.div
@@ -567,11 +636,12 @@ export default function Home({ about, projects, useLang }) {
                           )}`}
                         >
                           <motion.div
-                            whileHover={{ scale: 1.02 }}
+                            whileHover={{ scale: 1.03 }}
                             transition={{
                               type: "spring",
                               stiffness: 400,
                               damping: 10,
+                              mass: 0.8,
                             }}
                           >
                             <Box sx={{ cursor: "pointer" }}>

@@ -85,11 +85,12 @@ export default function ArticleSlider({ project, useLang }) {
                     href={`/projects/${project.mainTitle_en}/${article.order}`}
                   >
                     <motion.div
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{ scale: 1.03 }}
                       transition={{
                         type: "spring",
                         stiffness: 400,
                         damping: 10,
+                        mass: 0.8,
                       }}
                     >
                       <Box

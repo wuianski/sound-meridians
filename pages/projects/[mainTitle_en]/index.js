@@ -72,6 +72,7 @@ export default function Project({ projects, useLang }) {
                           type: "spring",
                           stiffness: 400,
                           damping: 10,
+                          mass: 0.8,
                         }}
                       >
                         <Box
