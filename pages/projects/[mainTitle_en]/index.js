@@ -213,6 +213,7 @@ export default function Project({ projects, useLang }) {
                     height: "96vh",
                     position: "relative",
                     zIndex: 3,
+                    width: "calc(100vw - 400px)",
                   }}
                 >
                   <Box className="scrollContent">
@@ -320,6 +321,8 @@ export default function Project({ projects, useLang }) {
                     height: "100vh",
                     color: "#ff0000",
                     borderRight: "1px solid #000",
+                    position: "absolute",
+                    right: 0,
                   }}
                   style={{ maxWidth: 480, maxHeight: "100vh" }}
                 >

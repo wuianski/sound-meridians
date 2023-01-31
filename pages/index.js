@@ -390,10 +390,10 @@ export default function Home({ about, projects, useLang }) {
                             enable: true,
                             mode: "push",
                           },
-                          onHover: {
-                            enable: true,
-                            mode: "repulse",
-                          },
+                          // onHover: {
+                          //   enable: true,
+                          //   mode: "repulse",
+                          // },
                           resize: true,
                         },
                         modes: {

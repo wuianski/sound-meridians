@@ -8,10 +8,10 @@ import TextTemplate from "../components/TextTemplate";
 import TextImageTemplate from "../components/TextImageTemplate";
 import TimelineTemplate from "../components/TimelineTemplate";
 import ImageTemplate from "../components/ImageTemplate";
-import KeyboardArrowLeftSharpIcon from "@mui/icons-material/KeyboardArrowLeftSharp";
-import KeyboardArrowRightSharpIcon from "@mui/icons-material/KeyboardArrowRightSharp";
-import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
+
+import { useCallback } from "react";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 
 /*************/
 /*** delay ***/
@@ -31,8 +31,6 @@ export default function ArticleContentSlider({
         style={{
           ...style,
           display: "block",
-          //background: "#00415E",
-          //borderRadius: "50%",
           color: "#ff0000",
           position: "absolute",
           right: 0,
@@ -76,6 +74,8 @@ export default function ArticleContentSlider({
           background: "none",
           borderRadius: "10px",
           padding: "0px",
+          position: "absolute",
+          bottom: "0px",
         }}
       >
         <ul>
@@ -104,6 +104,18 @@ export default function ArticleContentSlider({
       </div>
     ),
   };
+
+  /*****************/
+  /*** particles ***/
+  const particlesInit = useCallback(async (engine) => {
+    //console.log(engine);
+    await loadFull(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container) => {
+    //await console.log(container);
+  }, []);
+
   return (
     <>
       <Box
@@ -125,9 +137,10 @@ export default function ArticleContentSlider({
             <Box key={article.id}>
               <Box
                 sx={{
-                  backgroundColor: "#000",
+                  // backgroundColor: "#000",
+                  background: "none",
                   color: "#fff",
-                  borderRight: "1px solid #000",
+                  // borderRight: "1px solid #000",
                   width: {
                     xs: "calc(100vw - 60px)",
                     md: "calc(100vw - 252px)",
@@ -135,6 +148,58 @@ export default function ArticleContentSlider({
                   //width: "calc(100vw - 252px)", //-252px will see arrow, -200px will not see
                 }}
               >
+                {/*** particles ***/}
+                <Box sx={{ display: { xs: "none", md: "block" } }}>
+                  <Particles
+                    id="tsparticles"
+                    init={particlesInit}
+                    loaded={particlesLoaded}
+                    options={{
+                      particles: {
+                        color: {
+                          value: "#ffffff",
+                        },
+                        links: {
+                          color: "#ffffff",
+                          distance: 150,
+                          enable: true,
+                          opacity: 0.5,
+                          width: 1,
+                        },
+                        collisions: {
+                          enable: true,
+                        },
+                        move: {
+                          directions: "none",
+                          enable: true,
+                          outModes: {
+                            default: "bounce",
+                          },
+                          random: false,
+                          speed: 1,
+                          straight: false,
+                        },
+                        number: {
+                          density: {
+                            enable: true,
+                            area: 800,
+                          },
+                          value: 20,
+                        },
+                        opacity: {
+                          value: 0.5,
+                        },
+                        shape: {
+                          type: "circle",
+                        },
+                        size: {
+                          value: { min: 1, max: 5 },
+                        },
+                      },
+                      detectRetina: true,
+                    }}
+                  />
+                </Box>
                 {/*** vvv each article's contents ***/}
                 <Slider {...settings} ref={sliderRef}>
                   {article.articles_id &&
@@ -143,7 +208,7 @@ export default function ArticleContentSlider({
                         <Box
                           sx={{
                             width: "100%",
-                            height: { xs: "calc(97vh - 100px)", md: "95vh" },
+                            height: { xs: "calc(97vh - 100px)", md: "100vh" },
                           }}
                         >
                           {/*** vvv each article's content of text template ***/}

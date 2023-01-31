@@ -24,6 +24,28 @@ a {
   text-decoration: none;
 }
 
+a {
+  position: relative;
+  display: inline-block;
+  margin-top: 0px;
+}
+a:hover {
+  /* font-weight:bold;
+  font-size: 120%; */
+  color:#fff;
+  background-color: #333023;
+}
+
+/*** add this for adding one more tooltip ***/
+/* a[title]:hover::after {
+  content: attr(title);
+  display: block;
+  position: absolute;
+  color:#000;
+  background-color: #fff;
+  min-width: 200px;
+} */
+
 * {
   box-sizing: border-box;
 }
@@ -103,6 +125,10 @@ a {
 
 .pt p{
   margin: 0;
+}
+
+.pt p a{
+  text-decoration: underline;
 }
 
 /* .pt p img {
@@ -194,3 +220,4 @@ a {
   background-color:#fff;
   color:#000 !important;
 }
+
