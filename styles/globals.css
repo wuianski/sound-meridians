@@ -30,8 +30,7 @@ a {
   margin-top: 0px;
 }
 a:hover {
-  /* font-weight:bold;
-  font-size: 120%; */
+  font-weight:bold;
   color:#fff;
   background-color: #333023;
 }
@@ -44,6 +43,7 @@ a:hover {
   color:#000;
   background-color: #fff;
   min-width: 200px;
+  top:-100%;
 } */
 
 * {
