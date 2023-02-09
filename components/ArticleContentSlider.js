@@ -151,7 +151,8 @@ export default function ArticleContentSlider({
                 {/*** particles ***/}
                 <Box sx={{ display: { xs: "none", md: "block" } }}>
                   <Particles
-                    id="tsparticles"
+                    /* make id different */
+                    id="tsparticless"
                     init={particlesInit}
                     loaded={particlesLoaded}
                     options={{

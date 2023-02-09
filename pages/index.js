@@ -384,28 +384,28 @@ export default function Home({ about, projects, useLang }) {
                     loaded={particlesLoaded}
                     options={{
                       //fpsLimit: 120,
-                      interactivity: {
-                        events: {
-                          onClick: {
-                            enable: true,
-                            mode: "push",
-                          },
-                          // onHover: {
-                          //   enable: true,
-                          //   mode: "repulse",
-                          // },
-                          resize: true,
-                        },
-                        modes: {
-                          push: {
-                            quantity: 4,
-                          },
-                          repulse: {
-                            distance: 200,
-                            duration: 0.4,
-                          },
-                        },
-                      },
+                      // interactivity: {
+                      //   events: {
+                      //     onClick: {
+                      //       enable: true,
+                      //       mode: "push",
+                      //     },
+                      //     onHover: {
+                      //       enable: true,
+                      //       mode: "repulse",
+                      //     },
+                      //     resize: true,
+                      //   },
+                      //   modes: {
+                      //     push: {
+                      //       quantity: 4,
+                      //     },
+                      //     repulse: {
+                      //       distance: 200,
+                      //       duration: 0.4,
+                      //     },
+                      //   },
+                      // },
                       particles: {
                         color: {
                           value: "#ffffff",
@@ -435,7 +435,7 @@ export default function Home({ about, projects, useLang }) {
                             enable: true,
                             area: 800,
                           },
-                          value: 80,
+                          value: 40,
                         },
                         opacity: {
                           value: 0.5,
