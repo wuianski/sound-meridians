@@ -135,6 +135,11 @@ a:hover {
   width:100px;
 } */
 
+/*** keen-slider keep full height when switch from mobile to desktop ***/
+/* .keen-slider__slide {
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+} */
 
 .thumbnail .keen-slider__slide {
     font-size: 30px;

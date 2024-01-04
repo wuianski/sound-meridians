@@ -188,7 +188,7 @@ export default function Project({ projects, useLang }) {
                 <Box
                   sx={{
                     position: "absolute",
-                    width: "calc(100vw - 400px)",
+                    width: "calc(100vw - 270px)",
                     height: "100vh",
                     zIndex: 0,
                     opacity: 0.6,
@@ -213,7 +213,7 @@ export default function Project({ projects, useLang }) {
                     height: "96vh",
                     position: "relative",
                     zIndex: 3,
-                    width: "calc(100vw - 400px)",
+                    width: "calc(100vw - 430px)",
                   }}
                 >
                   <Box className="scrollContent">
@@ -293,38 +293,22 @@ export default function Project({ projects, useLang }) {
                     )}
                   </Box>
                 </Box>
-                {/* <Box
-                  pr={1}
-                  mt={-0.5}
-                  sx={{
-                    zIndex: 9,
-                    position: "relative",
-                    textAlign: "end",
-                    mixBlendMode: "difference",
-                    textShadow: "0.06em 0.06em 0.12em #000",
-                    color: "#fff",
-                  }}
-                >
-                  <KeyboardDoubleArrowDownSharpIcon
-                    alt="keyboard arrow down"
-                    sx={{ fontSize: "xx-large" }}
-                  />
-                </Box> */}
+
               </Item>
               {/*** row: slider of articles ***/}
               <Item>
                 <Box
                   key={project.id}
                   sx={{
-                    backgroundColor: "#fff",
-                    width: "260px",
+                    backgroundColor: "transparent",
+                    width: "270px",
                     height: "100vh",
                     color: "#ff0000",
                     borderRight: "1px solid #000",
                     position: "absolute",
                     right: 0,
                   }}
-                  style={{ maxWidth: 480, maxHeight: "100vh" }}
+                  style={{ maxWidth: 270, maxHeight: "100vh" }}
                 >
                   <>
                     <ArticleSlider project={project} useLang={useLang} />

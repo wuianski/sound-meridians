@@ -10,7 +10,7 @@ import { styled } from "@mui/material/styles";
 
 import { motion } from "framer-motion";
 
-import "keen-slider/keen-slider.min.css";
+// import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import styles from "../styles/Home.module.css";
 import KeyboardArrowLeftSharpIcon from "@mui/icons-material/KeyboardArrowLeftSharp";
@@ -18,7 +18,7 @@ import KeyboardArrowRightSharpIcon from "@mui/icons-material/KeyboardArrowRightS
 import KeyboardArrowUpSharpIcon from "@mui/icons-material/KeyboardArrowUpSharp";
 import KeyboardArrowDownSharpIcon from "@mui/icons-material/KeyboardArrowDownSharp";
 
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import fetchData from "../lib/api";
 import { NextSeo } from "next-seo";
 
@@ -53,7 +53,7 @@ const row2 = {
   },
   closed: {
     opacity: 1,
-    width: "calc(100vw - 560px)",
+    width: "calc(100vw - 620px)",
     transition: {
       type: "spring",
       stiffness: 200,
@@ -208,7 +208,7 @@ export default function Home({ about, projects, useLang }) {
   //console.log(useLang);
   //console.log(setLang);
   //const [useLang, setLang] = useState();
-  const router = useRouter();
+  // const router = useRouter();
 
   /*****************************/
   /*** organize projects's data ***/
@@ -242,8 +242,8 @@ export default function Home({ about, projects, useLang }) {
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
+    vertical: false,
     slides: {
-      number: 4,
       perView: 4,
     },
     slideChanged(slider) {
@@ -254,18 +254,11 @@ export default function Home({ about, projects, useLang }) {
     },
     breakpoints: {
       "(max-width: 900px)": {
-        vertical: true,
         initial: 0,
-        slides: { number: 4, perView: 2 },
+        vertical: true,
+        slides: { perView: 2 },
       },
     },
-    // breakpoints: {
-    //   "(min-width: 901px)": {
-    //     vertical: true,
-    //     initial: 0,
-    //     slides: { number: 4, perView: 4 },
-    //   },
-    // },
   });
 
   /*****************/
@@ -282,8 +275,8 @@ export default function Home({ about, projects, useLang }) {
   return (
     <>
       {/*** DESKTOP VERSION ***/}
-      <Box sx={{ display: { xs: "none", md: "block" } }}>
-        <Box>
+      <Box sx={{ display: { xs: "block", md: "block" } }}>
+        <Box sx={{ display: { xs: "none", md: "block" } }}>
           {/*** about open icon  ***/}
           <motion.div
             variants={about_open}
@@ -348,20 +341,45 @@ export default function Home({ about, projects, useLang }) {
         <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 0, md: 0 }}>
           {/*** row: return home ***/}
           <Item>
+            {/*** Desktop: return home img ***/}
             <Box
               sx={{
+                display: { xs: "none", md: "block" },
                 position: "relative",
-                width: "80px",
+                width: { xs: 60, md: 80 },
                 height: "100vh",
                 backgroundColor: "#fff",
                 borderRight: "1px solid #000",
                 zIndex: 2,
               }}
             ></Box>
+            {/*** Mobile: return home img ***/}
+            <Box
+              pt={4}
+              sx={{
+                display: { xs: "block", md: "none" },
+                position: "relative",
+                top: 0,
+                left: 0,
+                width: "60px",
+                height: "100vh",
+                background:
+                  "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
+              }}
+            >
+              <Box>
+                <Image
+                  src="/imgs/returnHomePage3.png"
+                  alt="about open image"
+                  width={60}
+                  height={429}
+                />
+              </Box>
+            </Box>
           </Item>
           {/*** row: about ***/}
           <Item>
-            <Box sx={{ borderRight: "1px solid #000" }}>
+            <Box sx={{ borderRight: "0px solid #000" }}>
               <motion.div
                 variants={row2}
                 initial="closed"
@@ -369,12 +387,12 @@ export default function Home({ about, projects, useLang }) {
               >
                 <Box
                   sx={{
+                    display: { xs: "none", md: "block" },
                     background:
                       "linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 60%)",
                     height: "100vh",
                     color: "#ff0000",
                     textAlign: "center",
-                    //borderRight: "1px solid #000",
                   }}
                 >
                   {/*** particles ***/}
@@ -383,29 +401,6 @@ export default function Home({ about, projects, useLang }) {
                     init={particlesInit}
                     loaded={particlesLoaded}
                     options={{
-                      //fpsLimit: 120,
-                      // interactivity: {
-                      //   events: {
-                      //     onClick: {
-                      //       enable: true,
-                      //       mode: "push",
-                      //     },
-                      //     onHover: {
-                      //       enable: true,
-                      //       mode: "repulse",
-                      //     },
-                      //     resize: true,
-                      //   },
-                      //   modes: {
-                      //     push: {
-                      //       quantity: 4,
-                      //     },
-                      //     repulse: {
-                      //       distance: 200,
-                      //       duration: 0.4,
-                      //     },
-                      //   },
-                      // },
                       particles: {
                         color: {
                           value: "#ffffff",
@@ -501,8 +496,6 @@ export default function Home({ about, projects, useLang }) {
                           objectFit="contain"
                           placeholder="blur"
                           blurDataURL="/imgs/sitename_tw.png"
-                          // priority="true"
-                          // as="image"
                         />
                       </Box>
                     </motion.div>
@@ -536,7 +529,6 @@ export default function Home({ about, projects, useLang }) {
                           >
                             <Image
                               src="/imgs/aboutTitle.png"
-                              //placeholder="blur"
                               alt="bg"
                               layout="fill"
                               objectFit="contain"
@@ -604,775 +596,787 @@ export default function Home({ about, projects, useLang }) {
               </motion.div>
             </Box>
           </Item>
-          {/*** row: slider of projects ***/}
+          {/*** row: projects nav + slider of projects ***/}
           <Item>
-            <Box
-              sx={{
-                backgroundColor: "#fff",
-                height: "100vh",
-                color: "#ff0000",
-                borderRight: "1px solid #000",
-                maxWidth: 480,
-                maxHeight: "100vh",
-              }}
-              ref={sliderRef}
-              className="keen-slider"
-              //style={{ maxWidth: 480, maxHeight: "100vh" }}
-            >
-              {myProjects &&
-                myProjects.map((project, idx) => (
+            <Box>
+              <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 0, md: 0 }}>
+                {/*** Mobile: about content ***/}
+                <Item>
                   <Box
-                    key={idx}
-                    className={`keen-slider__slide ${styles.slider_entity}`}
-                    style={{ maxWidth: 120, minWidth: 120 }}
-                    sx={{ borderRight: "1px solid #000" }}
+                    pl={3}
+                    sx={{
+                      display: { xs: "block", md: "none" },
+                      position: "relative",
+                      width: "calc(100vw - 60px)",
+                      height: "calc(100vh - 100px)",
+                      background:
+                        "linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.3) 100%)",
+                      zIndex: 1,
+                      color: "#00415E",
+                      // borderBottom: "1px solid #000"
+                    }}
                   >
-                    {project.introTitle_tw ? (
-                      <>
-                        {/*** if has introTitle_tw then with link ***/}
-                        <Link
-                          href={`/projects/${encodeURIComponent(
-                            project.mainTitle_en
-                          )}`}
-                        >
-                          <motion.div
-                            whileHover={{ scale: 1.03 }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 400,
-                              damping: 10,
-                              mass: 0.8,
-                            }}
-                          >
-                            <Box sx={{ cursor: "pointer" }}>
-                              <Stack
-                                direction={{ xs: "row", md: "row" }}
-                                spacing={{ xs: 0, md: 0 }}
-                              >
-                                <Item>
-                                  <Box
-                                    sx={{
-                                      position: "relative",
-                                      width: 80,
-                                      height: "100vh",
-                                      color: "#000",
-                                      writingMode: "vertical-lr",
-                                      textOrientation: "mixed",
-                                      backgroundColor: "#fff",
-                                      zIndex: 1,
-                                    }}
-                                  >
-                                    <Box
-                                      sx={{
-                                        position: "absolute",
-                                        left: 8,
-                                        top: 30,
-                                        display: "inline-flex",
-                                      }}
-                                    >
-                                      <Box
-                                        className={`${styles.pt}`}
-                                        sx={{
-                                          fontSize: 22,
-                                          textTransform: "uppercase",
-                                          fontFamily: "Noto Serif JP",
-                                          fontWeight: 700,
-                                        }}
-                                      >
-                                        {project.mainTitle_tw}
-                                      </Box>
-                                      <Box
-                                        className={`${styles.pt}`}
-                                        mt={2}
-                                        sx={{
-                                          fontSize: 13,
-                                          textTransform: "uppercase",
-                                          fontFamily: "BioRhyme Expanded",
-                                          fontWeight: 700,
-                                          letterSpacing: "-0.015em",
-                                        }}
-                                      >
-                                        {project.mainTitle_en}
-                                      </Box>
-                                    </Box>
-                                    <Box
-                                      sx={{
-                                        position: "absolute",
-                                        right: 8,
-                                        bottom: 30,
-                                        fontSize: 17,
-                                        display: "inline-flex",
-                                      }}
-                                    >
-                                      <Box
-                                        className={`${styles.pt}`}
-                                        sx={{
-                                          fontSize: 15,
-                                          fontFamily: "Noto Sans JP",
-                                          fontWeight: 500,
-                                        }}
-                                      >
-                                        {project.nation_tw}
-                                      </Box>
-                                      <Box
-                                        className={`${styles.pt}`}
-                                        mt={2}
-                                        sx={{
-                                          fontSize: 14,
-                                          textTransform: "uppercase",
-                                          fontFamily: "Noto Sans JP",
-                                          fontWeight: 500,
-                                        }}
-                                      >
-                                        {project.nation_en}
-                                      </Box>
-                                    </Box>
-                                  </Box>
-                                </Item>
-                                <Item>
-                                  <Box
-                                    sx={{
-                                      position: "relative",
-                                      width: 40,
-                                      height: "100vh",
-                                      zIndex: 0,
-                                    }}
-                                  >
-                                    <Image
-                                      src={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
-                                      alt=""
-                                      layout="fill"
-                                      objectFit="cover"
-                                      placeholder="blur"
-                                      blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
-                                    />
-                                  </Box>
-                                </Item>
-                              </Stack>
-                            </Box>
-                          </motion.div>
-                        </Link>
-                      </>
-                    ) : (
-                      <>
-                        {/*** else if has no introTitle_tw then with no link ***/}
-                        <Stack
-                          direction={{ xs: "row", md: "row" }}
-                          spacing={{ xs: 0, md: 0 }}
-                        >
-                          <Item>
-                            <Box
-                              sx={{
-                                position: "relative",
-                                width: 80,
-                                height: "100vh",
-                                color: "#000",
-                                writingMode: "vertical-lr",
-                                textOrientation: "mixed",
-                                backgroundColor: "#fff",
-                                zIndex: 1,
-                              }}
-                            >
-                              <Box
+                    <Box className="scrollContent">
+                      <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                      <Box
+                        sx={{
+                          position: "relative",
+                          width: "100%",
+                          height: 146,
+                        }}
+                      >
+                        <Image
+                          src="/imgs/aboutTitle.png"
+                          alt="bg"
+                          layout="fill"
+                          objectFit="contain"
+                          placeholder="blur"
+                          blurDataURL="/imgs/aboutTitle.png"
+                        />
+                      </Box>
+                      <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                      {useLang == true ? (
+                        <Box
+                          sx={{
+                            textAlign: "justify",
+                            fontSize: 16,
+                            letterSpacing: "-0.05em",
+                            lineHeight: 1.75,
+                            fontWeight: 400,
+                          }}
+                          dangerouslySetInnerHTML={{
+                            __html: about.about.introContent_tw,
+                          }}
+                        />
+                      ) : (
+                        <Box
+                          sx={{
+                            textAlign: "justify",
+                            fontSize: 16,
+                            letterSpacing: "-0.05em",
+                            lineHeight: 1.75,
+                            fontWeight: 400,
+                          }}
+                          dangerouslySetInnerHTML={{
+                            __html: about.about.introContent_en,
+                          }}
+                        />
+                      )}
+                      <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                      {useLang == true ? (
+                        <Box
+                          sx={{ textAlign: "left", fontSize: 12 }}
+                          dangerouslySetInnerHTML={{
+                            __html: about.about.credit_tw,
+                          }}
+                        />
+                      ) : (
+                        <Box
+                          sx={{ textAlign: "left", fontSize: 12 }}
+                          dangerouslySetInnerHTML={{
+                            __html: about.about.credit_en,
+                          }}
+                        />
+                      )}
+                      <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
+                    </Box>
+                  </Box>
+                </Item>
+
+                <Item>
+                  <Box sx={{ display: { xs: "block", md: "block" }, }}>
+                    <Stack direction={{ xs: "row-reverse", md: "row" }} spacing={{ xs: 0, md: 0 }}>
+                      {/*** row: projects nav  ***/}
+                      <Item>
+                        <Box sx={{
+                          display: { xs: "block", md: "block" },
+                          height: { xs: 100, md: "unset" },
+                          width: 45,
+                          position: "relative",
+                          backgroundColor: { xs: "#fff", md: "#fff" },
+                        }}>
+                          {loaded && instanceRef.current && (
+                            <>
+                              <Box pt={{ xs: 1, md: 3 }} pb={{ xs: 0, md: 3 }}
                                 sx={{
                                   position: "absolute",
-                                  left: 8,
-                                  top: 30,
-                                  display: "inline-flex",
-                                }}
-                              >
-                                <Box
-                                  className={`${styles.pt}`}
-                                  sx={{
-                                    fontSize: 22,
-                                    textTransform: "uppercase",
-                                    fontFamily: "Noto Serif JP",
-                                    fontWeight: 700,
-                                  }}
-                                >
-                                  {project.mainTitle_tw}
-                                </Box>
-                                <Box
-                                  className={`${styles.pt}`}
-                                  mt={2}
-                                  sx={{
-                                    fontSize: 13,
-                                    textTransform: "uppercase",
-                                    fontFamily: "BioRhyme Expanded",
-                                    fontWeight: 700,
-                                    letterSpacing: "-0.015em",
-                                  }}
-                                >
-                                  {project.mainTitle_en}
-                                </Box>
-                              </Box>
-                              <Box
-                                sx={{
-                                  position: "absolute",
-                                  right: 8,
-                                  bottom: 30,
+                                  top: 0,
+                                  bottom: { xs: 10, md: "unset" },
+                                  right: 0,
                                   fontSize: 17,
                                   display: "inline-flex",
+                                  backgroundColor: "#fff",
+                                  borderLeft: "1px solid #000",
+                                  borderBottom: "1px solid #000",
+                                  borderTop: { xs: "1px solid #000", md: "none" },
+                                }}>
+                                <Stack direction="column" spacing={{ xs: 0, md: 0 }}>
+                                  <Item>
+                                    {/*** Desktop: prev btn ***/}
+                                    <Box
+                                      sx={{
+                                        display: { xs: "none", md: "block" },
+                                        width: { xs: 40, md: 40 },
+                                        height: 30,
+                                        textAlign: "center",
+                                        cursor: "pointer",
+                                        backgroundColor: "#fff",
+                                      }}
+                                      onClick={(e) =>
+                                        e.stopPropagation() || instanceRef.current?.prev()
+                                      }
+                                      disabled={currentSlide === 0}
+                                    >
+                                      <KeyboardArrowLeftSharpIcon
+                                        left="true"
+                                        sx={{
+                                          color: "#000",
+                                          fontSize: "xx-large",
+                                        }}
+                                      />
+                                    </Box>
+                                    {/*** Mobile: prev btn ***/}
+                                    <Box
+                                      sx={{
+                                        display: { xs: "block", md: "none" },
+                                        width: { xs: 45, md: 260 },
+                                        height: 50,
+                                        textAlign: "center",
+                                        backgroundColor: "#fff",
+                                      }}
+                                    >
+                                      <KeyboardArrowUpSharpIcon
+                                        left="true"
+                                        onClick={(e) =>
+                                          e.stopPropagation() ||
+                                          instanceRef.current?.prev()
+                                        }
+                                        disabled={currentSlide === 0}
+                                        sx={{
+                                          cursor: "pointer",
+                                          color: "#000",
+                                          fontSize: "xx-large",
+                                        }}
+                                      />
+                                    </Box>
+                                  </Item>
+                                  <Item>
+                                    {/*** Desktop: next btn ***/}
+                                    <Box
+                                      sx={{
+                                        display: { xs: "none", md: "block" },
+                                        width: { xs: 40, md: 40 },
+                                        height: 30,
+                                        textAlign: "center",
+                                        cursor: "pointer",
+                                        zIndex: 3,
+                                        backgroundColor: "#fff",
+                                      }}
+                                      onClick={(e) =>
+                                        e.stopPropagation() || instanceRef.current?.next()
+                                      }
+                                      disabled={
+                                        currentSlide ===
+                                        instanceRef.current.track.details.slides.length - 1
+                                      }
+                                    >
+                                      <KeyboardArrowRightSharpIcon
+                                        sx={{
+                                          color: "#000",
+                                          fontSize: "xx-large",
+                                        }}
+                                      />
+                                    </Box>
+                                    {/*** Mobile: next btn ***/}
+                                    <Box
+                                      sx={{
+                                        display: { xs: "block", md: "none" },
+                                        width: { xs: 45, md: 260 },
+                                        height: 50,
+                                        textAlign: "center",
+                                        backgroundColor: "#fff",
+                                      }}
+                                    >
+                                      <KeyboardArrowDownSharpIcon
+                                        onClick={(e) =>
+                                          e.stopPropagation() ||
+                                          instanceRef.current?.next()
+                                        }
+                                        disabled={
+                                          currentSlide ===
+                                          instanceRef.current.track.details.slides
+                                            .length -
+                                          1
+                                        }
+                                        sx={{
+                                          cursor: "pointer",
+                                          color: "#000",
+                                          fontSize: "xx-large",
+                                        }}
+                                      />
+                                    </Box>
+
+                                  </Item>
+                                  <Item>
+                                    <Box sx={{ display: { xs: "none", md: "block" }, backgroundColor: "#fff", }}>
+                                      <Box pt={2} sx={{ writingMode: "vertical-lr", color: "#000", marginLeft: "10px", textTransform: "uppercase", fontFamily: "Noto Sans JP", fontSize: 14, }}>
+                                        project nav
+                                      </Box>
+                                    </Box>
+                                  </Item>
+                                </Stack>
+                              </Box>
+                            </>
+                          )}
+
+                        </Box>
+                      </Item>
+                      {/*** row: slider of projects ***/}
+                      <Item>
+                        <Box
+                          sx={{
+                            backgroundColor: "#fff",
+                            width: { xs: "calc(100vw - 100px)", md: 500 },
+                            height: { xs: 100, md: "100vh" },
+                            color: "#ff0000",
+                            minWidth: { xs: "calc(100vw - 100px)", md: 500 },
+                            maxWidth: { xs: "calc(100vw - 100px)", md: 500 },
+                            minHeight: { xs: 100, md: "100vh" },
+                            maxHeight: { xs: 100, md: "100vh" },
+                            borderTop: { xs: "1px solid #000", md: "none" },
+                          }}
+                          ref={sliderRef}
+                          className="keen-slider"
+                        >
+                          {myProjects &&
+                            myProjects.map((project, idx) => (
+                              <Box
+                                key={idx}
+                                className={`keen-slider__slide`}
+                                sx={{
+                                  borderLeft: { xs: "none", md: "1px solid #000" },
+                                  borderRight: { xs: "1px solid #000", md: "none" },
+                                  borderBottom: { xs: "1px solid #000", md: "none" },
+                                  minHeight: { xs: "50px !important", md: "100vh !important" },
+                                  maxHeight: { xs: "50px !important", md: "100vh !important" },
+                                  maxWidth: { xs: "calc(100vw - 100px) !important", md: "125px !important" },
+                                  minWidth: { xs: "calc(100vw - 100px) !important", md: "125px !important" },
                                 }}
                               >
-                                <Box
-                                  className={`${styles.pt}`}
-                                  sx={{
-                                    fontSize: 15,
-                                    fontFamily: "Noto Sans JP",
-                                    fontWeight: 500,
-                                  }}
-                                >
-                                  {project.nation_tw}
-                                </Box>
-                                <Box
-                                  className={`${styles.pt}`}
-                                  mt={2}
-                                  sx={{
-                                    fontSize: 14,
-                                    textTransform: "uppercase",
-                                    fontFamily: "Noto Sans JP",
-                                    fontWeight: 500,
-                                  }}
-                                >
-                                  {project.nation_en}
-                                </Box>
-                              </Box>
-                            </Box>
-                          </Item>
-                          <Item>
-                            <Box
-                              sx={{
-                                position: "relative",
-                                width: 40,
-                                height: "100vh",
-                                zIndex: 0,
-                              }}
-                            >
-                              <Image
-                                src={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
-                                alt=""
-                                layout="fill"
-                                objectFit="cover"
-                                placeholder="blur"
-                                blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
-                              />
-                            </Box>
-                          </Item>
-                        </Stack>
-                      </>
-                    )}
-                  </Box>
-                ))}
-            </Box>
-          </Item>
-        </Stack>
-      </Box>
-
-      {/*** MOBILE VERSION ***/}
-      <Box sx={{ display: { xs: "block", md: "none" } }}>
-        <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 0, md: 0 }}>
-          {/*** row: return home ***/}
-          <Item>
-            <Link href="/">
-              <Box
-                sx={{
-                  position: "relative",
-                  top: 0,
-                  left: 0,
-                  width: "60px",
-                  height: "100vh",
-                  cursor: "pointer",
-                  backgroundColor: "#00415E",
-                }}
-              >
-                <Box
-                  pt={4}
-                  sx={{
-                    position: "relative",
-                    top: 0,
-                    left: 0,
-                    width: "60px",
-                    height: "100vh",
-                    background:
-                      "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
-                  }}
-                >
-                  <Box>
-                    <Image
-                      src="/imgs/returnHomePage2.png"
-                      alt="about open image"
-                      width={60}
-                      height={429}
-                    />
-                  </Box>
-                </Box>
-              </Box>
-            </Link>
-          </Item>
-          {/*** row: slider of projects and about ***/}
-          <Item>
-            <Stack direction="column" spacing={{ xs: 0, md: 0 }}>
-              {/*** column: about ***/}
-              <Item>
-                {/*** about content ***/}
-                <Box
-                  pl={3}
-                  sx={{
-                    position: "relative",
-                    width: "calc(100vw - 60px)",
-                    height: "calc(100vh - 100px)",
-                    background:
-                      "linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.3) 100%)",
-                    zIndex: 1,
-                    color: "#00415E",
-                    //overflowX: "hidden",
-                    // overflowY: "scroll",
-                    // scrollbarWidth: "thin !important",
-                    // scrollbarColor: "#888 #333 !important",
-                    // "&::-webkit-scrollbar": {
-                    //   width: "1px",
-                    //   backgroundColor: "#666",
-                    // },
-                    // "&::-webkit-scrollbar-thumb ": {
-                    //   backgroundColor: "#00415E",
-                    // },
-                  }}
-                >
-                  <Box className="scrollContent">
-                    <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
-                    <Box
-                      sx={{
-                        position: "relative",
-                        width: "100%",
-                        height: 146,
-                      }}
-                    >
-                      <Image
-                        src="/imgs/aboutTitle.png"
-                        //placeholder="blur"
-                        alt="bg"
-                        layout="fill"
-                        objectFit="contain"
-                        placeholder="blur"
-                        blurDataURL="/imgs/aboutTitle.png"
-                      />
-                    </Box>
-                    <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
-                    {useLang == true ? (
-                      <Box
-                        sx={{
-                          textAlign: "justify",
-                          fontSize: 16,
-                          letterSpacing: "-0.05em",
-                          lineHeight: 1.75,
-                          fontWeight: 400,
-                        }}
-                        dangerouslySetInnerHTML={{
-                          __html: about.about.introContent_tw,
-                        }}
-                      />
-                    ) : (
-                      <Box
-                        sx={{
-                          textAlign: "justify",
-                          fontSize: 16,
-                          letterSpacing: "-0.05em",
-                          lineHeight: 1.75,
-                          fontWeight: 400,
-                        }}
-                        dangerouslySetInnerHTML={{
-                          __html: about.about.introContent_en,
-                        }}
-                      />
-                    )}
-                    <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
-                    {useLang == true ? (
-                      <Box
-                        sx={{ textAlign: "left", fontSize: 12 }}
-                        dangerouslySetInnerHTML={{
-                          __html: about.about.credit_tw,
-                        }}
-                      />
-                    ) : (
-                      <Box
-                        sx={{ textAlign: "left", fontSize: 12 }}
-                        dangerouslySetInnerHTML={{
-                          __html: about.about.credit_en,
-                        }}
-                      />
-                    )}
-                    <Box sx={{ height: 40, backgroundColor: "#00415E" }} />
-                  </Box>
-                </Box>
-              </Item>
-              {/*** column: slider of projects and control ***/}
-              <Item>
-                <Stack
-                  direction="row"
-                  spacing={{ xs: 0, md: 0 }}
-                  sx={{ backgroundColor: "#fff", borderTop: "1px solid #000" }}
-                >
-                  {/*** row: slider of projects ***/}
-                  <Item>
-                    <Box
-                      sx={{
-                        backgroundColor: "#fff",
-                        width: "calc(100vw - 100px)",
-                        height: 100,
-                        color: "#ff0000",
-                        borderRight: "1px solid #000",
-                        maxWidth: { xs: "calc(100vw - 100px)", md: 100 },
-                        maxHeight: { xs: 100, md: "100vh" },
-                      }}
-                      ref={sliderRef}
-                      className="keen-slider"
-                    >
-                      {myProjects &&
-                        myProjects.map((project, idx) => (
-                          <Box
-                            key={idx}
-                            className={`keen-slider__slide ${styles.slider_entity}`}
-                            sx={{
-                              borderRight: { xs: "none", md: "1px solid #000" },
-                              borderBottom: {
-                                xs: "1px solid #000",
-                                md: "none",
-                              },
-                              maxWidth: { xs: "calc(100vw - 100px)", md: 56 },
-                              minWidth: { xs: "calc(100vw - 100px)", md: 56 },
-                            }}
-                          >
-                            {project.introTitle_tw ? (
-                              <>
-                                {/*** if has introTitle_tw then with link ***/}
-                                <Link
-                                  href={`/projects/${encodeURIComponent(
-                                    project.mainTitle_en
-                                  )}`}
-                                >
-                                  <Box sx={{ cursor: "pointer" }}>
-                                    <Stack
-                                      direction={{ xs: "column", md: "column" }}
-                                      spacing={{ xs: 0, md: 0 }}
+                                {project.introTitle_tw ? (
+                                  <>
+                                    {/*** if has introTitle_tw then with link ***/}
+                                    <Link
+                                      href={`/projects/${encodeURIComponent(
+                                        project.mainTitle_en
+                                      )}`}
                                     >
-                                      <Item>
-                                        <Box
-                                          sx={{
-                                            position: "relative",
-                                            width: "100%",
-                                            height: 100,
-                                            color: "#000",
-                                            writingMode: {
-                                              xs: "horizontal-tb",
-                                              md: "vertical-lr",
-                                            },
-                                            textOrientation: "unset",
-                                            backgroundColor: "#fff",
-                                            zIndex: 1,
-                                          }}
-                                        >
-                                          {/*** column: main title ***/}
-                                          <Box
-                                            pl={1}
-                                            pr={1}
-                                            sx={{
-                                              position: "absolute",
-                                              left: 0,
-                                              top: 8,
-                                              display: "inline",
-                                              width: "100%",
-                                            }}
+                                      <motion.div
+                                        whileHover={{ scale: 1.02 }}
+                                        transition={{
+                                          type: "spring",
+                                          stiffness: 400,
+                                          damping: 10,
+                                          mass: 0.8,
+                                        }}
+                                      >
+                                        {/*** Desktop: slider of projects ***/}
+                                        <Box sx={{ display: { xs: "none", md: "block" }, }}>
+                                          <Stack
+                                            direction={{ xs: "column", md: "row" }}
+                                            spacing={{ xs: 0, md: 0 }}
                                           >
-                                            {useLang == true ? (
-                                              <>
+                                            <Item>
+                                              <Box
+                                                sx={{
+                                                  position: "relative",
+                                                  width: { xs: "100%", md: 80 },
+                                                  height: { xs: 100, md: "100vh" },
+                                                  color: "#000",
+                                                  writingMode: {
+                                                    xs: "horizontal-tb",
+                                                    md: "vertical-lr",
+                                                  },
+                                                  textOrientation: { xs: "unset", md: "mixed" },
+                                                  backgroundColor: "#fff",
+                                                  zIndex: 1,
+                                                  cursor: "pointer"
+                                                }}
+                                              >
                                                 <Box
                                                   sx={{
-                                                    position: "relative",
-                                                    left: 0,
-                                                    top: 0,
-                                                    display: "flex",
-                                                    // width: "100%",
+                                                    position: "absolute",
+                                                    left: 8,
+                                                    top: 30,
+                                                    display: "inline-flex",
                                                   }}
                                                 >
                                                   <Box
                                                     className={`${styles.pt}`}
                                                     sx={{
-                                                      fontSize: 18,
-                                                      lineHeight: 1.4,
-                                                      textTransform:
-                                                        "uppercase",
-                                                      fontFamily:
-                                                        "Noto Serif JP",
+                                                      fontSize: 22,
+                                                      textTransform: "uppercase",
+                                                      fontFamily: "Noto Serif JP",
                                                       fontWeight: 700,
-                                                      width: "100%",
                                                     }}
                                                   >
                                                     {project.mainTitle_tw}
                                                   </Box>
                                                   <Box
                                                     className={`${styles.pt}`}
+                                                    mt={2}
                                                     sx={{
-                                                      position: "absolute",
-                                                      right: 8,
                                                       fontSize: 13,
-                                                      fontFamily:
-                                                        "Noto Sans JP",
-                                                      fontWeight: 500,
-                                                      lineHeight: 1.4,
+                                                      textTransform: "uppercase",
+                                                      fontFamily: "BioRhyme Expanded",
+                                                      fontWeight: 700,
+                                                      letterSpacing: "-0.015em",
                                                     }}
                                                   >
-                                                    {project.nation_tw}
+                                                    {project.mainTitle_en}
                                                   </Box>
                                                 </Box>
-                                              </>
-                                            ) : (
-                                              <>
                                                 <Box
                                                   sx={{
-                                                    position: "relative",
-                                                    left: 0,
-                                                    top: 0,
-                                                    display: "flex",
-                                                    // width: "100%",
+                                                    position: "absolute",
+                                                    right: 8,
+                                                    bottom: 30,
+                                                    fontSize: 17,
+                                                    display: "inline-flex",
                                                   }}
                                                 >
                                                   <Box
                                                     className={`${styles.pt}`}
                                                     sx={{
-                                                      fontSize: 12,
-                                                      lineHeight: 1.4,
-                                                      textTransform:
-                                                        "uppercase",
-                                                      fontFamily:
-                                                        "BioRhyme Expanded",
-                                                      fontWeight: 700,
-                                                      letterSpacing: "-0.015em",
-                                                      width: "100%",
-                                                      zIndex: 1,
+                                                      fontSize: 15,
+                                                      fontFamily: "Noto Sans JP",
+                                                      fontWeight: 500,
                                                     }}
                                                   >
-                                                    {project.mainTitle_en}
+                                                    {project.nation_tw}
                                                   </Box>
                                                   <Box
                                                     className={`${styles.pt}`}
+                                                    mt={2}
                                                     sx={{
-                                                      fontSize: 12,
-                                                      textTransform:
-                                                        "uppercase",
-                                                      fontFamily:
-                                                        "Noto Sans JP",
+                                                      fontSize: 14,
+                                                      textTransform: "uppercase",
+                                                      fontFamily: "Noto Sans JP",
                                                       fontWeight: 500,
-                                                      lineHeight: 1.4,
-                                                      //width: "30%",
-                                                      zIndex: 0,
                                                     }}
                                                   >
                                                     {project.nation_en}
                                                   </Box>
                                                 </Box>
-                                              </>
-                                            )}
-                                          </Box>
+                                              </Box>
+                                            </Item>
+                                            <Item>
+                                              <Box
+                                                sx={{
+                                                  position: "relative",
+                                                  width: { xs: "100%", md: 45 },
+                                                  height: { xs: 100, md: "100vh" },
+                                                  zIndex: 0,
+                                                }}
+                                              >
+                                                <Image
+                                                  src={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
+                                                  alt=""
+                                                  layout="fill"
+                                                  objectFit="cover"
+                                                  placeholder="blur"
+                                                  blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
+                                                />
+                                              </Box>
+                                            </Item>
+                                          </Stack>
                                         </Box>
-                                      </Item>
-                                    </Stack>
-                                  </Box>
-                                </Link>
-                              </>
-                            ) : (
-                              <>
-                                {/*** if has introTitle_tw then with link ***/}
+                                        {/*** Mobile: slider of projects ***/}
+                                        <Box sx={{ display: { xs: "block", md: "none" }, }}>
+                                          <Stack
+                                            direction={{ xs: "column", md: "column" }}
+                                            spacing={{ xs: 0, md: 0 }}
+                                          >
+                                            <Item>
+                                              <Box
+                                                sx={{
+                                                  position: "relative",
+                                                  width: "100%",
+                                                  height: 100,
+                                                  color: "#000",
+                                                  writingMode: {
+                                                    xs: "horizontal-tb",
+                                                    md: "vertical-lr",
+                                                  },
+                                                  textOrientation: "unset",
+                                                  backgroundColor: "#fff",
+                                                  zIndex: 1,
+                                                }}
+                                              >
+                                                {/*** column: main title ***/}
+                                                <Box
+                                                  pl={1}
+                                                  pr={1}
+                                                  sx={{
+                                                    position: "absolute",
+                                                    left: 0,
+                                                    top: 8,
+                                                    display: "inline",
+                                                    width: "100%",
+                                                  }}
+                                                >
+                                                  {useLang == true ? (
+                                                    <>
+                                                      <Box
+                                                        sx={{
+                                                          position: "relative",
+                                                          left: 0,
+                                                          top: 0,
+                                                          display: "flex",
+                                                          // width: "100%",
+                                                        }}
+                                                      >
+                                                        <Box
+                                                          className={`${styles.pt}`}
+                                                          sx={{
+                                                            fontSize: 18,
+                                                            lineHeight: 1.4,
+                                                            textTransform:
+                                                              "uppercase",
+                                                            fontFamily:
+                                                              "Noto Serif JP",
+                                                            fontWeight: 700,
+                                                            width: "100%",
+                                                          }}
+                                                        >
+                                                          {project.mainTitle_tw}
+                                                        </Box>
+                                                        <Box
+                                                          className={`${styles.pt}`}
+                                                          sx={{
+                                                            position: "absolute",
+                                                            right: 8,
+                                                            fontSize: 13,
+                                                            fontFamily:
+                                                              "Noto Sans JP",
+                                                            fontWeight: 500,
+                                                            lineHeight: 1.4,
+                                                          }}
+                                                        >
+                                                          {project.nation_tw}
+                                                        </Box>
+                                                      </Box>
+                                                    </>
+                                                  ) : (
+                                                    <>
+                                                      <Box
+                                                        sx={{
+                                                          position: "relative",
+                                                          left: 0,
+                                                          top: 0,
+                                                          display: "flex",
+                                                          // width: "100%",
+                                                        }}
+                                                      >
+                                                        <Box
+                                                          className={`${styles.pt}`}
+                                                          sx={{
+                                                            fontSize: 12,
+                                                            lineHeight: 1.4,
+                                                            textTransform:
+                                                              "uppercase",
+                                                            fontFamily:
+                                                              "BioRhyme Expanded",
+                                                            fontWeight: 700,
+                                                            letterSpacing: "-0.015em",
+                                                            width: "100%",
+                                                            zIndex: 1,
+                                                          }}
+                                                        >
+                                                          {project.mainTitle_en}
+                                                        </Box>
+                                                        <Box
+                                                          className={`${styles.pt}`}
+                                                          sx={{
+                                                            fontSize: 12,
+                                                            textTransform:
+                                                              "uppercase",
+                                                            fontFamily:
+                                                              "Noto Sans JP",
+                                                            fontWeight: 500,
+                                                            lineHeight: 1.4,
+                                                            //width: "30%",
+                                                            zIndex: 0,
+                                                          }}
+                                                        >
+                                                          {project.nation_en}
+                                                        </Box>
+                                                      </Box>
+                                                    </>
+                                                  )}
+                                                </Box>
+                                              </Box>
+                                            </Item>
+                                          </Stack>
 
-                                <Stack
-                                  direction={{ xs: "column", md: "column" }}
-                                  spacing={{ xs: 0, md: 0 }}
-                                >
-                                  <Item>
-                                    <Box
-                                      sx={{
-                                        position: "relative",
-                                        width: "100%",
-                                        height: 100,
-                                        color: "#000",
-                                        writingMode: {
-                                          xs: "horizontal-tb",
-                                          md: "vertical-lr",
-                                        },
-                                        textOrientation: "unset",
-                                        backgroundColor: "#fff",
-                                        zIndex: 1,
-                                      }}
-                                    >
-                                      {/*** column: main title ***/}
-                                      <Box
-                                        pl={1}
-                                        pr={1}
-                                        sx={{
-                                          position: "absolute",
-                                          left: 0,
-                                          top: 8,
-                                          display: "inline",
-                                          width: "100%",
-                                        }}
+                                        </Box>
+                                      </motion.div>
+                                    </Link>
+                                  </>
+                                ) : (
+                                  <>
+                                    {/*** else if has no introTitle_tw then with no link ***/}
+                                    {/*** Desktop: slider of projects ***/}
+                                    <Box sx={{ display: { xs: "none", md: "block" }, }}>
+                                      <Stack
+                                        direction={{ xs: "row", md: "row" }}
+                                        spacing={{ xs: 0, md: 0 }}
                                       >
-                                        {useLang == true ? (
-                                          <>
+                                        <Item>
+                                          <Box
+                                            sx={{
+                                              position: "relative",
+                                              width: 80,
+                                              height: "100vh",
+                                              color: "#000",
+                                              writingMode: "vertical-lr",
+                                              textOrientation: "mixed",
+                                              backgroundColor: "#fff",
+                                              zIndex: 1,
+                                            }}
+                                          >
                                             <Box
                                               sx={{
-                                                position: "relative",
-                                                left: 0,
-                                                top: 0,
-                                                display: "flex",
-                                                // width: "100%",
+                                                position: "absolute",
+                                                left: 8,
+                                                top: 30,
+                                                display: "inline-flex",
                                               }}
                                             >
                                               <Box
                                                 className={`${styles.pt}`}
                                                 sx={{
-                                                  fontSize: 18,
-                                                  lineHeight: 1.4,
+                                                  fontSize: 22,
                                                   textTransform: "uppercase",
                                                   fontFamily: "Noto Serif JP",
                                                   fontWeight: 700,
-                                                  width: "100%",
                                                 }}
                                               >
                                                 {project.mainTitle_tw}
                                               </Box>
                                               <Box
                                                 className={`${styles.pt}`}
+                                                mt={2}
                                                 sx={{
-                                                  position: "absolute",
-                                                  right: 8,
                                                   fontSize: 13,
-                                                  fontFamily: "Noto Sans JP",
-                                                  fontWeight: 500,
-                                                  lineHeight: 1.4,
+                                                  textTransform: "uppercase",
+                                                  fontFamily: "BioRhyme Expanded",
+                                                  fontWeight: 700,
+                                                  letterSpacing: "-0.015em",
                                                 }}
                                               >
-                                                {project.nation_tw}
+                                                {project.mainTitle_en}
                                               </Box>
                                             </Box>
-                                          </>
-                                        ) : (
-                                          <>
                                             <Box
                                               sx={{
-                                                position: "relative",
-                                                left: 0,
-                                                top: 0,
-                                                display: "flex",
-                                                // width: "100%",
+                                                position: "absolute",
+                                                right: 8,
+                                                bottom: 30,
+                                                fontSize: 17,
+                                                display: "inline-flex",
                                               }}
                                             >
                                               <Box
                                                 className={`${styles.pt}`}
                                                 sx={{
-                                                  fontSize: 12,
-                                                  lineHeight: 1.4,
-                                                  textTransform: "uppercase",
-                                                  fontFamily:
-                                                    "BioRhyme Expanded",
-                                                  fontWeight: 700,
-                                                  letterSpacing: "-0.015em",
-                                                  width: "100%",
-                                                  zIndex: 1,
+                                                  fontSize: 15,
+                                                  fontFamily: "Noto Sans JP",
+                                                  fontWeight: 500,
                                                 }}
                                               >
-                                                {project.mainTitle_en}
+                                                {project.nation_tw}
                                               </Box>
                                               <Box
                                                 className={`${styles.pt}`}
+                                                mt={2}
                                                 sx={{
-                                                  fontSize: 12,
+                                                  fontSize: 14,
                                                   textTransform: "uppercase",
                                                   fontFamily: "Noto Sans JP",
                                                   fontWeight: 500,
-                                                  lineHeight: 1.4,
-                                                  //width: "30%",
-                                                  zIndex: 0,
                                                 }}
                                               >
                                                 {project.nation_en}
                                               </Box>
                                             </Box>
-                                          </>
-                                        )}
-                                      </Box>
+                                          </Box>
+                                        </Item>
+                                        <Item>
+                                          <Box
+                                            sx={{
+                                              position: "relative",
+                                              width: 45,
+                                              height: "100vh",
+                                              zIndex: 0,
+                                            }}
+                                          >
+                                            <Image
+                                              src={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
+                                              alt=""
+                                              layout="fill"
+                                              objectFit="cover"
+                                              placeholder="blur"
+                                              blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${project.coverPhoto}`}
+                                            />
+                                          </Box>
+                                        </Item>
+                                      </Stack>
                                     </Box>
-                                  </Item>
-                                </Stack>
-                              </>
-                            )}
-                          </Box>
-                        ))}
-                    </Box>
-                  </Item>
-                  {/*** row: control of slider ***/}
-                  <Item>
-                    {/*** pagination ***/}
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        bottom: 10,
-                        right: 2,
-                      }}
-                    >
-                      {loaded && instanceRef.current && (
-                        <>
-                          <Box
-                            sx={{
-                              width: { xs: 60, md: 260 },
-                              textAlign: "right",
-                            }}
-                          >
-                            <KeyboardArrowUpSharpIcon
-                              left="true"
-                              onClick={(e) =>
-                                e.stopPropagation() ||
-                                instanceRef.current?.prev()
-                              }
-                              disabled={currentSlide === 0}
-                              sx={{
-                                cursor: "pointer",
-                                color: "#000",
-                                fontSize: "xx-large",
-                              }}
-                            />
-                          </Box>
-                          <Box
-                            sx={{
-                              width: { xs: 60, md: 260 },
-                              textAlign: "right",
-                            }}
-                          >
-                            <KeyboardArrowDownSharpIcon
-                              onClick={(e) =>
-                                e.stopPropagation() ||
-                                instanceRef.current?.next()
-                              }
-                              disabled={
-                                currentSlide ===
-                                instanceRef.current.track.details.slides
-                                  .length -
-                                  1
-                              }
-                              sx={{
-                                cursor: "pointer",
-                                color: "#000",
-                                fontSize: "xx-large",
-                              }}
-                            />
-                          </Box>
-                        </>
-                      )}
-                    </Box>
-                  </Item>
-                </Stack>
-              </Item>
-            </Stack>
+                                    {/*** Mobile: slider of projects ***/}
+                                    <Box sx={{ display: { xs: "block", md: "none" }, }}>
+                                      <Stack
+                                        direction={{ xs: "column", md: "column" }}
+                                        spacing={{ xs: 0, md: 0 }}
+                                      >
+                                        <Item>
+                                          <Box
+                                            sx={{
+                                              position: "relative",
+                                              width: "100%",
+                                              height: 100,
+                                              color: "#000",
+                                              writingMode: {
+                                                xs: "horizontal-tb",
+                                                md: "vertical-lr",
+                                              },
+                                              textOrientation: "unset",
+                                              backgroundColor: "#fff",
+                                              zIndex: 1,
+                                            }}
+                                          >
+                                            {/*** column: main title ***/}
+                                            <Box
+                                              pl={1}
+                                              pr={1}
+                                              sx={{
+                                                position: "absolute",
+                                                left: 0,
+                                                top: 8,
+                                                display: "inline",
+                                                width: "100%",
+                                              }}
+                                            >
+                                              {useLang == true ? (
+                                                <>
+                                                  <Box
+                                                    sx={{
+                                                      position: "relative",
+                                                      left: 0,
+                                                      top: 0,
+                                                      display: "flex",
+                                                      // width: "100%",
+                                                    }}
+                                                  >
+                                                    <Box
+                                                      className={`${styles.pt}`}
+                                                      sx={{
+                                                        fontSize: 18,
+                                                        lineHeight: 1.4,
+                                                        textTransform:
+                                                          "uppercase",
+                                                        fontFamily:
+                                                          "Noto Serif JP",
+                                                        fontWeight: 700,
+                                                        width: "100%",
+                                                      }}
+                                                    >
+                                                      {project.mainTitle_tw}
+                                                    </Box>
+                                                    <Box
+                                                      className={`${styles.pt}`}
+                                                      sx={{
+                                                        position: "absolute",
+                                                        right: 8,
+                                                        fontSize: 13,
+                                                        fontFamily:
+                                                          "Noto Sans JP",
+                                                        fontWeight: 500,
+                                                        lineHeight: 1.4,
+                                                      }}
+                                                    >
+                                                      {project.nation_tw}
+                                                    </Box>
+                                                  </Box>
+                                                </>
+                                              ) : (
+                                                <>
+                                                  <Box
+                                                    sx={{
+                                                      position: "relative",
+                                                      left: 0,
+                                                      top: 0,
+                                                      display: "flex",
+                                                      // width: "100%",
+                                                    }}
+                                                  >
+                                                    <Box
+                                                      className={`${styles.pt}`}
+                                                      sx={{
+                                                        fontSize: 12,
+                                                        lineHeight: 1.4,
+                                                        textTransform:
+                                                          "uppercase",
+                                                        fontFamily:
+                                                          "BioRhyme Expanded",
+                                                        fontWeight: 700,
+                                                        letterSpacing: "-0.015em",
+                                                        width: "100%",
+                                                        zIndex: 1,
+                                                      }}
+                                                    >
+                                                      {project.mainTitle_en}
+                                                    </Box>
+                                                    <Box
+                                                      className={`${styles.pt}`}
+                                                      sx={{
+                                                        fontSize: 12,
+                                                        textTransform:
+                                                          "uppercase",
+                                                        fontFamily:
+                                                          "Noto Sans JP",
+                                                        fontWeight: 500,
+                                                        lineHeight: 1.4,
+                                                        //width: "30%",
+                                                        zIndex: 0,
+                                                      }}
+                                                    >
+                                                      {project.nation_en}
+                                                    </Box>
+                                                  </Box>
+                                                </>
+                                              )}
+                                            </Box>
+                                          </Box>
+                                        </Item>
+                                      </Stack>
+
+                                    </Box>
+                                  </>
+                                )}
+                              </Box>
+                            ))}
+                        </Box>
+                      </Item>
+                    </Stack>
+                  </Box>
+                </Item>
+
+
+              </Stack>
+            </Box>
           </Item>
+
         </Stack>
       </Box>
     </>

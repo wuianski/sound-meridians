@@ -21,26 +21,17 @@ const Item = styled(Paper)(({ theme }) => ({
   background: "none",
   boxShadow: "none",
   borderRadius: 0,
-  backgroundColor: "#00415E",
+  // backgroundColor: "#00415E",
 }));
 
 export default function ArticleSlider({ project, useLang }) {
   /*******************/
   /*** keen slider ***/
-  // const [sliderRef] = useKeenSlider({
-  //   initial: 0,
-  //   loop: false,
-  //   mode: "snap",
-  //   rtl: false,
-  //   slides: {
-  //     //number: 5,
-  //     perView: 4,
-  //   },
-  // });
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
+    vertical: false,
     slides: {
       perView: 4,
     },
@@ -52,6 +43,7 @@ export default function ArticleSlider({ project, useLang }) {
     },
     breakpoints: {
       "(max-width: 900px)": {
+        nitial: 0,
         vertical: true,
         slides: { perView: 2 },
       },
@@ -61,19 +53,167 @@ export default function ArticleSlider({ project, useLang }) {
   return (
     <>
       <Stack direction="row" spacing={{ xs: 0, md: 0 }}>
+        {/*** row: chapter nav  ***/}
+        <Item>
+          <Box sx={{
+            display: { xs: "block", md: "block" },
+            height: { xs: 100, md: "100vh" },
+            width: 45,
+            position: "relative",
+            backgroundColor: { xs: "#fff", md: "transparent" }, //#BCACA8
+            zIndex: 3,
+          }}>
+            {loaded && instanceRef.current && (
+              <>
+                <Box pt={{ xs: 1, md: 3 }} pb={{ xs: 0, md: 3 }}
+                  sx={{
+                    position: "absolute",
+                    top: { xs: "unset", md: 0 },
+                    bottom: { xs: 0, md: "unset" },
+                    right: 0,
+                    fontSize: 17,
+                    display: "inline-flex",
+                    backgroundColor: "#BCACA8",
+                    borderLeft: "1px solid #000",
+                    borderBottom: "1px solid #000",
+                    borderRight: { xs: "1px solid #000", md: "none" },
+                    borderTop: { xs: "1px solid #000", md: "none" },
+                    height: { xs: 100, md: "100vh" },
+
+                  }}>
+                  <Stack direction="column" spacing={{ xs: 0, md: 0 }}>
+                    <Item>
+                      {/*** Desktop: prev btn ***/}
+                      <Box
+                        sx={{
+                          display: { xs: "none", md: "block" },
+                          width: 45,
+                          height: 30,
+                          textAlign: "center",
+                          cursor: "pointer",
+                        }}
+                        onClick={(e) =>
+                          e.stopPropagation() || instanceRef.current?.prev()
+                        }
+                        disabled={currentSlide === 0}
+                      >
+                        <KeyboardArrowLeftSharpIcon
+                          left="true"
+                          sx={{
+                            color: "#000",
+                            fontSize: "xx-large",
+                          }}
+                        />
+                      </Box>
+                      {/*** Mobile: prev btn ***/}
+                      <Box
+                        sx={{
+                          display: { xs: "block", md: "none" },
+                          width: { xs: 45, md: 260 },
+                          height: 50,
+                          textAlign: "center",
+                          backgroundColor: "#BCACA8",
+                        }}
+                      >
+                        <KeyboardArrowUpSharpIcon
+                          left="true"
+                          onClick={(e) =>
+                            e.stopPropagation() ||
+                            instanceRef.current?.prev()
+                          }
+                          disabled={currentSlide === 0}
+                          sx={{
+                            cursor: "pointer",
+                            color: "#000",
+                            fontSize: "xx-large",
+                          }}
+                        />
+                      </Box>
+                    </Item>
+                    <Item>
+                      {/*** Desktop: next btn ***/}
+                      <Box
+                        sx={{
+                          display: { xs: "none", md: "block" },
+                          width: 45,
+                          height: 30,
+                          textAlign: "center",
+                          cursor: "pointer",
+                          zIndex: 3
+                        }}
+                        onClick={(e) =>
+                          e.stopPropagation() || instanceRef.current?.next()
+                        }
+                        disabled={
+                          currentSlide ===
+                          instanceRef.current.track.details.slides.length - 1
+                        }
+                      >
+                        <KeyboardArrowRightSharpIcon
+                          sx={{
+                            color: "#000",
+                            fontSize: "xx-large",
+                          }}
+                        />
+                      </Box>
+                      {/*** Mobile: next btn ***/}
+                      <Box
+                        sx={{
+                          display: { xs: "block", md: "none" },
+                          width: { xs: 45, md: 260 },
+                          height: 50,
+                          textAlign: "center",
+                          backgroundColor: "#BCACA8",
+                        }}
+                      >
+                        <KeyboardArrowDownSharpIcon
+                          onClick={(e) =>
+                            e.stopPropagation() ||
+                            instanceRef.current?.next()
+                          }
+                          disabled={
+                            currentSlide ===
+                            instanceRef.current.track.details.slides
+                              .length -
+                            1
+                          }
+                          sx={{
+                            cursor: "pointer",
+                            color: "#000",
+                            fontSize: "xx-large",
+                          }}
+                        />
+                      </Box>
+
+                    </Item>
+                    <Item>
+                      <Box sx={{ display: { xs: "none", md: "block" }, width: 45, }}>
+                        <Box pt={2} sx={{ writingMode: "vertical-lr", color: "#000", marginLeft: "13px", textTransform: "uppercase", fontFamily: "Noto Sans JP", fontSize: 14, }}>
+                          chapter nav
+                        </Box>
+                      </Box>
+                    </Item>
+                  </Stack>
+                </Box>
+              </>
+            )}
+
+          </Box>
+        </Item>
         {/*** row: slider of projects ***/}
         <Item>
           {/*** slider ***/}
           <Box
             sx={{
-              backgroundColor: "#BCACA8",
-              // width: "calc(100vw - 100px)",
+              backgroundColor: "#fff",
+              width: { xs: "calc(100vw - 100px)", md: 224 },
               height: { xs: 100, md: "100vh" },
               color: "#ff0000",
-              borderRight: { xs: "1px solid #000", md: "1px solid #000" },
-              borderTop: { xs: "1px solid #000", md: "none" },
-              maxWidth: { xs: "calc(100vw - 100px)", md: 260 },
+              minWidth: { xs: "calc(100vw - 100px)", md: 224 },
+              maxWidth: { xs: "calc(100vw - 100px)", md: 224 },
+              minHeight: { xs: 100, md: "100vh" },
               maxHeight: { xs: 100, md: "100vh" },
+              borderTop: { xs: "1px solid #000", md: "none" },
             }}
             ref={sliderRef}
             className="keen-slider"
@@ -85,7 +225,7 @@ export default function ArticleSlider({ project, useLang }) {
                     href={`/projects/${project.mainTitle_en}/${article.order}`}
                   >
                     <motion.div
-                      whileHover={{ scale: 1.03 }}
+                      whileHover={{ scale: 1.02 }}
                       transition={{
                         type: "spring",
                         stiffness: 400,
@@ -97,14 +237,19 @@ export default function ArticleSlider({ project, useLang }) {
                         className="keen-slider__slide"
                         sx={{
                           backgroundColor: "#BCACA8",
-                          maxWidth: { xs: "calc(100vw - 100px)", md: 56 },
-                          minWidth: { xs: "calc(100vw - 100px)", md: 56 },
+                          borderLeft: { xs: "none", md: "1px solid #000" },
+                          borderRight: { xs: "1px solid #000", md: "none" },
+                          borderBottom: { xs: "1px solid #000", md: "none" },
+                          minHeight: { xs: "50px !important", md: "100vh !important" },
+                          maxHeight: { xs: "50px !important", md: "100vh !important" },
+                          maxWidth: { xs: "calc(100vw - 100px) !important", md: "56px !important" },
+                          minWidth: { xs: "calc(100vw - 100px) !important", md: "56px !important" },
                         }}
                       >
                         <Box
                           sx={{
                             position: "relative",
-                            width: "auto",
+                            width: { xs: "100%", md: 56 },
                             height: { xs: 50, md: "100vh" },
                             color: "#000",
                             writingMode: {
@@ -162,121 +307,6 @@ export default function ArticleSlider({ project, useLang }) {
                   </Link>
                 </Box>
               ))}
-          </Box>
-        </Item>
-        <Item>
-          {/*** pagination desktop ***/}
-          <Box
-            sx={{
-              display: { xs: "none", md: "block" },
-              position: "absolute",
-              bottom: 20,
-              right: 0,
-            }}
-          >
-            {loaded && instanceRef.current && (
-              <>
-                <Box
-                  pl={2.5}
-                  ml={{ xs: -2, md: -1 }}
-                  sx={{
-                    width: { xs: 60, md: 260 },
-                    textAlign: "left",
-                    cursor: "pointer",
-                  }}
-                  onClick={(e) =>
-                    e.stopPropagation() || instanceRef.current?.prev()
-                  }
-                  disabled={currentSlide === 0}
-                >
-                  <Box>prev</Box>
-                  <KeyboardArrowLeftSharpIcon
-                    left="true"
-                    sx={{
-                      color: "#000",
-                      fontSize: "xx-large",
-                    }}
-                  />
-                </Box>
-                <Box
-                  mt={"-64px"}
-                  pr={2}
-                  sx={{
-                    width: { xs: 60, md: 260 },
-                    textAlign: "right",
-                    cursor: "pointer",
-                  }}
-                  onClick={(e) =>
-                    e.stopPropagation() || instanceRef.current?.next()
-                  }
-                  disabled={
-                    currentSlide ===
-                    instanceRef.current.track.details.slides.length - 1
-                  }
-                >
-                  <Box>next</Box>
-                  <KeyboardArrowRightSharpIcon
-                    sx={{
-                      color: "#000",
-                      fontSize: "xx-large",
-                    }}
-                  />
-                </Box>
-              </>
-            )}
-          </Box>
-          {/*** pagination mobile ***/}
-          <Box
-            sx={{
-              display: { xs: "block", md: "none" },
-              position: "absolute",
-              width: 40,
-              height: 100,
-              backgroundColor: "#BCACA8",
-              borderTop: { xs: "1px solid #000", md: "none" },
-            }}
-          >
-            {loaded && instanceRef.current && (
-              <>
-                <Box
-                  sx={{ width: { xs: 60, md: 260 }, textAlign: "left" }}
-                  ml={0.5}
-                  mt={1.5}
-                >
-                  <KeyboardArrowUpSharpIcon
-                    left="true"
-                    onClick={(e) =>
-                      e.stopPropagation() || instanceRef.current?.prev()
-                    }
-                    disabled={currentSlide === 0}
-                    sx={{
-                      cursor: "pointer",
-                      color: "#000",
-                      fontSize: "xx-large",
-                    }}
-                  />
-                </Box>
-                <Box
-                  sx={{ width: { xs: 60, md: 260 }, textAlign: "left" }}
-                  ml={0.5}
-                >
-                  <KeyboardArrowDownSharpIcon
-                    onClick={(e) =>
-                      e.stopPropagation() || instanceRef.current?.next()
-                    }
-                    disabled={
-                      currentSlide ===
-                      instanceRef.current.track.details.slides.length - 1
-                    }
-                    sx={{
-                      cursor: "pointer",
-                      color: "#000",
-                      fontSize: "xx-large",
-                    }}
-                  />
-                </Box>
-              </>
-            )}
           </Box>
         </Item>
       </Stack>
