@@ -8,6 +8,7 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 
 import Slider from "react-slick";
+import ReactPlayer from "react-player";
 
 /******************/
 /*** stack ***/
@@ -107,22 +108,53 @@ export default function ImageTemplate({ article_content, useLang }) {
                   article_content.imageTemplate_images.map((image) => (
                     <Box key={image.imageInfos_id.id}>
                       {/* <Box>{image.imageInfos_id.image.filename_disk}</Box> */}
-                      <Box
-                        sx={{
-                          position: "relative",
-                          width: "100%",
-                          height: "75vh",
-                          zIndex: 0,
-                        }}
-                      >
-                        <Image
-                          src={`${process.env.DIRECTUS_CDN}/assets/${image.imageInfos_id.image.filename_disk}`}
-                          placeholder="blur"
-                          blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${image.imageInfos_id.image.filename_disk}`}
-                          alt=""
-                          layout="fill"
-                          objectFit="contain"
-                        />
+                      <Box>
+                        {image.imageInfos_id.description_tw &&
+                          image.imageInfos_id.videoURL == null ? (
+                          <Box
+                            sx={{
+                              position: "relative",
+                              width: "100%",
+                              height: { xs: 150, md: "75vh" },
+                              zIndex: 0,
+                            }}
+                          >
+                            <Image
+                              src={`${process.env.DIRECTUS_CDN}/assets/${image.imageInfos_id.image.filename_disk}`}
+                              placeholder="blur"
+                              blurDataURL={`${process.env.DIRECTUS_CDN}/assets/${image.imageInfos_id.image.filename_disk}`}
+                              alt=""
+                              layout="fill"
+                              objectFit="contain"
+                            />
+                          </Box>
+                        ) : (
+                          <Box
+                            sx={{
+                              position: "relative",
+                              width: "100%",
+                              height: { xs: 150, md: "75vh" },
+                              zIndex: 0,
+                            }}
+                            className="player-wrapper"
+                          >
+                            <ReactPlayer
+                              className="react-player"
+                              url={image.imageInfos_id.videoURL}
+                              width="100%"
+                              height="100%"
+                              controls={true}
+                              config={{
+                                youtube: {
+                                  playerVars: {
+                                    enablejsapi: 1,
+                                    origin: "https://www.youtube.com",
+                                  },
+                                },
+                              }}
+                            />
+                          </Box>
+                        )}
                       </Box>
                       <Box>
                         {useLang == true ? (

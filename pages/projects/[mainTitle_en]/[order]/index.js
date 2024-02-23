@@ -215,9 +215,8 @@ export default function Article({ projects, useLang, allprojects }) {
                           {/*** if article.order less then total article length then with link ***/}
                           <Box>
                             <Link
-                              href={`/projects/${project.mainTitle_en}/${
-                                article.order + 1
-                              }`}
+                              href={`/projects/${project.mainTitle_en}/${article.order + 1
+                                }`}
                             >
                               <motion.div
                                 whileHover={{ scale: 1.03 }}
@@ -657,7 +656,7 @@ export default function Article({ projects, useLang, allprojects }) {
                           borderRight: "1px solid #000",
                           borderLeft: "1px solid #000",
                         }}
-                        //ml={0.5}
+                      //ml={0.5}
                       >
                         {/*** column: main title ***/}
                         <Box
@@ -833,6 +832,7 @@ export async function getServerSideProps({ params }) {
                             }
                             description_tw
                             description_en
+                            videoURL
                         }
                       }
                   }  
