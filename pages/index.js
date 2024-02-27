@@ -347,7 +347,7 @@ export default function Home({ about, projects, useLang }) {
                 display: { xs: "none", md: "block" },
                 position: "relative",
                 width: { xs: 60, md: 80 },
-                height: "100vh",
+                height: "100dvh",
                 backgroundColor: "#fff",
                 borderRight: "1px solid #000",
                 zIndex: 2,
@@ -362,7 +362,7 @@ export default function Home({ about, projects, useLang }) {
                 top: 0,
                 left: 0,
                 width: "60px",
-                height: "100vh",
+                height: "100dvh",
                 background:
                   "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
               }}
@@ -390,7 +390,7 @@ export default function Home({ about, projects, useLang }) {
                     display: { xs: "none", md: "block" },
                     background:
                       "linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 60%)",
-                    height: "100vh",
+                    height: "100dvh",
                     color: "#ff0000",
                     textAlign: "center",
                   }}
@@ -456,7 +456,7 @@ export default function Home({ about, projects, useLang }) {
                         sx={{
                           position: "relative",
                           width: 45,
-                          height: "100vh",
+                          height: "100dvh",
                           zIndex: 1,
                           mixBlendMode: "multiply",
                         }}
@@ -484,7 +484,7 @@ export default function Home({ about, projects, useLang }) {
                           position: "relative",
                           left: -45,
                           width: 621,
-                          height: "100vh",
+                          height: "100dvh",
                           zIndex: 1,
                           mixBlendMode: "difference",
                         }}
@@ -512,7 +512,7 @@ export default function Home({ about, projects, useLang }) {
                           position: "relative",
                           left: 0,
                           width: "40%",
-                          height: "100vh",
+                          height: "100dvh",
                           color: "#00415E",
                         }}
                       >
