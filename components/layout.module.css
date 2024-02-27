@@ -2,7 +2,7 @@
     position: fixed;
     z-index: 99;
     display: block;
-    top: calc(100vh - 62px);
+    top: calc(100dvh - 62px);
     left:13px;
     padding:8px;
     font-family: BioRhyme;
@@ -18,7 +18,7 @@
     position: fixed;
     z-index: 99;
     display: block;
-    top: calc(100vh - 62px);
+    top: calc(100dvh - 62px);
     left:13px;
     padding:8px;
     font-family: BioRhyme;
@@ -33,11 +33,11 @@
 
   @media only screen and (max-width: 900px) {
     .switch{
-        top: calc(100vh - 50px);
+        top: calc(100dvh - 50px);
         left:3px;
     }
     .switchT{
-        top: calc(100vh - 50px);
+        top: calc(100dvh - 50px);
         left:3px;
     }
   }

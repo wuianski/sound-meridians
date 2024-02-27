@@ -841,7 +841,7 @@ export default function Home({ about, projects, useLang }) {
                           sx={{
                             backgroundColor: "#fff",
                             width: { xs: "calc(100vw - 100px)", md: 500 },
-                            // height: { xs: 100, md: "100vh" },
+                            height: { xs: 100, md: "100dvh" },
                             color: "#ff0000",
                             minWidth: { xs: "calc(100vw - 100px)", md: 500 },
                             maxWidth: { xs: "calc(100vw - 100px)", md: 500 },
