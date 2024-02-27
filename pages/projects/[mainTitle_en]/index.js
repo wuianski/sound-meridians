@@ -369,7 +369,7 @@ export default function Project({ projects, useLang }) {
 
               <Item>
                 <Stack
-                  direction={{ xs: "column", md: "column" }}
+                  direction={{ xs: "column-reverse", md: "column" }}
                   spacing={{ xs: 0, md: 0 }}
                 >
                   {/*** row: project intro ***/}
@@ -501,9 +501,11 @@ export default function Project({ projects, useLang }) {
                       sx={{
                         backgroundColor: "#BCACA8",
                         height: { xs: 100, md: "100vh" },
-                        maxWidth: { xs: "calc(100% - 0px)", md: 480 },
+                        maxWidth: { xs: "calc(100% - 60px)", md: 480 },
                         maxHeight: { xs: 100, md: "100vh" },
+                        marginLeft: { xs: "30px", md: "unset" },
                       }}
+
                     >
                       <>
                         <ArticleSlider project={project} useLang={useLang} />

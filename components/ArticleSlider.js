@@ -52,7 +52,7 @@ export default function ArticleSlider({ project, useLang }) {
 
   return (
     <>
-      <Stack direction="row" spacing={{ xs: 0, md: 0 }}>
+      <Stack direction={{ xs: "row-reverse", md: "row" }} spacing={{ xs: 0, md: 0 }}>
         {/*** row: chapter nav  ***/}
         <Item>
           <Box sx={{
@@ -65,11 +65,11 @@ export default function ArticleSlider({ project, useLang }) {
           }}>
             {loaded && instanceRef.current && (
               <>
-                <Box pt={{ xs: 1, md: 3 }} pb={{ xs: 0, md: 3 }}
+                <Box pt={{ xs: 0, md: 3 }} pb={{ xs: 0, md: 3 }}
                   sx={{
                     position: "absolute",
-                    top: { xs: "unset", md: 0 },
-                    bottom: { xs: 0, md: "unset" },
+                    top: { xs: 0, md: 0 },
+                    bottom: { xs: "unset", md: "unset" },
                     right: 0,
                     fontSize: 17,
                     display: "inline-flex",
@@ -77,7 +77,7 @@ export default function ArticleSlider({ project, useLang }) {
                     borderLeft: "1px solid #000",
                     borderBottom: "1px solid #000",
                     borderRight: { xs: "1px solid #000", md: "none" },
-                    borderTop: { xs: "1px solid #000", md: "none" },
+                    borderTop: { xs: "none", md: "none" },
                     height: { xs: 100, md: "100vh" },
 
                   }}>
@@ -114,6 +114,8 @@ export default function ArticleSlider({ project, useLang }) {
                           textAlign: "center",
                           backgroundColor: "#BCACA8",
                         }}
+                        pt={1}
+                        pr={1}
                       >
                         <KeyboardArrowUpSharpIcon
                           left="true"
@@ -161,10 +163,12 @@ export default function ArticleSlider({ project, useLang }) {
                         sx={{
                           display: { xs: "block", md: "none" },
                           width: { xs: 45, md: 260 },
-                          height: 50,
+                          height: 49,
                           textAlign: "center",
                           backgroundColor: "#BCACA8",
                         }}
+                        pt={1}
+                        pr={1}
                       >
                         <KeyboardArrowDownSharpIcon
                           onClick={(e) =>
@@ -213,7 +217,8 @@ export default function ArticleSlider({ project, useLang }) {
               maxWidth: { xs: "calc(100vw - 100px)", md: 224 },
               minHeight: { xs: 100, md: "100vh" },
               maxHeight: { xs: 100, md: "100vh" },
-              borderTop: { xs: "1px solid #000", md: "none" },
+              borderTop: { xs: "none", md: "none" },
+              borderBottom: { xs: "1px solid #000", md: "none" },
             }}
             ref={sliderRef}
             className="keen-slider"

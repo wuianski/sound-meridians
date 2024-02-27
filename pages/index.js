@@ -599,7 +599,7 @@ export default function Home({ about, projects, useLang }) {
           {/*** row: projects nav + slider of projects ***/}
           <Item>
             <Box>
-              <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 0, md: 0 }}>
+              <Stack direction={{ xs: "column-reverse", md: "row" }} spacing={{ xs: 0, md: 0 }}>
                 {/*** Mobile: about content ***/}
                 <Item>
                   <Box
@@ -684,7 +684,7 @@ export default function Home({ about, projects, useLang }) {
                 </Item>
 
                 <Item>
-                  <Box sx={{ display: { xs: "block", md: "block" }, }}>
+                  <Box sx={{ display: { xs: "block", md: "block" }, borderBottom: { xs: "none", md: "none" } }}>
                     <Stack direction={{ xs: "row-reverse", md: "row" }} spacing={{ xs: 0, md: 0 }}>
                       {/*** row: projects nav  ***/}
                       <Item>
@@ -697,18 +697,18 @@ export default function Home({ about, projects, useLang }) {
                         }}>
                           {loaded && instanceRef.current && (
                             <>
-                              <Box pt={{ xs: 1, md: 3 }} pb={{ xs: 0, md: 3 }}
+                              <Box pt={{ xs: 0, md: 3 }} pb={{ xs: 0, md: 3 }}
                                 sx={{
                                   position: "absolute",
                                   top: 0,
-                                  bottom: { xs: 10, md: "unset" },
+                                  bottom: { xs: "unset", md: "unset" },
                                   right: 0,
                                   fontSize: 17,
                                   display: "inline-flex",
                                   backgroundColor: "#fff",
                                   borderLeft: "1px solid #000",
                                   borderBottom: "1px solid #000",
-                                  borderTop: { xs: "1px solid #000", md: "none" },
+                                  borderTop: { xs: "none", md: "none" },
                                 }}>
                                 <Stack direction="column" spacing={{ xs: 0, md: 0 }}>
                                   <Item>
@@ -744,6 +744,8 @@ export default function Home({ about, projects, useLang }) {
                                         textAlign: "center",
                                         backgroundColor: "#fff",
                                       }}
+                                      pt={1}
+                                      pr={1}
                                     >
                                       <KeyboardArrowUpSharpIcon
                                         left="true"
@@ -792,10 +794,12 @@ export default function Home({ about, projects, useLang }) {
                                       sx={{
                                         display: { xs: "block", md: "none" },
                                         width: { xs: 45, md: 260 },
-                                        height: 50,
+                                        height: 49,
                                         textAlign: "center",
                                         backgroundColor: "#fff",
                                       }}
+                                      pt={1}
+                                      pr={1}
                                     >
                                       <KeyboardArrowDownSharpIcon
                                         onClick={(e) =>
@@ -843,7 +847,8 @@ export default function Home({ about, projects, useLang }) {
                             maxWidth: { xs: "calc(100vw - 100px)", md: 500 },
                             minHeight: { xs: 100, md: "100vh" },
                             maxHeight: { xs: 100, md: "100vh" },
-                            borderTop: { xs: "1px solid #000", md: "none" },
+                            borderTop: { xs: "none", md: "none" },
+                            borderBottom: { xs: "1px solid #000", md: "none" },
                           }}
                           ref={sliderRef}
                           className="keen-slider"

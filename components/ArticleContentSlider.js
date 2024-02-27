@@ -209,7 +209,7 @@ export default function ArticleContentSlider({
                         <Box
                           sx={{
                             width: "100%",
-                            height: { xs: "calc(97vh - 100px)", md: "100vh" },
+                            height: { xs: "calc(97vh - 130px)", md: "100vh" },
                           }}
                         >
                           {/*** vvv each article's content of text template ***/}

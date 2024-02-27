@@ -34,7 +34,7 @@ export default function TextTemplate({ article_content, useLang }) {
           marginLeft: "auto",
           marginRight: "auto",
         }}
-        //sx={{ marginLeft: "auto", marginRight: "auto" }}
+      //sx={{ marginLeft: "auto", marginRight: "auto" }}
       >
         <Stack
           direction={{ xs: "column", md: "column" }}
@@ -100,7 +100,7 @@ export default function TextTemplate({ article_content, useLang }) {
               className="scroller"
               sx={{
                 position: "relative",
-                height: { xs: "calc(67vh - 50px)", md: "55vh" },
+                height: { xs: "calc(67vh - 110px)", md: "55vh" },
                 //maxWidth: "800px",
                 //borderTop: "5px solid #00415E",
                 // overflowY: "scroll",
