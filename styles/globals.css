@@ -69,8 +69,8 @@ a:hover {
   font-size: 19px;
   color: #fff;
   font-weight: 500;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   width:max-content;
   border-right: 1px solid #000;
 }

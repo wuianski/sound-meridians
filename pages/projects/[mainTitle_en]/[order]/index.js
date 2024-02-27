@@ -430,7 +430,7 @@ export default function Article({ projects, useLang, allprojects }) {
                     top: 0,
                     left: 0,
                     width: "60px",
-                    height: "100vh",
+                    height: "100dvh",
                     zIndex: 4,
                     backgroundColor: "#00415E",
                   }}
@@ -442,7 +442,7 @@ export default function Article({ projects, useLang, allprojects }) {
                       top: 0,
                       left: 0,
                       width: "60px",
-                      height: "100vh",
+                      height: "100dvh",
                       background:
                         "linear-gradient(90deg,  rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
                     }}
@@ -471,7 +471,7 @@ export default function Article({ projects, useLang, allprojects }) {
                     <Box
                       sx={{
                         width: "100%",
-                        height: "calc(100vh - 50px)",
+                        height: "calc(100dvh - 50px)",
                         backgroundColor: "#000",
                       }}
                     >

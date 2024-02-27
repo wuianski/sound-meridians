@@ -123,13 +123,13 @@ export default function TextImageTemplate({ article_content, useLang }) {
       >
         <Stack
           direction={{ xs: "column", md: "row" }}
-          spacing={{ xs: 3, md: 6 }}
+          spacing={{ xs: 2, md: 6 }}
         >
           {/*** row: text ***/}
           <Item
             sx={{
               width: { xs: "100%", md: "50%" },
-              height: { xs: "40vh", md: "100vh" },
+              height: { xs: "35dvh", md: "100vh" },
             }}
           >
             <Stack
@@ -143,7 +143,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                   sx={{
                     position: "relative",
                     width: { xs: "calc(100% - 40px)", md: "calc(100% - 40px)" },
-                    height: { xs: "10vh", md: "15vh" },
+                    height: { xs: "10dvh", md: "15vh" },
                     background: "none",
                     borderBottom: "5px solid #00415E",
                   }}
@@ -186,7 +186,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                   sx={{
                     position: "relative",
                     //width: "100%",
-                    height: { xs: "30vh", md: "55vh" },
+                    height: { xs: "30dvh", md: "55vh" },
                     //borderTop: "5px solid #00415E",
                     // overflowY: "scroll",
                     // scrollbarWidth: "1px !important",
@@ -243,7 +243,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
           <Item
             sx={{
               width: { xs: "100%", md: "50%" },
-              height: { xs: "40vh", md: "100vh" },
+              height: { xs: "35dvh", md: "100vh" },
             }}
           >
             <Box pl={{ xs: 3, md: 3 }} pr={{ xs: 3, md: 0 }}>
@@ -255,7 +255,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       sx={{
                         background: "none",
                         position: "relative",
-                        height: { xs: "30vh", md: "70vh" },
+                        height: { xs: "30dvh", md: "70vh" },
                         // borderTop: "5px solid #00415E",
                         // overflowY: "scroll",
                         // scrollbarWidth: "none",
@@ -265,12 +265,12 @@ export default function TextImageTemplate({ article_content, useLang }) {
                       {/*** column: image ***/}
                       <Box>
                         {image.imageInfos_id.description_tw &&
-                        image.imageInfos_id.videoURL == null ? (
+                          image.imageInfos_id.videoURL == null ? (
                           <Box
                             sx={{
                               position: "relative",
                               width: "100%",
-                              height: { xs: 150, md: 300 },
+                              height: { xs: 100, md: 300 },
                               zIndex: 0,
                             }}
                           >
@@ -288,7 +288,7 @@ export default function TextImageTemplate({ article_content, useLang }) {
                             sx={{
                               position: "relative",
                               width: "100%",
-                              height: { xs: 150, md: 300 },
+                              height: { xs: 100, md: 300 },
                               zIndex: 0,
                             }}
                             className="player-wrapper"

@@ -336,7 +336,7 @@ export default function Project({ projects, useLang }) {
                     top: 0,
                     left: 0,
                     width: "60px",
-                    height: "100vh",
+                    height: "100dvh",
                     zIndex: 4,
                     backgroundColor: "#00415E",
                   }}
@@ -379,7 +379,7 @@ export default function Project({ projects, useLang }) {
                       sx={{
                         position: "absolute",
                         width: "calc(100vw - 60px)",
-                        height: "100vh",
+                        height: "100dvh",
                         zIndex: 0,
                         opacity: 0.6,
                       }}
@@ -400,7 +400,7 @@ export default function Project({ projects, useLang }) {
                       p={"48px 16px 8px 24px"}
                       sx={{
                         width: "100%",
-                        height: "calc(100vh - 100px)",
+                        height: "calc(100dvh - 100px)",
                         position: "relative",
                         zIndex: 3,
                         // overflowY: "scroll",
@@ -502,7 +502,7 @@ export default function Project({ projects, useLang }) {
                         backgroundColor: "#BCACA8",
                         height: { xs: 100, md: "100vh" },
                         maxWidth: { xs: "calc(100% - 60px)", md: 480 },
-                        maxHeight: { xs: 100, md: "100vh" },
+                        maxHeight: { xs: 100, md: "100dvh" },
                         marginLeft: { xs: "30px", md: "unset" },
                       }}
 

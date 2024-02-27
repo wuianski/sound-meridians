@@ -48,7 +48,7 @@ export default function TextTemplate({ article_content, useLang }) {
               sx={{
                 position: "relative",
                 width: { xs: "calc(100% - 24px)", md: "calc(100% - 40px)" },
-                height: { xs: "15vh", md: "15vh" },
+                height: { xs: "15dvh", md: "15vh" },
                 background: "none",
                 borderBottom: "5px solid #00415E",
                 //maxWidth: "800px",
@@ -64,7 +64,7 @@ export default function TextTemplate({ article_content, useLang }) {
                     lineHeight: 1.2,
                     textAlign: { xs: "left", md: "center" },
                     width: "100%",
-                    height: { xs: "15vh", md: "15vh" },
+                    height: { xs: "15dvh", md: "15vh" },
                     display: { xs: "table-cell", md: "block" },
                     verticalAlign: { xs: "middle", md: "unset" },
                     // display: "table-cell",
@@ -100,7 +100,7 @@ export default function TextTemplate({ article_content, useLang }) {
               className="scroller"
               sx={{
                 position: "relative",
-                height: { xs: "calc(67vh - 110px)", md: "55vh" },
+                height: { xs: "calc(67dvh - 110px)", md: "55vh" },
                 //maxWidth: "800px",
                 //borderTop: "5px solid #00415E",
                 // overflowY: "scroll",
