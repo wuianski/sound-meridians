@@ -608,7 +608,7 @@ export default function Home({ about, projects, useLang }) {
                       display: { xs: "block", md: "none" },
                       position: "relative",
                       width: "calc(100vw - 60px)",
-                      height: "calc(100vh - 100px)",
+                      height: "calc(100dvh - 100px)",
                       background:
                         "linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.3) 100%)",
                       zIndex: 1,
@@ -841,12 +841,12 @@ export default function Home({ about, projects, useLang }) {
                           sx={{
                             backgroundColor: "#fff",
                             width: { xs: "calc(100vw - 100px)", md: 500 },
-                            height: { xs: 100, md: "100vh" },
+                            // height: { xs: 100, md: "100vh" },
                             color: "#ff0000",
                             minWidth: { xs: "calc(100vw - 100px)", md: 500 },
                             maxWidth: { xs: "calc(100vw - 100px)", md: 500 },
-                            minHeight: { xs: 100, md: "100vh" },
-                            maxHeight: { xs: 100, md: "100vh" },
+                            minHeight: { xs: 100, md: "100dvh" },
+                            maxHeight: { xs: 100, md: "100dvh" },
                             borderTop: { xs: "none", md: "none" },
                             borderBottom: { xs: "1px solid #000", md: "none" },
                           }}
